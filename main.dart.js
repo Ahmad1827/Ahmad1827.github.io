@@ -109835,37 +109835,35 @@ Iy(a,b){var s=null
 return A.a4(s,A.bi(new A.cf(B.d0,a,s),s,s),B.l,s,s,s,s,s,s,b,s,s,1/0)},
 afJ(a){var s,r,q,p,o=this,n=null,m="FIND A MASTER",l="DAILY QUESTS",k=$.Q(),j=k.a===B.e,i=j?B.am:B.at,h=a?32:48,g=j?B.M:B.i,f=A.ax(j?B.m:B.c,2)
 g=A.a4(n,A.G("SYSTEM ONLINE",n,n,n,n,A.A(n,n,j?B.h:B.c,n,n,n,n,n,n,n,n,14,n,n,B.w,n,n,!0,n,2,n,n,n,n,n,n),n,n),B.l,n,n,new A.ac(g,n,f,n,n,n,B.t),n,n,n,B.cr,n,n,n)
-j=a?40:56
-j=A.G("LEVEL UP YOUR\nKNOWLEDGE.",n,n,n,n,A.A(n,n,k.a===B.e?B.h:B.c,n,n,n,n,n,n,n,n,j,n,n,B.w,n,1.1,!0,n,1,n,n,n,n,n,n),n,n)
-f=a?16:20
-s=t.p
-f=A.b([g,B.a8,j,B.a8,A.G("Choose a discipline. Find a guild master. Complete daily quests to gain EXP.",n,n,n,n,A.A(n,n,k.a===B.e?B.h:B.c,n,n,n,n,n,n,n,n,f,n,n,B.q,n,1.5,!0,n,n,n,n,n,n,n,n),n,n),B.dj],s)
-if(a){j=A.J7(B.Z,16,!0,new A.aMs(o),B.bD,m,n)
-g=k.a===B.e
-r=g?B.M:B.i
-g=g?B.h:B.c
-f.push(A.ap(A.b([j,B.a7,A.J7(r,16,!0,new A.aMt(o),B.bD,l,g)],s),B.ao,B.k,B.j))}else{j=A.J7(B.Z,20,!1,new A.aMu(o),B.bD,m,n)
-g=k.a===B.e
-r=g?B.M:B.i
-g=g?B.h:B.c
-f.push(A.aI(A.b([j,B.eh,A.J7(r,20,!1,new A.aMv(o),B.bD,l,g)],s),B.r,B.k,B.j))}q=A.Yh(i,A.ap(f,B.K,B.k,B.j),h)
+j=A.G("LEVEL UP YOUR\nKNOWLEDGE.",n,n,n,n,A.A(n,n,B.F,n,n,n,n,n,n,n,n,a?40:56,n,n,B.w,n,1.1,!0,n,1,n,n,n,n,n,n),n,n)
+f=t.p
+j=A.b([g,B.a8,j,B.a8,A.G("Choose a discipline. Find a guild master. Complete daily quests to gain EXP.",n,n,n,n,A.A(n,n,B.F,n,n,n,n,n,n,n,n,a?16:20,n,n,B.q,n,1.5,!0,n,n,n,n,n,n,n,n),n,n),B.dj],f)
+if(a){g=A.J7(B.Z,16,!0,new A.aMs(o),B.bD,m,n)
+s=k.a===B.e
+r=s?B.M:B.i
+s=s?B.h:B.c
+j.push(A.ap(A.b([g,B.a7,A.J7(r,16,!0,new A.aMt(o),B.bD,l,s)],f),B.ao,B.k,B.j))}else{g=A.J7(B.Z,20,!1,new A.aMu(o),B.bD,m,n)
+s=k.a===B.e
+r=s?B.M:B.i
+s=s?B.h:B.c
+j.push(A.aI(A.b([g,B.eh,A.J7(r,20,!1,new A.aMv(o),B.bD,l,s)],f),B.r,B.k,B.j))}q=A.Yh(i,A.ap(j,B.K,B.k,B.j),h)
 j=k.a===B.e
 i=j?B.Q:B.N
 h=A.G("PLAYER STATS",n,n,n,n,A.A(n,n,j?B.h:B.c,n,n,n,n,n,n,n,n,18,n,n,B.w,n,n,!0,n,1.5,n,n,n,n,n,n),n,n)
 j=k.a===B.e
 g=A.a4(n,n,B.l,j?B.m:B.c,n,n,n,3,n,n,n,n,n)
-f=A.G("QUESTS CLEARED:",n,n,n,n,A.A(n,n,j?B.h:B.c,n,n,n,n,n,n,n,n,14,n,n,B.q,n,n,!0,n,n,n,n,n,n,n,n),n,n)
+s=A.G("QUESTS CLEARED:",n,n,n,n,A.A(n,n,j?B.h:B.c,n,n,n,n,n,n,n,n,14,n,n,B.q,n,n,!0,n,n,n,n,n,n,n,n),n,n)
 if(o.f)j=A.ek(A.fQ(k.a===B.e?B.h:B.c,3),16,16)
 else{j=o.e
-j=A.G(""+j,n,n,n,n,A.A(n,n,k.a===B.e?B.h:B.c,n,n,n,n,n,n,n,n,24,n,n,B.w,n,n,!0,n,n,n,n,n,n,n,n),n,n)}j=A.aI(A.b([f,j],s),B.r,B.aV,B.j)
-j=A.Yh(i,A.ap(A.b([h,B.a8,g,B.a8,j,B.a7,A.aI(A.b([A.G("SYSTEM STATUS:",n,n,n,n,A.A(n,n,k.a===B.e?B.h:B.c,n,n,n,n,n,n,n,n,14,n,n,B.q,n,n,!0,n,n,n,n,n,n,n,n),n,n),A.G("OPTIMAL",n,n,n,n,A.A(n,n,B.Z,n,n,n,n,n,n,n,n,16,n,n,B.w,n,n,!0,n,n,n,n,n,n,n,n),n,n)],s),B.r,B.aV,B.j)],s),B.ao,B.k,B.j),32)
+j=A.G(""+j,n,n,n,n,A.A(n,n,k.a===B.e?B.h:B.c,n,n,n,n,n,n,n,n,24,n,n,B.w,n,n,!0,n,n,n,n,n,n,n,n),n,n)}j=A.aI(A.b([s,j],f),B.r,B.aV,B.j)
+j=A.Yh(i,A.ap(A.b([h,B.a8,g,B.a8,j,B.a7,A.aI(A.b([A.G("SYSTEM STATUS:",n,n,n,n,A.A(n,n,k.a===B.e?B.h:B.c,n,n,n,n,n,n,n,n,14,n,n,B.q,n,n,!0,n,n,n,n,n,n,n,n),n,n),A.G("OPTIMAL",n,n,n,n,A.A(n,n,B.Z,n,n,n,n,n,n,n,n,16,n,n,B.w,n,n,!0,n,n,n,n,n,n,n,n),n,n)],f),B.r,B.aV,B.j)],f),B.ao,B.k,B.j),32)
 i=k.a===B.e
 h=i?B.P:B.V
-g=A.aI(A.b([A.G("DAILY QUEST",n,n,n,n,A.A(n,n,i?B.h:B.c,n,n,n,n,n,n,n,n,18,n,n,B.w,n,n,!0,n,1.5,n,n,n,n,n,n),n,n),A.aR(B.eV,B.B,n,28)],s),B.r,B.aV,B.j)
-p=A.ap(A.b([j,B.aQ,A.Yh(h,A.ap(A.b([g,B.a7,A.G("SOLVE: INFORMATIC\u0102 LVL 9",n,n,n,n,A.A(n,n,k.a===B.e?B.h:B.c,n,n,n,n,n,n,n,n,18,n,n,B.q,n,n,!0,n,n,n,n,n,n,n,n),n,n),B.bm,A.G("REWARD: +50 EXP",n,n,n,n,A.A(n,n,B.Z,n,n,n,n,n,n,n,n,14,n,n,B.w,n,n,!0,n,n,n,n,n,n,n,n),n,n),B.a8,A.J7(B.B,16,!0,o.gatX(),B.qP,"ACCEPT QUEST",n)],s),B.ao,B.k,B.j),32)],s),B.ao,B.k,B.j)
+g=A.aI(A.b([A.G("DAILY QUEST",n,n,n,n,A.A(n,n,i?B.h:B.c,n,n,n,n,n,n,n,n,18,n,n,B.w,n,n,!0,n,1.5,n,n,n,n,n,n),n,n),A.aR(B.eV,B.B,n,28)],f),B.r,B.aV,B.j)
+p=A.ap(A.b([j,B.aQ,A.Yh(h,A.ap(A.b([g,B.a7,A.G("SOLVE: INFORMATIC\u0102 LVL 9",n,n,n,n,A.A(n,n,k.a===B.e?B.h:B.c,n,n,n,n,n,n,n,n,18,n,n,B.q,n,n,!0,n,n,n,n,n,n,n,n),n,n),B.bm,A.G("REWARD: +50 EXP",n,n,n,n,A.A(n,n,B.Z,n,n,n,n,n,n,n,n,14,n,n,B.w,n,n,!0,n,n,n,n,n,n,n,n),n,n),B.a8,A.J7(B.B,16,!0,o.gatX(),B.qP,"ACCEPT QUEST",n)],f),B.ao,B.k,B.j),32)],f),B.ao,B.k,B.j)
 k=a?32:60
 j=a?32:40
-i=a?A.ap(A.b([q,B.aQ,p],s),B.ao,B.k,B.j):A.aI(A.b([A.bl(q,3),B.a1s,A.bl(p,2)],s),B.K,B.k,B.j)
+i=a?A.ap(A.b([q,B.aQ,p],f),B.ao,B.k,B.j):A.aI(A.b([A.bl(q,3),B.a1s,A.bl(p,2)],f),B.K,B.k,B.j)
 return o.Iy(i,new A.ah(24,k,24,j))},
 afV(a){var s,r=null,q=t.N,p=t.z,o=A.v(["icon",B.mH,"title","MATHEMATICS","color",B.B,"desc","ALGEBRA & LOGIC"],q,p),n=A.v(["icon",B.mO,"title","COMP. SCIENCE","color",B.Z,"desc","ALGORITHMS & C++"],q,p),m=$.Q(),l=A.b([o,n,A.v(["icon",B.mJ,"title","LANGUAGES","color",m.a===B.e?B.Q:B.N,"desc","ENGLISH & ROMANIAN"],q,p)],t.H7)
 q=t.nt
@@ -109956,7 +109954,7 @@ else q=B.c
 m=m?B.m:B.c
 p=A.G("IMEDITATII",n,n,n,n,A.A(n,n,B.i,n,n,n,n,n,n,n,n,i?32:40,n,n,B.w,n,n,!0,n,2,n,n,n,n,n,n),n,n)
 o=t.p
-return A.ei(n,l,A.ap(A.b([B.eH,A.bl(A.Zc(A.ev(A.ap(A.b([h,g,k,s,A.a4(n,A.bi(A.ap(A.b([p,B.a7,A.G("SYSTEM LOG: 2024 - 2025. LEVEL UP YOUR LEARNING.",n,n,n,n,A.A(n,n,B.i,n,n,n,n,n,n,n,n,i?12:16,n,n,B.q,n,n,!0,n,n,n,n,n,n,n,n),B.U,n)],o),B.r,B.k,B.j),n,n),B.l,n,n,new A.ac(q,n,new A.da(new A.ad(m,3,B.v,-1),B.A,B.A,B.A),n,n,n,B.t),n,n,n,new A.ah(24,r,24,r),n,n,1/0)],o),B.r,B.k,B.j),j,n,B.lc,B.a3),j,n),1)],o),B.r,B.k,B.j),n)},
+return A.ei(n,l,A.ap(A.b([B.eH,A.bl(A.Zc(A.ev(A.ap(A.b([h,g,k,s,A.a4(n,A.bi(A.ap(A.b([p,B.a7,A.G("SYSTEM LOG: 2025 - 2026. LEVEL UP YOUR LEARNING.",n,n,n,n,A.A(n,n,B.i,n,n,n,n,n,n,n,n,i?12:16,n,n,B.q,n,n,!0,n,n,n,n,n,n,n,n),B.U,n)],o),B.r,B.k,B.j),n,n),B.l,n,n,new A.ac(q,n,new A.da(new A.ad(m,3,B.v,-1),B.A,B.A,B.A),n,n,n,B.t),n,n,n,new A.ah(24,r,24,r),n,n,1/0)],o),B.r,B.k,B.j),j,n,B.lc,B.a3),j,n),1)],o),B.r,B.k,B.j),n)},
 $S:20}
 A.Yj.prototype={
 H(a){var s=null,r=this.e
