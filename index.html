@@ -1,28 +1,179 @@
 <!DOCTYPE html>
-<html>
+<html lang="ro">
 <head>
   <base href="/">
-  <meta name="google-signin-client_id" content="18887176167-nb9g2b5jgk83gfpv01oncs6n2if9j6lr.apps.googleusercontent.com" />
+
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="imeditatii">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="iMeditatii - Platformă retro de quest-uri și meditații 1-la-1.">
+
+  <!-- iOS meta tags & icons -->
   <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="imeditatii">
-  <link rel="apple-touch-icon" href="icons/Icon-192.png">
-  <link rel="icon" type="image/png" href="favicon.png"/>
-  <title>iMeditatii</title>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="iMeditatii">
+  <meta name="theme-color" content="#141A1F">
 
-  <!-- ✅ Material Icons Fonts (obligatorii pentru iconițe Flutter Web) -->
-  <link href="https://fonts.googleapis.com/css2?family=Material+Icons&family=Material+Icons+Outlined&display=swap" rel="stylesheet">
+  <!-- Favicon SVG Pixel Art (Sword & Book) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23141A1F'/><rect x='4' y='4' width='24' height='24' fill='%23E75A41'/><rect x='6' y='6' width='20' height='20' fill='%23F9F7F1'/><path d='M15 10 h2 v8 h-2 z M13 14 h6 v2 h-6 z M14 20 h4 v2 h-4 z' fill='%232C363F'/></svg>">
 
-  <!-- Manifest -->
+  <title>iMeditatii // ACADEMY</title>
   <link rel="manifest" href="manifest.json">
-  <script src="https://download.agora.io/sdk/release/AgoraRTC_N-4.20.2.js"></script>
-  <script src="https://download.agora.io/sdk/release/iris-web-rtc_n450_w4220_0.8.6.js"></script>
-</head>
 
+  <!-- Google Fonts VT323 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #10161A;
+      color: #55EFC4;
+      font-family: 'VT323', monospace;
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* CRT Scanline & Vignette Effect */
+    .crt-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        rgba(18, 16, 16, 0) 50%, 
+        rgba(0, 0, 0, 0.35) 50%
+      ), linear-gradient(
+        90deg,
+        rgba(255, 0, 0, 0.03),
+        rgba(0, 255, 0, 0.01),
+        rgba(0, 0, 255, 0.03)
+      );
+      background-size: 100% 3px, 6px 100%;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    #retro-loader {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 90%;
+      max-width: 600px;
+      padding: 30px;
+      border: 3px solid #55EFC4;
+      background-color: #141A1F;
+      box-shadow: 6px 6px 0px #000000;
+      text-align: left;
+      transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+    }
+
+    .ascii-logo {
+      color: #E75A41;
+      font-size: 24px;
+      line-height: 1.1;
+      white-space: pre;
+      margin-bottom: 20px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .terminal-line {
+      font-size: 20px;
+      letter-spacing: 1.5px;
+      margin-bottom: 10px;
+      width: 100%;
+    }
+
+    .status-ok {
+      color: #F9CA24;
+      float: right;
+    }
+
+    .progress-bar-container {
+      width: 100%;
+      height: 28px;
+      border: 2px solid #55EFC4;
+      margin-top: 15px;
+      padding: 2px;
+      background-color: #10161A;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background-color: #55EFC4;
+      animation: fillBar 2.2s steps(20) infinite;
+    }
+
+    @keyframes fillBar {
+      0% { width: 5%; }
+      50% { width: 65%; }
+      85% { width: 90%; }
+      100% { width: 100%; }
+    }
+
+    .blink {
+      animation: blinker 0.8s infinite;
+    }
+
+    @keyframes blinker {
+      50% { opacity: 0; }
+    }
+
+    .hide-loader {
+      opacity: 0;
+      transform: scale(0.96);
+      pointer-events: none;
+    }
+  </style>
+</head>
 <body>
-<script src="flutter_bootstrap.js" async></script>
+  <div class="crt-overlay"></div>
+
+  <div id="retro-loader">
+    <div class="ascii-logo">
+[ i M E D I T A T I I // O S ]
+⚔️ GUILD ACADEMY ENGINE ⚔️
+    </div>
+
+    <div class="terminal-line">> MEMORY TEST 640K ........... <span class="status-ok">[ OK ]</span></div>
+    <div class="terminal-line">> INITIALIZING SOUND SYSTEM .. <span class="status-ok">[ 8-BIT ]</span></div>
+    <div class="terminal-line">> CONNECTING TO GUILD SERVER . <span class="status-ok">[ READY ]</span></div>
+    <div class="terminal-line">> MOUNTING RETRO GRAPHICS ... <span class="blink">_</span></div>
+
+    <div class="progress-bar-container">
+      <div class="progress-bar-fill"></div>
+    </div>
+  </div>
+
+  <script>
+    // Ascunde loader-ul imediat ce Flutter a randat primul ecran
+    window.addEventListener('flutter-first-frame', function () {
+      const loader = document.getElementById('retro-loader');
+      const overlay = document.querySelector('.crt-overlay');
+      if (loader) {
+        loader.classList.add('hide-loader');
+        setTimeout(() => loader.remove(), 400);
+      }
+      if (overlay) {
+        setTimeout(() => overlay.remove(), 400);
+      }
+    });
+  </script>
+
+  <script src="flutter_bootstrap.js" async></script>
 </body>
 </html>
