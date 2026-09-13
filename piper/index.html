@@ -274,7 +274,7 @@
 <body>
     <div class="retro-card">
         <div class="receipt-terminal-header" id="receipt-ref">
-            ISSUED BY: iMeditatii // REF #DEV_PREVIEW
+            ISSUED BY: iMeditatii // REF #PENDING
         </div>
 
         <div class="summary-block">
@@ -282,8 +282,8 @@
                 <span class="status-dot"></span>
                 PAYMENT TUNNEL ONLINE
             </div>
-            <div class="item-name" id="display-item">PREMIUM PASS</div>
-            <div class="amount-display" id="display-amount">25.00 EUR</div>
+            <div class="item-name" id="display-item">SESIUNE 1-LA-1</div>
+            <div class="amount-display" id="display-amount">-- RON</div>
         </div>
 
         <hr class="receipt-tear-line">
@@ -319,12 +319,12 @@
 
             <button type="submit" id="submit" class="btn-submit">
                 <span class="spinner"></span>
-                <span class="btn-text" id="submit-text">PAY 25.00 EUR</span>
+                <span class="btn-text" id="submit-text">AUTHORIZE PAYMENT</span>
             </button>
 
             <div id="error-message"></div>
 
-            <a href="/" id="cancel-link" class="cancel-link">&larr; RETURN TO DASHBOARD</a>
+            <a href="#" id="cancel-link" class="cancel-link">&larr; CANCEL & RETURN TO CHAT</a>
 
             <div class="micro-footer">
                 🔒 256-BIT ENCRYPTED // POWERED BY STRIPE
@@ -333,23 +333,26 @@
     </div>
 
     <script>
-        // 1. Read URL params or fallback to demo defaults
         const params = new URLSearchParams(window.location.search);
-        const stripeKey = params.get('pk') || "pk_test_TYooMQauvdEDq54NiTphI7jx"; // Replace with your publishable key
+        const stripeKey = params.get('pk') || "pk_test_TYooMQauvdEDq54NiTphI7jx";
         const clientSecret = params.get('client_secret');
-        const itemName = params.get('item') || "PREMIUM PASS";
-        const formattedAmount = params.get('amount') || "25.00 EUR";
-        const returnUrl = params.get('return_url') || window.location.origin;
-        const refId = params.get('ref') || (clientSecret ? clientSecret.slice(-8) : "DEV_" + Math.random().toString(36).substring(2, 8).toUpperCase());
+        const itemName = params.get('item') || "SESIUNE 1-LA-1";
+        const formattedAmount = params.get('amount') || "50.00 RON";
+        const chatId = params.get('chatId') || "";
+        const sessionId = params.get('sessionId') || "";
+        const refId = params.get('ref') || (sessionId ? sessionId.toUpperCase() : "TRANSACTION");
 
-        // 2. Populate UI elements
         document.getElementById('display-item').textContent = itemName;
         document.getElementById('display-amount').textContent = formattedAmount;
         document.getElementById('submit-text').textContent = `PAY ${formattedAmount}`;
         document.getElementById('receipt-ref').textContent = `ISSUED BY: iMeditatii // REF #${refId}`;
-        document.getElementById('cancel-link').href = returnUrl;
 
-        // 3. Initialize Stripe
+        const baseOrigin = window.location.origin;
+        const successUrl = `${baseOrigin}/chat/${chatId}?payment=success&sessionId=${sessionId}`;
+        const cancelUrl = `${baseOrigin}/chat/${chatId}?payment=cancelled`;
+
+        document.getElementById('cancel-link').href = cancelUrl;
+
         const stripe = Stripe(stripeKey);
         const elements = stripe.elements();
 
@@ -410,7 +413,7 @@
             event.preventDefault();
 
             if (!clientSecret) {
-                errorMessage.textContent = "DEMO MODE: NO CLIENT_SECRET SUPPLIED IN URL.";
+                errorMessage.textContent = "PAYMENT CONFIG ERROR: NO CLIENT_SECRET PROVIDED.";
                 return;
             }
 
@@ -425,7 +428,7 @@
                         name: cardholderName.value.trim() || undefined,
                     }
                 },
-                return_url: returnUrl
+                return_url: successUrl
             });
 
             if (error) {
@@ -433,12 +436,11 @@
                 submitBtn.disabled = false;
                 submitBtn.classList.remove("loading");
             } else if (paymentIntent && paymentIntent.status === 'succeeded') {
-                window.location.href = returnUrl;
+                window.location.href = successUrl;
             } else {
-                window.location.href = returnUrl;
+                window.location.href = successUrl;
             }
         });
     </script>
 </body>
 </html>
-
