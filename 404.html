@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <base href="/">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="iMeditații - Învață și predă cu zâmbetul pe buze.">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="iMeditații">
+  <meta name="theme-color" content="#F7F8FA" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#18191B" media="(prefers-color-scheme: dark)">
+
+  <!-- Favicon: open book with a spark (same drawing as BrandMark in the app) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%2322C55E'/><stop offset='1' stop-color='%230F766E'/></linearGradient></defs><rect width='64' height='64' rx='18' fill='url(%23g)'/><path d='M32 31C27 27 20 26 13 28L13 49C20 47 27 48 32 52Z' fill='white'/><path d='M32 31C37 27 44 26 51 28L51 49C44 47 37 48 32 52Z' fill='white' fill-opacity='.78'/><path d='M32 9Q33.3 16.7 41 18Q33.3 19.3 32 27Q30.7 19.3 23 18Q30.7 16.7 32 9Z' fill='%23FDE68A'/></svg>">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <title>iMeditații</title>
+  <link rel="manifest" href="manifest.json">
+
+  <!-- Same font as the app (Inter) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --page-top: #EAF3EC;
+      --page-bottom: #F7F8FA;
+      --surface: #FFFFFF;
+      --border: rgba(0, 0, 0, 0.08);
+      --text: #262626;
+      --muted: #6B7280;
+      --primary: #15803D;
+      --track: #E5E7EB;
+      --hill-1: #CFE5D4;
+      --hill-2: #B5D6BD;
+      --hill-3: #9CC7A7;
+      --cloud: rgba(255, 255, 255, 0.85);
+      --bird: #5B6B60;
+      --shadow: 0 24px 60px rgba(21, 128, 61, 0.14), 0 6px 18px rgba(0, 0, 0, 0.06);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --page-top: #1B2420;
+        --page-bottom: #18191B;
+        --surface: #242629;
+        --border: rgba(255, 255, 255, 0.08);
+        --text: #E6E6E6;
+        --muted: #9CA3AF;
+        --primary: #4ADE80;
+        --track: #33363A;
+        --hill-1: #1F2E26;
+        --hill-2: #1A2820;
+        --hill-3: #15211A;
+        --cloud: rgba(255, 255, 255, 0.10);
+        --bird: #B8C4BA;
+        --shadow: 0 24px 60px rgba(0, 0, 0, 0.5), 0 6px 18px rgba(0, 0, 0, 0.3);
+      }
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+      background: var(--page-bottom);
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    #loader {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      background: linear-gradient(180deg, var(--page-top) 0%, var(--page-bottom) 70%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      transition: opacity .55s ease, transform .55s ease;
+    }
+
+    #loader.fade-out {
+      opacity: 0;
+      transform: scale(1.015);
+      pointer-events: none;
+    }
+
+    /* ---------- soft clouds ---------- */
+    .cloud {
+      position: absolute;
+      height: 38px;
+      border-radius: 999px;
+      background: var(--cloud);
+      filter: blur(6px);
+      animation: drift linear infinite;
+    }
+    .cloud.c1 { width: 190px; top: 14%; left: -220px; animation-duration: 60s; }
+    .cloud.c2 { width: 260px; top: 26%; left: -300px; animation-duration: 84s; animation-delay: -30s; height: 46px; }
+    .cloud.c3 { width: 150px; top: 8%;  left: -200px; animation-duration: 70s; animation-delay: -52s; }
+
+    @keyframes drift {
+      from { transform: translateX(0); }
+      to   { transform: translateX(calc(100vw + 340px)); }
+    }
+
+    /* ---------- birds ---------- */
+    .bird {
+      position: absolute;
+      left: -40px;
+      width: 22px;
+      height: 10px;
+      animation: fly linear infinite;
+    }
+    .bird svg { width: 100%; height: 100%; overflow: visible; }
+    .bird path {
+      fill: none;
+      stroke: var(--bird);
+      stroke-width: 1.6;
+      stroke-linecap: round;
+      opacity: .6;
+      animation: flap .5s ease-in-out infinite alternate;
+      transform-origin: center;
+    }
+    .bird.b1 { top: 20%; animation-duration: 26s; }
+    .bird.b2 { top: 24%; animation-duration: 26s; animation-delay: .9s; transform: scale(.8); }
+    .bird.b3 { top: 17%; animation-duration: 26s; animation-delay: 1.6s; transform: scale(.7); }
+
+    @keyframes fly {
+      from { transform: translateX(0); }
+      to   { transform: translateX(calc(100vw + 80px)); }
+    }
+    @keyframes flap {
+      from { transform: scaleY(1); }
+      to   { transform: scaleY(.35); }
+    }
+
+    /* ---------- hills ---------- */
+    .hills {
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      height: 36vh;
+      min-height: 190px;
+      pointer-events: none;
+    }
+    .hills svg { position: absolute; bottom: 0; width: 100%; height: 100%; }
+
+    /* ---------- card ---------- */
+    .card {
+      position: relative;
+      z-index: 3;
+      width: min(92vw, 380px);
+      padding: 34px 32px 28px;
+      border-radius: 22px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      text-align: center;
+      animation: rise .7s cubic-bezier(.2, .8, .2, 1) both;
+    }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+
+    .mark {
+      width: 48px;
+      height: 48px;
+      display: block;
+      animation: bob 2.4s ease-in-out infinite;
+      filter: drop-shadow(0 8px 14px rgba(16, 185, 129, .35));
+    }
+    .mark .spark {
+      transform-origin: 32px 18px;
+      animation: twinkle 1.8s ease-in-out infinite;
+    }
+    @keyframes twinkle {
+      0%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
+      50%      { transform: scale(.72) rotate(45deg); opacity: .75; }
+    }
+
+    @keyframes bob {
+      0%, 100% { transform: translateY(0); }
+      50%      { transform: translateY(-4px); }
+    }
+
+    .word {
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -.5px;
+      color: var(--text);
+    }
+    .word span { color: var(--primary); }
+
+    .msg {
+      min-height: 22px;
+      font-size: 14.5px;
+      color: var(--muted);
+      margin-bottom: 16px;
+      transition: opacity .25s ease;
+    }
+    .msg.swap { opacity: 0; }
+
+    .track {
+      height: 6px;
+      border-radius: 999px;
+      background: var(--track);
+      overflow: hidden;
+    }
+    .bar {
+      height: 100%;
+      width: 6%;
+      border-radius: 999px;
+      background: var(--primary);
+      animation: fill 2.6s cubic-bezier(.25, .7, .3, 1) forwards;
+    }
+    .bar.done { animation: none; width: 100%; transition: width .35s ease; }
+
+    @keyframes fill {
+      0%   { width: 6%; }
+      40%  { width: 55%; }
+      75%  { width: 82%; }
+      100% { width: 92%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .cloud, .bird, .mark, .mark .spark, .card { animation: none !important; }
+      .bird { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div id="loader" role="status" aria-live="polite" aria-label="Se încarcă iMeditații">
+    <div class="cloud c1"></div>
+    <div class="cloud c2"></div>
+    <div class="cloud c3"></div>
+
+    <div class="bird b1"><svg viewBox="0 0 22 10"><path d="M1 6 Q6 0 11 5 Q16 0 21 6"/></svg></div>
+    <div class="bird b2"><svg viewBox="0 0 22 10"><path d="M1 6 Q6 0 11 5 Q16 0 21 6"/></svg></div>
+    <div class="bird b3"><svg viewBox="0 0 22 10"><path d="M1 6 Q6 0 11 5 Q16 0 21 6"/></svg></div>
+
+    <div class="hills">
+      <svg viewBox="0 0 1440 320" preserveAspectRatio="none" aria-hidden="true">
+        <path fill="var(--hill-1)" d="M0 150 C200 90 380 190 620 140 C860 90 1040 40 1240 100 C1340 130 1400 120 1440 110 L1440 320 L0 320 Z"/>
+        <path fill="var(--hill-2)" d="M0 210 C220 150 420 250 700 200 C940 160 1120 120 1440 190 L1440 320 L0 320 Z"/>
+        <path fill="var(--hill-3)" d="M0 270 C260 220 520 300 800 255 C1040 220 1240 240 1440 265 L1440 320 L0 320 Z"/>
+      </svg>
+    </div>
+
+    <div class="card">
+      <div class="logo">
+        <svg class="mark" viewBox="0 0 64 64" aria-hidden="true">
+          <defs><linearGradient id="markg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#22C55E"/><stop offset="1" stop-color="#0F766E"/></linearGradient></defs>
+          <rect width="64" height="64" rx="18" fill="url(#markg)"/>
+          <path d="M32 31C27 27 20 26 13 28L13 49C20 47 27 48 32 52Z" fill="#fff"/>
+          <path d="M32 31C37 27 44 26 51 28L51 49C44 47 37 48 32 52Z" fill="#fff" fill-opacity=".78"/>
+          <path class="spark" d="M32 9Q33.3 16.7 41 18Q33.3 19.3 32 27Q30.7 19.3 23 18Q30.7 16.7 32 9Z" fill="#FDE68A"/>
+        </svg>
+        <div class="word"><span>i</span>Meditații</div>
+      </div>
+      <div class="msg" id="msg">Pregătim lecțiile…</div>
+      <div class="track"><div class="bar" id="bar"></div></div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      // friendly rotating messages
+      var msgs = [
+        'Pregătim lecțiile…',
+        'Aprindem testele automate…',
+        'Trezim dragonii…',
+        'Adunăm profesorii…',
+        'Aproape gata…'
+      ];
+      var i = 0;
+      var el = document.getElementById('msg');
+      var timer = setInterval(function () {
+        i = (i + 1) % msgs.length;
+        el.classList.add('swap');
+        setTimeout(function () { el.textContent = msgs[i]; el.classList.remove('swap'); }, 220);
+      }, 1500);
+
+      // keep the splash for at least 1.4 s so it never just flashes
+      var minDelay = new Promise(function (r) { setTimeout(r, 1400); });
+      var ready = new Promise(function (r) {
+        window.addEventListener('flutter-first-frame', r, { once: true });
+      });
+
+      Promise.all([minDelay, ready]).then(function () {
+        clearInterval(timer);
+        var bar = document.getElementById('bar');
+        if (bar) bar.classList.add('done');
+        setTimeout(function () {
+          var loader = document.getElementById('loader');
+          if (!loader) return;
+          loader.classList.add('fade-out');
+          setTimeout(function () { loader.remove(); }, 600);
+        }, 250);
+      });
+    })();
+  </script>
+
+  <script src="flutter_bootstrap.js" async></script>
+</body>
+</html>
