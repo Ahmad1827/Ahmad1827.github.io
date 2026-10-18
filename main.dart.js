@@ -34842,7 +34842,6 @@ n=A.kC(m,n,t.z)
 n.n(0,"lastPassed",!1)
 l=o.a
 n.n(0,"attempt",B.c.gW(l.b.a))
-n.n(0,"reviewNote","")
 n.n(0,"studentName",d)
 n.n(0,"exercise",b.ar())
 j=n
