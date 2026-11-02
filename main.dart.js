@@ -141084,7 +141084,6 @@ for(h=n.gcp(),f=h.length,e=t.N,d=t.z,c=0;c<h.length;h.length===f||(0,A.J)(h),++c
 b=l.cG()
 b.toString
 k=b
-if(J.l(J.aZ(k,"role"),"teacher"))continue
 b=A.k4(J.aZ(k,"solvedCount"))
 a=b==null?null:B.k.dA(b)
 j=a==null?0:a
@@ -141099,7 +141098,7 @@ a1=J.aZ(k,"image")
 if(a1==null)a1=J.aZ(k,"photoUrl")
 if(a1==null)a1=J.aZ(k,"avatarUrl")
 if(a1==null)a1=J.aZ(k,"photo")
-J.db(m,A.n(["uid",b,"name",a0,"photo",J.bp(a1==null?"":a1),"count",j],e,d))
+J.db(m,A.n(["uid",b,"name",a0,"photo",J.bp(a1==null?"":a1),"count",j,"teacher",J.l(J.aZ(k,"role"),"teacher")],e,d))
 if(J.bE(m)===10)break}if(o.c!=null&&J.l(a3,o.id))o.q(new A.bfC(o,m))
 q=1
 s=5
@@ -141299,15 +141298,17 @@ return p.a7G(B.aNB,A.x(l,B.z,o,B.e,B.f))},
 aF2(a,b){var s=B.aRY[B.u.aQ(a,5)],r=this.cx===a,q=A.aT(b.h(0,"link")),p=b.h(0,"date"),o=A.k(p==null?"":p)
 p=b.h(0,"author")
 return new A.o3(new A.bfN(this,s,r,b,o,A.k(p==null?"":p),q),new A.bfO(this,r,a),null)},
-aEV(a,b,c){var s,r,q,p,o,n=a<3
-if(n)s=B.aP4[a]
+aEV(a,b,c){var s,r,q,p,o,n,m=a<3
+if(m)s=B.aP4[a]
 else s=$.i().a===B.b?B.b2:B.t
 r=B.d.K(A.k(b.h(0,"name")))
 q=A.k(b.h(0,"photo"))
 if(r.length===0)p="?"
 else{o=B.d.i4(r,A.an("\\s+",!0,!1,!1))
 o=A.eI(o,0,A.fB(2,"count",t.S),A.a3(o).c)
-p=new A.a1(o,new A.bfs(),o.$ti.i("a1<al.E,e>")).ii(0)}return new A.aL("/elev/"+A.k(b.h(0,"uid")),new A.o3(new A.bft(c,n,s,a,q,p,r,b),new A.bfu(this,b),null),null)},
+p=new A.a1(o,new A.bfs(),o.$ti.i("a1<al.E,e>")).ii(0)}o=J.l(b.h(0,"teacher"),!0)?"/profesor":"/elev"
+n=o+"/"+A.k(b.h(0,"uid"))
+return new A.aL(n,new A.o3(new A.bft(c,m,s,a,q,p,r,b),new A.bfu(this,n),null),null)},
 aEU(a){var s,r,q=null,p=A.a([new A.aL("/termeni-si-conditii",A.eF(14,new A.bfo(this),"Termeni \u0219i condi\u021bii",!1),q),new A.aL("/politica-confidentialitate",A.eF(14,new A.bfp(this),"Politica de confiden\u021bialitate",!1),q)],t.VE),o=$.i(),n=A.h("\xa9 2026 iMedita\u021bii",q,q,q,q,q,q,A.f(q,q,o.a===B.b?B.m:B.n,q,q,q,q,q,q,q,q,14,q,q,q,q,q,!0,q,q,q,q,q,q,q,q),q,q,q)
 o=o.a===B.b
 s=o?B.T:B.l
@@ -141877,10 +141878,9 @@ A.bfs.prototype={
 $1(a){return a[0].toUpperCase()},
 $S:27}
 A.bfu.prototype={
-$0(){var s,r=this.a.c
-r.toString
-s=A.k(this.b.h(0,"uid"))
-return A.ag(r).ab("/elev/"+s,null)},
+$0(){var s=this.a.c
+s.toString
+return A.ag(s).ab(this.b,null)},
 $S:0}
 A.bft.prototype={
 $1(a){var s,r,q,p,o,n,m,l,k,j,i=this,h=null,g=i.a
