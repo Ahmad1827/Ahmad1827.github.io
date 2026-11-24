@@ -5355,6 +5355,226 @@
           "sursa": "AcadNet 2017 · Etapa națională · clasele 9–12"
         }
       ]
+    },
+    "Olimpiade": {
+      "1. OJI 2026": [
+        {
+          "id": "3001",
+          "title": "Poșta",
+          "difficulty": "ușoară",
+          "sursa": "OJI 2026 · clasa a IX-a · problema 1"
+        },
+        {
+          "id": "3002",
+          "title": "Cibernetica",
+          "difficulty": "medie",
+          "sursa": "OJI 2026 · clasa a IX-a · problema 2"
+        },
+        {
+          "id": "3003",
+          "title": "Collatz",
+          "difficulty": "grea",
+          "sursa": "OJI 2026 · clasa a IX-a · problema 3"
+        },
+        {
+          "id": "3004",
+          "title": "Unuzero",
+          "difficulty": "grea",
+          "sursa": "OJI 2026 · clasa a X-a · problema 1"
+        },
+        {
+          "id": "3005",
+          "title": "Înghețata",
+          "difficulty": "grea",
+          "sursa": "OJI 2026 · clasa a X-a · problema 2"
+        },
+        {
+          "id": "3006",
+          "title": "Mister",
+          "difficulty": "grea",
+          "sursa": "OJI 2026 · clasa a X-a · problema 3"
+        },
+        {
+          "id": "3007",
+          "title": "Knight",
+          "difficulty": "medie",
+          "sursa": "OJI 2026 · clasele XI–XII · problema 1"
+        },
+        {
+          "id": "3008",
+          "title": "Rotații",
+          "difficulty": "medie",
+          "sursa": "OJI 2026 · clasele XI–XII · problema 2"
+        },
+        {
+          "id": "3009",
+          "title": "Eliberare",
+          "difficulty": "medie",
+          "sursa": "OJI 2026 · clasele XI–XII · problema 3"
+        }
+      ],
+      "2. OJI 2025": [
+        {
+          "id": "3010",
+          "title": "Summat",
+          "difficulty": "medie",
+          "sursa": "OJI 2025 · clasa a IX-a · problema 1"
+        },
+        {
+          "id": "3011",
+          "title": "Teleportor",
+          "difficulty": "medie",
+          "sursa": "OJI 2025 · clasa a IX-a · problema 2"
+        },
+        {
+          "id": "3012",
+          "title": "Natație",
+          "difficulty": "grea",
+          "sursa": "OJI 2025 · clasa a IX-a · problema 3"
+        },
+        {
+          "id": "3013",
+          "title": "Golf",
+          "difficulty": "medie",
+          "sursa": "OJI 2025 · clasa a X-a · problema 1"
+        },
+        {
+          "id": "3014",
+          "title": "Bitsir",
+          "difficulty": "medie",
+          "sursa": "OJI 2025 · clasa a X-a · problema 2"
+        },
+        {
+          "id": "3015",
+          "title": "Anagrame",
+          "difficulty": "medie",
+          "sursa": "OJI 2025 · clasa a X-a · problema 3"
+        },
+        {
+          "id": "3016",
+          "title": "Aventura",
+          "difficulty": "ușoară",
+          "sursa": "OJI 2025 · clasele XI–XII · problema 1"
+        },
+        {
+          "id": "3017",
+          "title": "Cromatic",
+          "difficulty": "medie",
+          "sursa": "OJI 2025 · clasele XI–XII · problema 2"
+        },
+        {
+          "id": "3018",
+          "title": "Experimente",
+          "difficulty": "medie",
+          "sursa": "OJI 2025 · clasele XI–XII · problema 3"
+        }
+      ],
+      "3. OJI 2024": [
+        {
+          "id": "3019",
+          "title": "Macarie",
+          "difficulty": "medie",
+          "sursa": "OJI 2024 · clasa a IX-a · problema 1"
+        },
+        {
+          "id": "3020",
+          "title": "Santinele",
+          "difficulty": "medie",
+          "sursa": "OJI 2024 · clasa a IX-a · problema 2"
+        },
+        {
+          "id": "3021",
+          "title": "Trafalet",
+          "difficulty": "medie",
+          "sursa": "OJI 2024 · clasa a IX-a · problema 3"
+        },
+        {
+          "id": "3022",
+          "title": "Aprogressive",
+          "difficulty": "medie",
+          "sursa": "OJI 2024 · clasa a X-a · problema 1"
+        },
+        {
+          "id": "3023",
+          "title": "Opșir",
+          "difficulty": "medie",
+          "sursa": "OJI 2024 · clasa a X-a · problema 2"
+        },
+        {
+          "id": "3024",
+          "title": "Poseidon",
+          "difficulty": "medie",
+          "sursa": "OJI 2024 · clasa a X-a · problema 3"
+        },
+        {
+          "id": "3025",
+          "title": "Birocrație",
+          "difficulty": "medie",
+          "sursa": "OJI 2024 · clasele XI–XII · problema 1"
+        },
+        {
+          "id": "3026",
+          "title": "Nestemate",
+          "difficulty": "medie",
+          "sursa": "OJI 2024 · clasele XI–XII · problema 2"
+        },
+        {
+          "id": "3027",
+          "title": "Acoperire",
+          "difficulty": "grea",
+          "sursa": "OJI 2024 · clasele XI–XII · problema 3"
+        }
+      ],
+      "4. OJI 2023": [
+        {
+          "id": "3028",
+          "title": "Cufere",
+          "difficulty": "ușoară",
+          "sursa": "OJI 2023 · clasa a IX-a · problema 1"
+        },
+        {
+          "id": "3029",
+          "title": "Partitura",
+          "difficulty": "medie",
+          "sursa": "OJI 2023 · clasa a IX-a · problema 2"
+        },
+        {
+          "id": "3030",
+          "title": "Fibosnek",
+          "difficulty": "medie",
+          "sursa": "OJI 2023 · clasa a IX-a · problema 3"
+        },
+        {
+          "id": "3031",
+          "title": "Arhitect",
+          "difficulty": "medie",
+          "sursa": "OJI 2023 · clasa a X-a · problema 1"
+        },
+        {
+          "id": "3032",
+          "title": "Bingo",
+          "difficulty": "grea",
+          "sursa": "OJI 2023 · clasa a X-a · problema 2"
+        },
+        {
+          "id": "3033",
+          "title": "Fotbal",
+          "difficulty": "medie",
+          "sursa": "OJI 2023 · clasa a X-a · problema 3"
+        },
+        {
+          "id": "3035",
+          "title": "Turcane",
+          "difficulty": "medie",
+          "sursa": "OJI 2023 · clasele XI–XII · problema 2"
+        },
+        {
+          "id": "3036",
+          "title": "Veri",
+          "difficulty": "grea",
+          "sursa": "OJI 2023 · clasele XI–XII · problema 3"
+        }
+      ]
     }
   },
   "Matematică": {

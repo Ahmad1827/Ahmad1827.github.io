@@ -24825,6 +24825,778 @@
      "e": "Se elimină prima și ultima linie, prima și ultima coloană."
     }
    ]
+  },
+  "Olimpiade": {
+   "3001": [
+    {
+     "q": "Casa cu numărul a este vizitată pentru un x dat exact când…",
+     "o": [
+      "x divide a − 1",
+      "x divide a",
+      "a − 1 e mai mic decât x"
+     ],
+     "a": 0,
+     "e": "Casele vizitate sunt 1, 1 + x, 1 + 2x, …, adică a − 1 trebuie să fie multiplu de x."
+    },
+    {
+     "q": "Care e cel mai mare x bun?",
+     "o": [
+      "cmmdc-ul numerelor aᵢ − 1",
+      "cea mai mică diferență aᵢ₊₁ − aᵢ",
+      "a₁ − 1"
+     ],
+     "a": 0,
+     "e": "x trebuie să dividă toate aᵢ − 1, iar cel mai mare divizor comun e cmmdc-ul lor."
+    }
+   ],
+   "3002": [
+    {
+     "q": "De ce, dacă fereastra (i, j) e suspectă, e suspectă și (i, j + 1)?",
+     "o": [
+      "O fereastră mai lungă are frecvențele cel puțin la fel de mari",
+      "Pentru că K e fix",
+      "Nu e adevărat"
+     ],
+     "a": 0,
+     "e": "Adăugarea unui element nu scade nicio frecvență și nici numărul de valori distincte."
+    },
+    {
+     "q": "Ce tehnică dă soluția în O(N)?",
+     "o": [
+      "Doi indici (two pointers)",
+      "Căutare binară pentru fiecare i",
+      "Programare dinamică pe N²"
+     ],
+     "a": 0,
+     "e": "Capătul drept al primei ferestre bune nu scade când capătul stâng crește."
+    }
+   ],
+   "3003": [
+    {
+     "q": "Ce se întâmplă cu un număr impar x > 1 după două operații?",
+     "o": [
+      "Devine x + 1",
+      "Devine x / 2",
+      "Devine 2x"
+     ],
+     "a": 0,
+     "e": "x → 2x + 2, care e par și se înjumătățește la x + 1."
+    },
+    {
+     "q": "Cum se tratează intervale până la 10¹⁶?",
+     "o": [
+      "Tot intervalul deodată: impare → pare, apoi înjumătățit, cu o multiplicitate",
+      "Precalculând toate valorile",
+      "Simulând fiecare număr"
+     ],
+     "a": 0,
+     "e": "Un interval de numere consecutive devine, după câțiva pași, un interval de jumătate, fiecare număr de două ori."
+    }
+   ],
+   "3004": [
+    {
+     "q": "Cum se află vecinii poziției p fără matrice?",
+     "o": [
+      "p − 1 și p + 1 pe aceeași linie, p − N și p + N, căutați binar în P",
+      "Construind matricea",
+      "Doar p − 1 și p + 1"
+     ],
+     "a": 0,
+     "e": "Celula de sus e cu N poziții mai devreme, cea de jos cu N mai târziu."
+    },
+    {
+     "q": "Formula A·K − (2A − B)(K − 1) e mereu corectă?",
+     "o": [
+      "Nu: pe a doua lipitură se pot pierde mai puține grupuri",
+      "Da",
+      "Doar pentru K par"
+     ],
+     "a": 0,
+     "e": "Ghidul arată o matrice 3 × 6 unde formula dă 0 grupuri pentru K = 3, iar răspunsul e 1."
+    }
+   ],
+   "3005": [
+    {
+     "q": "În câte moduri cumperi g înghețate din k arome, fiecare cel puțin o dată?",
+     "o": [
+      "C(g − 1, k − 1)",
+      "C(g, k)",
+      "k^g"
+     ],
+     "a": 0,
+     "e": "Stele și bare: alegi k − 1 din cele g − 1 spații dintre înghețate."
+    },
+    {
+     "q": "Când e A_j..A_i un grup pentru i?",
+     "o": [
+      "Când lcm-ul lor divide A_i",
+      "Când cmmdc-ul lor e A_i",
+      "Când sunt crescătoare"
+     ],
+     "a": 0,
+     "e": "Toate divid A_i exact când cel mai mic multiplu comun divide A_i."
+    }
+   ],
+   "3006": [
+    {
+     "q": "Ce structură descrie algoritmul misterios?",
+     "o": [
+      "Maximul pe fereastră glisantă cu o coadă cu două capete",
+      "O stivă de minime",
+      "O sortare"
+     ],
+     "a": 0,
+     "e": "Din spate ies valorile mai mici, din față iese elementul care părăsește fereastra."
+    },
+    {
+     "q": "Ce valori primesc pozițiile scoase din spate?",
+     "o": [
+      "Valori mici, în ordinea scoaterii",
+      "Valori mari",
+      "Toate egale"
+     ],
+     "a": 0,
+     "e": "Trebuie să fie mai mici decât elementul care le scoate, care primește o valoare mai târziu."
+    }
+   ],
+   "3007": [
+    {
+     "q": "După k mutări de cal din a, unde e calul?",
+     "o": [
+      "Într-un fiu al strămoșului de rang k + 1 al lui a",
+      "La adâncimea lui a",
+      "În rădăcină"
+     ],
+     "a": 0,
+     "e": "Fiecare mutare urcă la bunic și coboară într-un fiu, deci urcă un nivel."
+    },
+    {
+     "q": "Cum se numără traseele?",
+     "o": [
+      "Produsul (fii − 1) pe lanțul dintre bunicul lui a și p_b",
+      "Suma fiilor pe lanț",
+      "Numărul de noduri de pe lanț"
+     ],
+     "a": 0,
+     "e": "La fiecare mutare intermediară alegi alt fiu decât cel de pe lanț."
+    }
+   ],
+   "3008": [
+    {
+     "q": "Ce nu schimbă o rotație?",
+     "o": [
+      "Distanța Manhattan |x| + |y|",
+      "Coordonata x",
+      "Semnul lui y"
+     ],
+     "a": 0,
+     "e": "Rotațiile doar schimbă între ele coordonatele și semnele lor."
+    },
+    {
+     "q": "Când se poate ajunge în (a, b) în exact N pași?",
+     "o": [
+      "|a| + |b| ≤ N și aceeași paritate cu N",
+      "Mereu",
+      "Doar dacă a = b"
+     ],
+     "a": 0,
+     "e": "Fiecare pas schimbă distanța cu exact 1, iar orice astfel de punct e accesibil."
+    }
+   ],
+   "3009": [
+    {
+     "q": "Ce mașină contează pentru a afla dacă o mașină poate pleca?",
+     "o": [
+      "Doar prima mașină din fața ei",
+      "Toate mașinile de pe linie",
+      "Mașinile din spatele ei"
+     ],
+     "a": 0,
+     "e": "Dacă prima din față a plecat, celelalte din față au plecat și ele înainte."
+    },
+    {
+     "q": "Cum se află repede prima mașină din față după plecări?",
+     "o": [
+      "Liste dublu înlănțuite pe linii și coloane",
+      "Parcurgând toată linia",
+      "Sortând mașinile"
+     ],
+     "a": 0,
+     "e": "La plecare, vecinii se leagă direct între ei, în O(1)."
+    }
+   ],
+   "3010": [
+    {
+     "q": "Ce poziții ocupă valoarea v în șir?",
+     "o": [
+      "2^(v−1) … 2^v − 1",
+      "v … 2v",
+      "1 … v"
+     ],
+     "a": 0,
+     "e": "v apare de 2^(v−1) ori, după toate valorile mai mici."
+    },
+    {
+     "q": "De ce e rapidă soluția completă?",
+     "o": [
+      "Valorile se schimbă doar pe cel mult 55 de linii",
+      "Matricea e mică",
+      "Q e mic"
+     ],
+     "a": 0,
+     "e": "Între liniile de start, liniile întregi au aceeași valoare."
+    }
+   ],
+   "3011": [
+    {
+     "q": "Când e nevoie de teleportor de la x la x + 1?",
+     "o": [
+      "Când nicio cameră cu x nu e vecină cu una cu x + 1",
+      "Mereu",
+      "Când x e impar"
+     ],
+     "a": 0,
+     "e": "Prin tuneluri vizitezi toate camerele cu x; o ușă spre x + 1 evită teleportarea."
+    },
+    {
+     "q": "Ce se actualizează la o transformare?",
+     "o": [
+      "Doar perechile camerei schimbate cu cei 4 vecini",
+      "Toată matricea",
+      "Doar linia ei"
+     ],
+     "a": 0,
+     "e": "Ținem F[x] = numărul de perechi vecine (x, x + 1)."
+    }
+   ],
+   "3012": [
+    {
+     "q": "De ce merge căutarea binară pe timp?",
+     "o": [
+      "Dacă se poate în T, se poate în orice timp mai mare",
+      "Timpii sunt întregi",
+      "N e mic"
+     ],
+     "a": 0,
+     "e": "Aceeași alegere de rațe termină și în timpul mai mare."
+    },
+    {
+     "q": "În ce ordine se iau rațele la verificare?",
+     "o": [
+      "Crescător după rezistență, apoi după viteză",
+      "Descrescător după viteză",
+      "La întâmplare"
+     ],
+     "a": 0,
+     "e": "Fiecare rață merge pe primul culoar liber dacă se întoarce la timp."
+    }
+   ],
+   "3013": [
+    {
+     "q": "Când e o insulă la stânga coloanei p?",
+     "o": [
+      "Când coloana ei maximă e mai mică decât p",
+      "Când coloana ei minimă e mai mică decât p",
+      "Când conține coloana p"
+     ],
+     "a": 0,
+     "e": "Toate celulele trebuie să fie strict la stânga lui p."
+    },
+    {
+     "q": "Cum se răspunde la o întrebare în O(1)?",
+     "o": [
+      "Sume parțiale pe mărimile insulelor, grupate după margini",
+      "Fill la fiecare întrebare",
+      "Căutare binară"
+     ],
+     "a": 0,
+     "e": "a = suma insulelor cu coloana maximă < p, b = cu coloana minimă > p."
+    }
+   ],
+   "3014": [
+    {
+     "q": "De ce se poate rezolva bit cu bit?",
+     "o": [
+      "OR, XOR și AND lucrează pe fiecare bit separat",
+      "Pentru că N e mic",
+      "Pentru că X e putere de 2"
+     ],
+     "a": 0,
+     "e": "Alegerile pentru biți diferiți sunt independente, iar răspunsul e produsul lor."
+    },
+    {
+     "q": "Câte submulțimi de o paritate fixă are o mulțime cu f ≥ 1 elemente?",
+     "o": [
+      "2^(f−1)",
+      "2^f",
+      "f"
+     ],
+     "a": 0,
+     "e": "Submulțimile se împart în perechi de paritate opusă."
+    }
+   ],
+   "3015": [
+    {
+     "q": "Cum arată un șir suport?",
+     "o": [
+      "Literele sortate, fiecare de range(ℓ) ori",
+      "Secvența citită",
+      "Literele în ordinea primei apariții"
+     ],
+     "a": 0,
+     "e": "Minim lexicografic înseamnă literele în ordine alfabetică."
+    },
+    {
+     "q": "Câte anagrame distincte are un șir cu n_ℓ litere ℓ?",
+     "o": [
+      "N_r! / (n_a! · … · n_z!)",
+      "N_r!",
+      "2^N_r"
+     ],
+     "a": 0,
+     "e": "Permutări cu repetiție."
+    }
+   ],
+   "3016": [
+    {
+     "q": "Contează ordinea în care completezi nivelurile disponibile?",
+     "o": [
+      "Nu: completarea doar deblochează",
+      "Da",
+      "Doar pentru nivelul 1"
+     ],
+     "a": 0,
+     "e": "Un nivel completat nu blochează nimic, deci completăm tot ce se poate."
+    },
+    {
+     "q": "Ce algoritm dă soluția liniară?",
+     "o": [
+      "Sortarea topologică cu o coadă (Kahn)",
+      "DFS recursiv",
+      "Dijkstra"
+     ],
+     "a": 0,
+     "e": "În coadă intră nivelurile ajunse la gradul 0."
+    }
+   ],
+   "3017": [
+    {
+     "q": "Când e un șir cromatic?",
+     "o": [
+      "Fiecare element nou e un minim nou sau un maxim nou",
+      "E sortat",
+      "Are valori distincte"
+     ],
+     "a": 0,
+     "e": "Altfel intervalul [min, max] s-ar repeta."
+    },
+    {
+     "q": "Câte șiruri cromatice sunt pentru n valori distincte?",
+     "o": [
+      "2^(n−1)",
+      "n!",
+      "n"
+     ],
+     "a": 0,
+     "e": "După primul element, la fiecare pas alegi minim nou sau maxim nou."
+    }
+   ],
+   "3018": [
+    {
+     "q": "Ce scoate un experiment cu arcul (S, F)?",
+     "o": [
+      "Șoarecii din golul din afara arcului",
+      "Șoarecii din arc",
+      "Un singur șoarece"
+     ],
+     "a": 0,
+     "e": "Rămân doar cei care au participat la toate experimentele."
+    },
+    {
+     "q": "De ce e rapidă mulțimea de intervale?",
+     "o": [
+      "Fiecare gol adaugă cel mult 2 intervale noi, iar fiecare interval e șters o dată",
+      "Intervalele sunt puține de la început",
+      "N e mic"
+     ],
+     "a": 0,
+     "e": "Totul e O(M log M), independent de N."
+    }
+   ],
+   "3019": [
+    {
+     "q": "Cum se află câte elemente din A sunt multipli ai lui d?",
+     "o": [
+      "Adunând frecvențele lui d, 2d, 3d, …",
+      "Căutând divizorii fiecărui element",
+      "Sortând A"
+     ],
+     "a": 0,
+     "e": "Pentru toți d sunt aproximativ V ln V pași, ca la ciur."
+    },
+    {
+     "q": "Cum se găsește termenul de pe poziția p fără șirul D?",
+     "o": [
+      "Căutare binară în sumele parțiale ale lui cnt",
+      "Construind D",
+      "Parcurgând A"
+     ],
+     "a": 0,
+     "e": "cnt[d] devine ultima poziție a lui d în D."
+    }
+   ],
+   "3020": [
+    {
+     "q": "Unde e cel mai bine să pui santinela pentru primul vârf nevegheat j?",
+     "o": [
+      "Pe cel mai din dreapta maxim din [j, j + K]",
+      "Chiar pe j",
+      "Pe cel mai înalt vârf din tot lanțul"
+     ],
+     "a": 0,
+     "e": "Veghează tot până la el și ajunge cel mai departe spre dreapta."
+    },
+    {
+     "q": "De ce e greedy-ul liniar?",
+     "o": [
+      "Ferestrele [j, j + K] nu se suprapun",
+      "K e mic",
+      "Înălțimile sunt mici"
+     ],
+     "a": 0,
+     "e": "Santinela de pe maximul ferestrei veghează cel puțin până la j + K."
+    }
+   ],
+   "3021": [
+    {
+     "q": "Ce înseamnă punctajul unei submatrice după ce pui minus pe celulele negre?",
+     "o": [
+      "Modulul sumei submatricei",
+      "Suma pozitivelor",
+      "Numărul de celule"
+     ],
+     "a": 0,
+     "e": "Alegi culoarea care face diferența pozitivă."
+    },
+    {
+     "q": "Cea mai mare sumă în modul a unei secvențe este…",
+     "o": [
+      "(suma parțială maximă) − (suma parțială minimă)",
+      "Suma tuturor elementelor",
+      "Maximul elementelor"
+     ],
+     "a": 0,
+     "e": "Orice secvență e diferența a două sume parțiale."
+    }
+   ],
+   "3022": [
+    {
+     "q": "Când se pot rearanja valori într-o progresie aritmetică?",
+     "o": [
+      "Când, sortate, au toate diferențele dintre vecini egale",
+      "Când sunt distincte",
+      "Când suma e pară"
+     ],
+     "a": 0,
+     "e": "Rația e diferența primelor două valori sortate."
+    },
+    {
+     "q": "Ce tehnică descrie cerința 3?",
+     "o": [
+      "Divide et impera (recursivitate)",
+      "Programare dinamică",
+      "Greedy"
+     ],
+     "a": 0,
+     "e": "Submatricea se împarte în patru și se comprimă fiecare parte."
+    }
+   ],
+   "3023": [
+    {
+     "q": "Ce operații se pot face la început?",
+     "o": [
+      "Toate ștergerile",
+      "Toate sortările",
+      "Niciuna"
+     ],
+     "a": 0,
+     "e": "Ștergerile și sortările pe bucăți disjuncte se pot reordona."
+    },
+    {
+     "q": "Cum se împarte S?",
+     "o": [
+      "În secvențe crescătoare maximale",
+      "În litere",
+      "În jumătăți"
+     ],
+     "a": 0,
+     "e": "O bucată sortată nu poate trece peste o coborâre a lui S."
+    }
+   ],
+   "3024": [
+    {
+     "q": "Ce numără D(k)?",
+     "o": [
+      "Permutările de k elemente fără puncte fixe",
+      "Toate permutările",
+      "Submulțimile"
+     ],
+     "a": 0,
+     "e": "Nicio comoară nu rămâne pe loc."
+    },
+    {
+     "q": "Care e recurența?",
+     "o": [
+      "D(k) = (k − 1)(D(k − 1) + D(k − 2))",
+      "D(k) = k · D(k − 1)",
+      "D(k) = D(k − 1) + D(k − 2)"
+     ],
+     "a": 0,
+     "e": "Comoara 1 merge pe locul j, iar j merge sau nu pe locul 1."
+    }
+   ],
+   "3025": [
+    {
+     "q": "Ce face o mutare la dreapta sau în jos cu i + j?",
+     "o": [
+      "Îl crește cu 1",
+      "Îl lasă la fel",
+      "Îl scade"
+     ],
+     "a": 0,
+     "e": "Diagonalele secundare se vizitează în ordine."
+    },
+    {
+     "q": "Ce parcurge Boris pe o diagonală?",
+     "o": [
+      "O bucată continuă, într-un singur sens",
+      "Toată diagonala",
+      "Un singur birou"
+     ],
+     "a": 0,
+     "e": "Nu se poate întoarce într-un birou din care a ieșit."
+    }
+   ],
+   "3026": [
+    {
+     "q": "Ce algoritm dă numărul minim de transformări?",
+     "o": [
+      "Parcurgerea în lățime (BFS)",
+      "DFS",
+      "Sortarea"
+     ],
+     "a": 0,
+     "e": "Muchiile au toate costul 1."
+    },
+    {
+     "q": "De câte ori se parcurge lista unei valori în soluția completă?",
+     "o": [
+      "O singură dată",
+      "De fiecare dată când e întâlnită",
+      "De N ori"
+     ],
+     "a": 0,
+     "e": "Toate nestematele din listă primesc distanța la prima vizită."
+    }
+   ],
+   "3027": [
+    {
+     "q": "Când acoperă un interval de lungime ≥ ℓ/2 intervalul [A, B] de lungime ℓ?",
+     "o": [
+      "Când conține mijlocul lui",
+      "Când conține capătul A",
+      "Mereu"
+     ],
+     "a": 0,
+     "e": "Singurul punct comun al celor mai extreme acoperiri minime e mijlocul."
+    },
+    {
+     "q": "De ce se dublează coordonatele?",
+     "o": [
+      "Ca mijloacele să fie numere întregi",
+      "Ca să crească precizia afișării",
+      "Ca intervalele să fie disjuncte"
+     ],
+     "a": 0,
+     "e": "(S + D) / 2 poate fi „,5”."
+    }
+   ],
+   "3028": [
+    {
+     "q": "Ce înseamnă eticheta de compartiment 1994?",
+     "o": [
+      "19 obiecte cu eticheta 94",
+      "1994 de obiecte",
+      "94 de obiecte cu eticheta 19"
+     ],
+     "a": 0,
+     "e": "Ultimele două cifre sunt eticheta obiectelor."
+    },
+    {
+     "q": "De ce nu se păstrează cuferele în memorie?",
+     "o": [
+      "Limita e 2 MB, iar ne trebuie doar totalul pe etichetă",
+      "Nu e voie la vectori",
+      "Pentru că n e mic"
+     ],
+     "a": 0,
+     "e": "Un vector de 100 de numere ajunge."
+    }
+   ],
+   "3029": [
+    {
+     "q": "Cum se împerechează notele de pe același nivel?",
+     "o": [
+      "Descrescător după înălțime: prima cu a doua etc.",
+      "Cea mai înaltă cu cea mai joasă",
+      "La întâmplare"
+     ],
+     "a": 0,
+     "e": "(a + b)² + (c + d)² e cea mai mare pentru a ≥ b ≥ c ≥ d."
+    },
+    {
+     "q": "Cu ce nivel se începe?",
+     "o": [
+      "Cu durata cea mai mică",
+      "Cu durata 1/2",
+      "Cu nota cea mai înaltă"
+     ],
+     "a": 0,
+     "e": "Două note de 1/2^x formează una de 1/2^(x−1)."
+    }
+   ],
+   "3030": [
+    {
+     "q": "Ce se ține pentru fiecare element, ca să încapă în 6 MB?",
+     "o": [
+      "Indicele numărului Fibonacci, într-un char",
+      "Valoarea, ca int",
+      "Nimic"
+     ],
+     "a": 0,
+     "e": "Sunt doar 46 de numere Fibonacci sub 2³¹."
+    },
+    {
+     "q": "Ce formă are cea mai lungă secvență?",
+     "o": [
+      "Fibonacci + ne-Fibonacci transformată + Fibonacci",
+      "O singură secvență Fibonacci",
+      "Toată matricea"
+     ],
+     "a": 0,
+     "e": "Transformăm o secvență ne-Fibonacci întreagă, lipită de vecinii ei."
+    }
+   ],
+   "3031": [
+    {
+     "q": "Când pot fi aliniate două segmente de aceeași rotație?",
+     "o": [
+      "Când sunt paralele sau perpendiculare",
+      "Când au aceeași lungime",
+      "Când se intersectează"
+     ],
+     "a": 0,
+     "e": "Unghiurile lor diferă cu un multiplu de 90°."
+    },
+    {
+     "q": "De ce se evită atan2?",
+     "o": [
+      "Rotunjirile pot face direcții egale să pară diferite",
+      "E lent",
+      "Nu există în C++"
+     ],
+     "a": 0,
+     "e": "Forma cu numere întregi și cmmdc e exactă."
+    }
+   ],
+   "3032": [
+    {
+     "q": "Din ce se compune costul unei alegeri de litere?",
+     "o": [
+      "Aducerea lor alăturate + inversiunile ordinii lor",
+      "Doar distanța dintre ele",
+      "Numărul de litere străine"
+     ],
+     "a": 0,
+     "e": "Întâi se adună în jurul literei din mijloc, apoi se rearanjează."
+    },
+    {
+     "q": "Câte ordini ale literelor încearcă soluția completă?",
+     "o": [
+      "120",
+      "5",
+      "24"
+     ],
+     "a": 0,
+     "e": "5! permutări ale lui „bingo”."
+    }
+   ],
+   "3033": [
+    {
+     "q": "Când au K intervale un punct comun?",
+     "o": [
+      "Când cel mai mare început ≤ cel mai mic sfârșit",
+      "Când sunt sortate",
+      "Când au aceeași lungime"
+     ],
+     "a": 0,
+     "e": "Punctul cel mai mare început e atunci în toate."
+    },
+    {
+     "q": "La care interval e numărată o echipă?",
+     "o": [
+      "La cel cu capătul stâng cel mai mare",
+      "La primul în ordinea citirii",
+      "La cel mai lung"
+     ],
+     "a": 0,
+     "e": "Așa fiecare echipă e numărată o singură dată."
+    }
+   ],
+   "3035": [
+    {
+     "q": "De ce merge programarea dinamică pe celule, în ordine?",
+     "o": [
+      "Toate săriturile merg spre dreapta și/sau în jos",
+      "Tabla e mică",
+      "Săriturile sunt egale"
+     ],
+     "a": 0,
+     "e": "Orice celulă din care se poate sări aici vine înainte."
+    },
+    {
+     "q": "Ce structură dă minimul pe ultimele P celule în O(1)?",
+     "o": [
+      "O coadă monotonă (deque)",
+      "Un vector sortat",
+      "O stivă"
+     ],
+     "a": 0,
+     "e": "Valorile mai mari din spate nu mai pot fi minimul."
+    }
+   ],
+   "3036": [
+    {
+     "q": "Ce formă are drumul comun al verilor?",
+     "o": [
+      "Un drum S → Z urmat de un ciclu înapoi în Z",
+      "Un drum S → A",
+      "Un ciclu prin S"
+     ],
+     "a": 0,
+     "e": "Se oprește la primul nod repetat."
+    },
+    {
+     "q": "Cum se află distanțele de la fiecare nod până la A?",
+     "o": [
+      "Un BFS din A pe graful transpus",
+      "Un BFS din fiecare nod",
+      "Roy-Floyd obligatoriu"
+     ],
+     "a": 0,
+     "e": "O distanță spre A e o distanță de la A cu muchiile întoarse."
+    }
+   ]
   }
  },
  "Matematică": {
