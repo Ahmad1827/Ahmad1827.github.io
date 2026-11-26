@@ -1586,6 +1586,56 @@
           "id": "1297",
           "title": "Fibonacci în timp logaritmic",
           "difficulty": "grea"
+        },
+        {
+          "id": "3037",
+          "title": "Minimul și poziția lui, divide et impera",
+          "difficulty": "ușoară"
+        },
+        {
+          "id": "3038",
+          "title": "Numărul de apariții ale lui x, divide et impera",
+          "difficulty": "ușoară"
+        },
+        {
+          "id": "3039",
+          "title": "Produsul elementelor modulo 1 000 000 007",
+          "difficulty": "ușoară"
+        },
+        {
+          "id": "3040",
+          "title": "Toate elementele egale? Divide et impera",
+          "difficulty": "ușoară"
+        },
+        {
+          "id": "3041",
+          "title": "Maximul și minimul deodată",
+          "difficulty": "ușoară"
+        },
+        {
+          "id": "3042",
+          "title": "Vectorul afișat invers, divide et impera",
+          "difficulty": "ușoară"
+        },
+        {
+          "id": "3043",
+          "title": "Cel mai mare număr par, divide et impera",
+          "difficulty": "ușoară"
+        },
+        {
+          "id": "3044",
+          "title": "Rădăcina pătrată întreagă, prin înjumătățire",
+          "difficulty": "medie"
+        },
+        {
+          "id": "3045",
+          "title": "Prima apariție într-un vector sortat",
+          "difficulty": "medie"
+        },
+        {
+          "id": "3046",
+          "title": "Punctul fix: v[i] == i",
+          "difficulty": "medie"
         }
       ],
       "5. Stivă și mulțimi (STL)": [

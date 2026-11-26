@@ -9557,6 +9557,226 @@
      "a": 0,
      "e": "Fiecare citire o suprascrie pe cea anterioară."
     }
+   ],
+   "3037": [
+    {
+     "q": "Dacă minimul apare în ambele jumătăți, ce poziție trebuie întoarsă?",
+     "o": [
+      "Cea din jumătatea dreaptă",
+      "Cea din jumătatea stângă",
+      "Oricare dintre ele"
+     ],
+     "a": 1,
+     "e": "Jumătatea stângă are pozițiile mai mici, deci acolo e prima apariție; de aceea se compară strict: v[q] < v[p]."
+    },
+    {
+     "q": "Ce întoarce funcția pentru un interval cu un singur element (st == dr)?",
+     "o": [
+      "Poziția st",
+      "Valoarea 0",
+      "Poziția st + 1"
+     ],
+     "a": 0,
+     "e": "Un singur element este chiar minimul intervalului, iar poziția lui este st."
+    }
+   ],
+   "3038": [
+    {
+     "q": "Cum se combină rezultatele celor două jumătăți?",
+     "o": [
+      "Se înmulțesc",
+      "Se adună",
+      "Se ia maximul"
+     ],
+     "a": 1,
+     "e": "Aparițiile din stânga și cele din dreapta sunt distincte, deci totalul este suma lor."
+    },
+    {
+     "q": "De câte ori se apelează funcția, în total, pentru n elemente?",
+     "o": [
+      "De aproximativ log₂ n ori",
+      "De 2n − 1 ori",
+      "De n² ori"
+     ],
+     "a": 1,
+     "e": "Fiecare apel are fie un element (n frunze), fie două subapeluri (n − 1 noduri interne): 2n − 1 apeluri."
+    }
+   ],
+   "3039": [
+    {
+     "q": "De ce rezultatele se țin în long long?",
+     "o": [
+      "Pentru că produsul a două numere sub 10⁹ + 7 poate trece de 2³¹",
+      "Pentru că elementele pot fi negative",
+      "Pentru că recursivitatea cere long long"
+     ],
+     "a": 0,
+     "e": "Produsul a două resturi poate ajunge la aproximativ 10¹⁸; în long long încape, în int nu."
+    },
+    {
+     "q": "Dacă un element este 0, cât este produsul?",
+     "o": [
+      "1",
+      "0",
+      "Depinde de celelalte elemente"
+     ],
+     "a": 1,
+     "e": "Jumătatea care conține 0 dă 0, iar 0 înmulțit cu orice dă 0."
+    }
+   ],
+   "3040": [
+    {
+     "q": "Jumătățile 2 2 și 3 3 au fiecare elementele egale. Ce mai trebuie verificat?",
+     "o": [
+      "Nimic, răspunsul este DA",
+      "Că ultimul din stânga este egal cu primul din dreapta",
+      "Că n este par"
+     ],
+     "a": 1,
+     "e": "Fiecare jumătate e constantă, dar 2 ≠ 3; legătura dintre ele este v[m] == v[m + 1]."
+    },
+    {
+     "q": "Ce face && când prima condiție este falsă?",
+     "o": [
+      "Le evaluează și pe celelalte",
+      "Nu le mai evaluează pe celelalte",
+      "Dă eroare"
+     ],
+     "a": 1,
+     "e": "Evaluarea scurtcircuitată: dacă stânga nu e constantă, jumătatea dreaptă nici nu mai e cercetată."
+    }
+   ],
+   "3041": [
+    {
+     "q": "Cum întoarce funcția două rezultate deodată?",
+     "o": [
+      "Prin doi parametri transmiși prin referință",
+      "Prin două instrucțiuni return",
+      "Nu se poate"
+     ],
+     "a": 0,
+     "e": "Cu & în fața parametrilor, funcția scrie direct în variabilele celui care a apelat-o."
+    },
+    {
+     "q": "Ce sunt mx și mn pentru un interval cu un singur element?",
+     "o": [
+      "0 și 0",
+      "Amândouă egale cu acel element",
+      "Nedefinite"
+     ],
+     "a": 1,
+     "e": "Un singur element este în același timp cel mai mare și cel mai mic."
+    }
+   ],
+   "3042": [
+    {
+     "q": "Ce se schimbă dacă cele două apeluri se fac în ordinea afis(st, m), apoi afis(m + 1, dr)?",
+     "o": [
+      "Nimic",
+      "Vectorul se afișează în ordinea inițială",
+      "Programul nu se mai oprește"
+     ],
+     "a": 1,
+     "e": "Ordinea apelurilor dă ordinea afișării: stânga, apoi dreapta înseamnă de la primul la ultimul."
+    },
+    {
+     "q": "Aici, care este etapa de „combinare”?",
+     "o": [
+      "Ordinea în care se afișează cele două jumătăți",
+      "O adunare",
+      "Nu există împărțire"
+     ],
+     "a": 0,
+     "e": "Nu se calculează nimic; combinarea înseamnă să pui dreapta înaintea stângii."
+    }
+   ],
+   "3043": [
+    {
+     "q": "De ce -1 este o alegere bună pentru „niciun număr par”?",
+     "o": [
+      "Pentru că e mai mic decât orice număr natural par",
+      "Pentru că -1 este par",
+      "Pentru că așa cere C++"
+     ],
+     "a": 0,
+     "e": "La combinare se ia maximul; -1 nu poate câștiga în fața unui număr par real, deci nu strică rezultatul."
+    },
+    {
+     "q": "Ce întoarce funcția pentru un interval cu un singur element impar?",
+     "o": [
+      "Acel element",
+      "0",
+      "-1"
+     ],
+     "a": 2,
+     "e": "Un element impar nu este un candidat, deci intervalul nu are numere pare."
+    }
+   ],
+   "3044": [
+    {
+     "q": "Câți pași face căutarea pe intervalul [0, 10⁹]?",
+     "o": [
+      "Aproximativ 30",
+      "Aproximativ 10⁹",
+      "Aproximativ 31 623"
+     ],
+     "a": 0,
+     "e": "Intervalul se înjumătățește la fiecare pas, iar 2³⁰ ≈ 10⁹."
+    },
+    {
+     "q": "De ce mijlocul se ia (st + dr + 1) / 2?",
+     "o": [
+      "Ca să fie mai rapid",
+      "Ca intervalul să se micșoreze și când st + 1 == dr",
+      "Pentru numere negative"
+     ],
+     "a": 1,
+     "e": "Cu (st + dr) / 2 am avea m == st, iar ramura rad(m, dr) ar repeta la nesfârșit același interval."
+    }
+   ],
+   "3045": [
+    {
+     "q": "Dacă v[m] == x, de ce se caută tot în [st, m], și nu se întoarce direct m?",
+     "o": [
+      "Pentru că x ar putea apărea și înainte de m",
+      "Pentru că m poate fi în afara vectorului",
+      "Nu e nevoie, se poate întoarce m"
+     ],
+     "a": 0,
+     "e": "Ni se cere prima apariție; într-un vector sortat, aparițiile lui x sunt una lângă alta, și unele pot fi la stânga lui m."
+    },
+    {
+     "q": "Cât durează cele m întrebări?",
+     "o": [
+      "Aproximativ m · n pași",
+      "Aproximativ m · log₂ n pași",
+      "Aproximativ n pași"
+     ],
+     "a": 1,
+     "e": "Fiecare căutare înjumătățește intervalul, deci face cam log₂ n pași."
+    }
+   ],
+   "3046": [
+    {
+     "q": "Dacă v[m] < m, unde poate fi punctul fix?",
+     "o": [
+      "Doar la dreapta lui m",
+      "Doar la stânga lui m",
+      "Oriunde"
+     ],
+     "a": 0,
+     "e": "v[i] − i nu scade; la m este negativ, deci e negativ și la toate pozițiile din stânga lui m."
+    },
+    {
+     "q": "Ce proprietate a vectorului face posibilă căutarea binară?",
+     "o": [
+      "Elementele sunt pozitive",
+      "Elementele sunt întregi strict crescătoare, deci v[i] − i nu scade",
+      "n este o putere a lui 2"
+     ],
+     "a": 1,
+     "e": "Pe un șir care nu scade, putem decide după mijloc în ce jumătate e răspunsul."
+    }
    ]
   },
   "11": {
