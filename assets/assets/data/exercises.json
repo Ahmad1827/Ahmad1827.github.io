@@ -4644,6 +4644,188 @@
           "difficulty": "medie",
           "sursa": "Exercițiu de antrenament (nu e dintr-o variantă BAC)"
         }
+      ],
+      "6. Probleme grele · în stilul Subiectului III": [
+        {
+          "id": "3050",
+          "title": "Cea mai mică bază a unei puteri",
+          "difficulty": "grea",
+          "sursa": "Exercițiu de antrenament (nu e dintr-o variantă BAC)"
+        },
+        {
+          "id": "3051",
+          "title": "Zerourile lui n! într-o bază oarecare",
+          "difficulty": "grea",
+          "sursa": "Exercițiu de antrenament (nu e dintr-o variantă BAC)"
+        },
+        {
+          "id": "3052",
+          "title": "Cel mai mic și cel mai mare număr cu suma cifrelor dată",
+          "difficulty": "grea",
+          "sursa": "Exercițiu de antrenament (nu e dintr-o variantă BAC)"
+        },
+        {
+          "id": "3053",
+          "title": "Următorul număr cu aceleași cifre",
+          "difficulty": "grea",
+          "sursa": "Exercițiu de antrenament (nu e dintr-o variantă BAC)"
+        },
+        {
+          "id": "3054",
+          "title": "Descompunerea în termeni Fibonacci neconsecutivi",
+          "difficulty": "grea",
+          "sursa": "Exercițiu de antrenament (nu e dintr-o variantă BAC)"
+        },
+        {
+          "id": "3055",
+          "title": "Fracția zecimală periodică",
+          "difficulty": "grea",
+          "sursa": "Exercițiu de antrenament (nu e dintr-o variantă BAC)"
+        },
+        {
+          "id": "3056",
+          "title": "Câte palindroame are un interval",
+          "difficulty": "grea",
+          "sursa": "Exercițiu de antrenament (nu e dintr-o variantă BAC)"
+        },
+        {
+          "id": "3057",
+          "title": "A k-a cifră a șirului 123456789101112…",
+          "difficulty": "grea",
+          "sursa": "Exercițiu de antrenament (nu e dintr-o variantă BAC)"
+        },
+        {
+          "id": "3058",
+          "title": "Suma cmmdc-urilor cu n",
+          "difficulty": "grea",
+          "sursa": "Exercițiu de antrenament (nu e dintr-o variantă BAC)"
+        },
+        {
+          "id": "3059",
+          "title": "Ultima cifră nenulă a lui n!",
+          "difficulty": "grea",
+          "sursa": "Exercițiu de antrenament (nu e dintr-o variantă BAC)"
+        },
+        {
+          "id": "3060",
+          "title": "Rotirea chenarelor unei matrice",
+          "difficulty": "grea",
+          "sursa": "Exercițiu de antrenament (nu e dintr-o variantă BAC)"
+        },
+        {
+          "id": "3061",
+          "title": "Cel mai mare pătrat plin cu 1",
+          "difficulty": "grea",
+          "sursa": "Exercițiu de antrenament (nu e dintr-o variantă BAC)"
+        },
+        {
+          "id": "3062",
+          "title": "Diagonalele sortate",
+          "difficulty": "grea",
+          "sursa": "Exercițiu de antrenament (nu e dintr-o variantă BAC)"
+        },
+        {
+          "id": "3063",
+          "title": "Completarea în zigzag pe diagonale",
+          "difficulty": "grea",
+          "sursa": "Exercițiu de antrenament (nu e dintr-o variantă BAC)"
+        },
+        {
+          "id": "3064",
+          "title": "Zona dreptunghiulară de sumă maximă",
+          "difficulty": "grea",
+          "sursa": "Exercițiu de antrenament (nu e dintr-o variantă BAC)"
+        },
+        {
+          "id": "3065",
+          "title": "Cuvintele care au anagrame în text",
+          "difficulty": "grea",
+          "sursa": "Exercițiu de antrenament (nu e dintr-o variantă BAC)"
+        },
+        {
+          "id": "3066",
+          "title": "Valoarea unei expresii cu +, − și *",
+          "difficulty": "grea",
+          "sursa": "Exercițiu de antrenament (nu e dintr-o variantă BAC)"
+        },
+        {
+          "id": "3067",
+          "title": "Cea mai lungă secvență palindrom dintr-un cuvânt",
+          "difficulty": "grea",
+          "sursa": "Exercițiu de antrenament (nu e dintr-o variantă BAC)"
+        },
+        {
+          "id": "3068",
+          "title": "Cea mai mică rotire a fiecărui cuvânt",
+          "difficulty": "grea",
+          "sursa": "Exercițiu de antrenament (nu e dintr-o variantă BAC)"
+        },
+        {
+          "id": "3069",
+          "title": "Pătratele magice dintr-o matrice",
+          "difficulty": "grea",
+          "sursa": "Exercițiu de antrenament (nu e dintr-o variantă BAC)"
+        },
+        {
+          "id": "3070",
+          "title": "Cea mai lungă secvență cu cel mult două valori",
+          "difficulty": "grea",
+          "sursa": "Exercițiu de antrenament (nu e dintr-o variantă BAC)"
+        },
+        {
+          "id": "3071",
+          "title": "Secvențele cu suma divizibilă cu k",
+          "difficulty": "grea",
+          "sursa": "Exercițiu de antrenament (nu e dintr-o variantă BAC)"
+        },
+        {
+          "id": "3072",
+          "title": "Cea mai lungă secvență echilibrată",
+          "difficulty": "grea",
+          "sursa": "Exercițiu de antrenament (nu e dintr-o variantă BAC)"
+        },
+        {
+          "id": "3073",
+          "title": "Perechile în ordine inversă",
+          "difficulty": "grea",
+          "sursa": "Exercițiu de antrenament (nu e dintr-o variantă BAC)"
+        },
+        {
+          "id": "3074",
+          "title": "Secvența de sumă maximă cu cel puțin k termeni",
+          "difficulty": "grea",
+          "sursa": "Exercițiu de antrenament (nu e dintr-o variantă BAC)"
+        },
+        {
+          "id": "3075",
+          "title": "Cei mai apropiați doi termeni",
+          "difficulty": "grea",
+          "sursa": "Exercițiu de antrenament (nu e dintr-o variantă BAC)"
+        },
+        {
+          "id": "3076",
+          "title": "Tripletele crescătoare",
+          "difficulty": "grea",
+          "sursa": "Exercițiu de antrenament (nu e dintr-o variantă BAC)"
+        },
+        {
+          "id": "3077",
+          "title": "Cea mai mică sumă care nu se poate forma",
+          "difficulty": "grea",
+          "sursa": "Exercițiu de antrenament (nu e dintr-o variantă BAC)"
+        },
+        {
+          "id": "3078",
+          "title": "Secvențele cu exact k termeni pari",
+          "difficulty": "grea",
+          "sursa": "Exercițiu de antrenament (nu e dintr-o variantă BAC)"
+        },
+        {
+          "id": "3079",
+          "title": "Cel mai lung subșir de valori consecutive",
+          "difficulty": "grea",
+          "sursa": "Exercițiu de antrenament (nu e dintr-o variantă BAC)"
+        }
       ]
     },
     "AcadNet": {

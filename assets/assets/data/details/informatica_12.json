@@ -12892,5 +12892,1675 @@
     "cerinta": "La un concurs, fiecare echipă are câte un indicativ, număr natural din intervalul [10, 99]; indicativele sunt acordate la rând, în ordinea înscrierii. Fiecare echipă are de rezolvat câte trei probleme și fiecare problemă este evaluată cel mult o dată și notată cu un punctaj, număr natural din intervalul [0, 99]. Rezultatul pentru fiecare problemă trimisă spre evaluare este înregistrat sub forma unui număr natural, format prin concatenarea, în această ordine, a numărului problemei (1, 2 sau 3), a punctajului obținut și a indicativului echipei. Problemele pentru care nu se trimit rezolvări spre evaluare sunt notate implicit cu câte 0 puncte. Clasamentul se face în funcție de punctajul total obținut, în ordine descrescătoare, la punctaj egal departajarea fiind în funcție de numărul de probleme cu punctaj 99, iar în caz de egalitate în funcție de ordinea înscrierii.\n\nSe citesc cel mult 10⁶ numere naturale din intervalul [10³, 10⁵), reprezentând rezultatele obținute la problemele evaluate, separate prin câte un spațiu. Se cere să se afișeze pe ecran indicativul primei echipe din clasament. Proiectează un algoritm eficient din punctul de vedere al timpului de executare.",
     "explicatie": "Pentru exemplu se afișează 12: primele cinci echipe din clasament sunt, în această ordine, 12, 15, 11, 10, 30. Primele trei au câte 259 de puncte, primele două au câte o problemă cu 99 de puncte, iar echipa 12 s-a înscris înaintea echipei 15.",
     "nota_examen": "La examen datele sunt în fișierul bac.txt; aici le citești de la tastatură. La examen se cere și descrierea în limbaj natural a algoritmului, cu justificarea eficienței (2p.), apoi programul (8p.)."
+  },
+  "3050": {
+    "title": "Cea mai mică bază a unei puteri",
+    "category": "6. Probleme grele · în stilul Subiectului III",
+    "difficulty": "grea",
+    "description": "Orice număr natural n > 1 se poate scrie ca o putere xᵏ, cu x și k numere naturale nenule (de exemplu, cu x = n și k = 1). Subprogramul baza are un singur parametru, n, prin care primește un număr natural din intervalul [2, 10⁹]. Subprogramul returnează cea mai mică valoare x pentru care există un număr natural nenul k astfel încât xᵏ = n.\n\nScrie definiția completă a subprogramului:\nint baza(int n)\n\nFuncția `main`, care citește datele de intrare, apelează subprogramul și afișează rezultatul, este scrisă deja: tu scrii doar subprogramul.",
+    "input": "Numărul natural n.",
+    "output": "Valoarea returnată de baza(n).",
+    "hint": "Descompune n în factori primi: n = p₁^e₁ · p₂^e₂ · … Ca n să fie o putere k, k trebuie să dividă toți exponenții, deci cel mai mare k posibil este g = cmmdc(e₁, e₂, …). Baza cea mai mică este p₁^(e₁/g) · p₂^(e₂/g) · …",
+    "constraints": [
+      "2 ≤ n ≤ 10⁹"
+    ],
+    "examples": {
+      "input": "5184",
+      "output": "72"
+    },
+    "official_solution": {
+      "language": "C++",
+      "code": "#include <iostream>\nusing namespace std;\nint baza(int n) {\n    int prim[32], exp[32], k = 0;\n    for (int d = 2; d * d <= n; d++)\n        if (n % d == 0) {\n            prim[k] = d;\n            exp[k] = 0;\n            while (n % d == 0) {\n                n = n / d;\n                exp[k]++;\n            }\n            k++;\n        }\n    if (n > 1) {\n        prim[k] = n;\n        exp[k] = 1;\n        k++;\n    }\n    int g = 0;\n    for (int i = 0; i < k; i++) {\n        int a = g, b = exp[i];\n        while (b != 0) {\n            int r = a % b;\n            a = b;\n            b = r;\n        }\n        g = a;\n    }\n    int x = 1;\n    for (int i = 0; i < k; i++)\n        for (int j = 0; j < exp[i] / g; j++)\n            x = x * prim[i];\n    return x;\n}\nint main() {\n    int n;\n    cin >> n;\n    cout << baza(n);\n    return 0;\n}"
+    },
+    "tests": [
+      {
+        "input": "5184",
+        "output": "72"
+      },
+      {
+        "input": "2",
+        "output": "2"
+      },
+      {
+        "input": "1024",
+        "output": "2"
+      },
+      {
+        "input": "1000000000",
+        "output": "10"
+      },
+      {
+        "input": "999999937",
+        "output": "999999937"
+      },
+      {
+        "input": "536870912",
+        "output": "2"
+      },
+      {
+        "input": "362797056",
+        "output": "6"
+      },
+      {
+        "input": "999950884",
+        "output": "31622"
+      },
+      {
+        "input": "216",
+        "output": "6"
+      },
+      {
+        "input": "72",
+        "output": "72"
+      },
+      {
+        "input": "387420489",
+        "output": "3"
+      },
+      {
+        "input": "248832",
+        "output": "12"
+      },
+      {
+        "input": "900",
+        "output": "30"
+      },
+      {
+        "input": "1000000",
+        "output": "10"
+      },
+      {
+        "input": "961",
+        "output": "31"
+      }
+    ],
+    "dificultate_motiv": "Nu ajunge să încerci bazele: trebuie văzut că exponentul maxim este cmmdc-ul exponenților din descompunerea în factori primi, apoi refăcută baza.",
+    "sursa": "Exercițiu de antrenament (nu e dintr-o variantă BAC)",
+    "cerinta": "Orice număr natural n > 1 se poate scrie ca o putere xᵏ, cu x și k numere naturale nenule (de exemplu, cu x = n și k = 1). Subprogramul baza are un singur parametru, n, prin care primește un număr natural din intervalul [2, 10⁹]. Subprogramul returnează cea mai mică valoare x pentru care există un număr natural nenul k astfel încât xᵏ = n.\n\nScrie definiția completă a subprogramului:\nint baza(int n)\n\nFuncția `main`, care citește datele de intrare, apelează subprogramul și afișează rezultatul, este scrisă deja: tu scrii doar subprogramul.",
+    "explicatie": "Pentru n = 5184 subprogramul returnează 72: 5184 = 2⁶ · 3⁴ = (2³ · 3²)² = 72², și nu există o bază mai mică (5184 nu e cub, nici puterea a patra, a șasea etc. a unui număr natural).",
+    "antet": "int baza(int n)",
+    "main_verificare": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n    cout << baza(n);\n    return 0;\n}"
+  },
+  "3051": {
+    "title": "Zerourile lui n! într-o bază oarecare",
+    "category": "6. Probleme grele · în stilul Subiectului III",
+    "difficulty": "grea",
+    "description": "Subprogramul zerouri are doi parametri, n și b, prin care primește câte un număr natural, n din intervalul [1, 10⁹] și b din intervalul [2, 1000]. Subprogramul returnează numărul de cifre 0 cu care se termină scrierea în baza b a numărului n! = 1 · 2 · … · n.\n\nScrie definiția completă a subprogramului:\nint zerouri(int n, int b)\n\nFuncția `main`, care citește datele de intrare, apelează subprogramul și afișează rezultatul, este scrisă deja: tu scrii doar subprogramul.",
+    "input": "Numerele n și b.",
+    "output": "Valoarea returnată de zerouri(n, b).",
+    "hint": "Un zero la final în baza b înseamnă o împărțire exactă la b. Descompune b = p₁^e₁ · p₂^e₂ · … Exponentul unui prim p în n! este n/p + n/p² + n/p³ + … (formula lui Legendre). Numărul de zerouri este minimul, după fiecare prim p al lui b, al valorii (exponentul lui p în n!) / e.",
+    "constraints": [
+      "1 ≤ n ≤ 10⁹",
+      "2 ≤ b ≤ 1000"
+    ],
+    "examples": {
+      "input": "10 12",
+      "output": "4"
+    },
+    "official_solution": {
+      "language": "C++",
+      "code": "#include <iostream>\nusing namespace std;\nint zerouri(int n, int b) {\n    int rez = -1;\n    for (int p = 2; p <= b; p++)\n        if (b % p == 0) {\n            int e = 0;\n            while (b % p == 0) {\n                b = b / p;\n                e++;\n            }\n            long long v = 0, q = n;\n            while (q > 0) {\n                q = q / p;\n                v = v + q;\n            }\n            if (rez == -1 || v / e < rez) rez = v / e;\n        }\n    return rez;\n}\nint main() {\n    int n, b;\n    cin >> n >> b;\n    cout << zerouri(n, b);\n    return 0;\n}"
+    },
+    "tests": [
+      {
+        "input": "10 12",
+        "output": "4"
+      },
+      {
+        "input": "10 10",
+        "output": "2"
+      },
+      {
+        "input": "1 2",
+        "output": "0"
+      },
+      {
+        "input": "5 7",
+        "output": "0"
+      },
+      {
+        "input": "100 10",
+        "output": "24"
+      },
+      {
+        "input": "100 16",
+        "output": "24"
+      },
+      {
+        "input": "25 1000",
+        "output": "2"
+      },
+      {
+        "input": "1000000000 10",
+        "output": "249999998"
+      },
+      {
+        "input": "1000000000 2",
+        "output": "999999987"
+      },
+      {
+        "input": "1000000000 997",
+        "output": "1004016"
+      },
+      {
+        "input": "999999999 1000",
+        "output": "83333329"
+      },
+      {
+        "input": "123456789 720",
+        "output": "30864192"
+      },
+      {
+        "input": "300 991",
+        "output": "0"
+      },
+      {
+        "input": "50 36",
+        "output": "11"
+      },
+      {
+        "input": "1000000000 961",
+        "output": "16666665"
+      }
+    ],
+    "dificultate_motiv": "n! nu se poate calcula: trebuie descompusă baza în factori primi și aplicată formula lui Legendre pentru fiecare prim, apoi luat minimul.",
+    "sursa": "Exercițiu de antrenament (nu e dintr-o variantă BAC)",
+    "cerinta": "Subprogramul zerouri are doi parametri, n și b, prin care primește câte un număr natural, n din intervalul [1, 10⁹] și b din intervalul [2, 1000]. Subprogramul returnează numărul de cifre 0 cu care se termină scrierea în baza b a numărului n! = 1 · 2 · … · n.\n\nScrie definiția completă a subprogramului:\nint zerouri(int n, int b)\n\nFuncția `main`, care citește datele de intrare, apelează subprogramul și afișează rezultatul, este scrisă deja: tu scrii doar subprogramul.",
+    "explicatie": "Pentru n = 10 și b = 12 subprogramul returnează 4: 10! = 3628800 = 2⁸ · 3⁴ · 5² · 7 și 12 = 2² · 3. Factorii 2 ajung pentru 8 / 2 = 4 împărțiri la 12, factorii 3 pentru 4 / 1 = 4, deci 10! se împarte exact de 4 ori la 12.",
+    "antet": "int zerouri(int n, int b)",
+    "main_verificare": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int n, b;\n    cin >> n >> b;\n    cout << zerouri(n, b);\n    return 0;\n}"
+  },
+  "3052": {
+    "title": "Cel mai mic și cel mai mare număr cu suma cifrelor dată",
+    "category": "6. Probleme grele · în stilul Subiectului III",
+    "difficulty": "grea",
+    "description": "Subprogramul extreme are patru parametri:\n• k și s, prin care primește câte un număr natural, k din intervalul [1, 18] și s din intervalul [1, 200];\n• mn și mx, prin care furnizează cel mai mic, respectiv cel mai mare număr natural care are exact k cifre și suma cifrelor egală cu s. Dacă nu există niciun astfel de număr, mn și mx primesc valoarea -1.\n\nScrie definiția completă a subprogramului:\nvoid extreme(int k, int s, long long &mn, long long &mx)\n\nFuncția `main`, care citește datele de intrare, apelează subprogramul și afișează rezultatul, este scrisă deja: tu scrii doar subprogramul.",
+    "input": "Numerele k și s.",
+    "output": "Valorile mn și mx, separate printr-un spațiu.",
+    "hint": "Pentru maxim, pune pe fiecare poziție, de la stânga, cea mai mare cifră posibilă: min(9, suma rămasă). Pentru minim, pune pe fiecare poziție, de la stânga, cea mai mică cifră c (prima cel puțin 1) pentru care restul sumei încă încape în pozițiile rămase: suma rămasă − c ≤ 9 · (pozițiile rămase). Nu există soluție dacă s > 9 · k. 18 cifre încap în long long.",
+    "constraints": [
+      "1 ≤ k ≤ 18",
+      "1 ≤ s ≤ 200"
+    ],
+    "examples": {
+      "input": "4 20",
+      "output": "1199 9920"
+    },
+    "official_solution": {
+      "language": "C++",
+      "code": "#include <iostream>\nusing namespace std;\nvoid extreme(int k, int s, long long &mn, long long &mx) {\n    if (s > 9 * k) {\n        mn = mx = -1;\n        return;\n    }\n    mn = 0;\n    int r = s;\n    for (int i = 1; i <= k; i++) {\n        int c = 0;\n        if (i == 1) c = 1;\n        while (r - c > 9 * (k - i)) c++;\n        mn = mn * 10 + c;\n        r = r - c;\n    }\n    mx = 0;\n    r = s;\n    for (int i = 1; i <= k; i++) {\n        int c = 9;\n        if (r < 9) c = r;\n        mx = mx * 10 + c;\n        r = r - c;\n    }\n}\nint main() {\n    int k, s;\n    long long mn, mx;\n    cin >> k >> s;\n    extreme(k, s, mn, mx);\n    cout << mn << \" \" << mx;\n    return 0;\n}"
+    },
+    "tests": [
+      {
+        "input": "4 20",
+        "output": "1199 9920"
+      },
+      {
+        "input": "1 5",
+        "output": "5 5"
+      },
+      {
+        "input": "1 10",
+        "output": "-1 -1"
+      },
+      {
+        "input": "3 1",
+        "output": "100 100"
+      },
+      {
+        "input": "2 18",
+        "output": "99 99"
+      },
+      {
+        "input": "2 19",
+        "output": "-1 -1"
+      },
+      {
+        "input": "5 9",
+        "output": "10008 90000"
+      },
+      {
+        "input": "6 54",
+        "output": "999999 999999"
+      },
+      {
+        "input": "18 1",
+        "output": "100000000000000000 100000000000000000"
+      },
+      {
+        "input": "18 162",
+        "output": "999999999999999999 999999999999999999"
+      },
+      {
+        "input": "18 163",
+        "output": "-1 -1"
+      },
+      {
+        "input": "18 100",
+        "output": "100000099999999999 999999999991000000"
+      },
+      {
+        "input": "10 3",
+        "output": "1000000002 3000000000"
+      },
+      {
+        "input": "17 80",
+        "output": "10000000799999999 99999999800000000"
+      },
+      {
+        "input": "12 109",
+        "output": "-1 -1"
+      }
+    ],
+    "dificultate_motiv": "Două construcții greedy diferite, iar cea pentru minim cere condiția că restul sumei mai încape în cifrele rămase; enumerarea numerelor de 18 cifre e imposibilă.",
+    "sursa": "Exercițiu de antrenament (nu e dintr-o variantă BAC)",
+    "cerinta": "Subprogramul extreme are patru parametri:\n• k și s, prin care primește câte un număr natural, k din intervalul [1, 18] și s din intervalul [1, 200];\n• mn și mx, prin care furnizează cel mai mic, respectiv cel mai mare număr natural care are exact k cifre și suma cifrelor egală cu s. Dacă nu există niciun astfel de număr, mn și mx primesc valoarea -1.\n\nScrie definiția completă a subprogramului:\nvoid extreme(int k, int s, long long &mn, long long &mx)\n\nFuncția `main`, care citește datele de intrare, apelează subprogramul și afișează rezultatul, este scrisă deja: tu scrii doar subprogramul.",
+    "explicatie": "Pentru k = 4 și s = 20 se obțin mn = 1199 și mx = 9920.",
+    "antet": "void extreme(int k, int s, long long &mn, long long &mx)",
+    "main_verificare": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int k, s;\n    long long mn, mx;\n    cin >> k >> s;\n    extreme(k, s, mn, mx);\n    cout << mn << \" \" << mx;\n    return 0;\n}"
+  },
+  "3053": {
+    "title": "Următorul număr cu aceleași cifre",
+    "category": "6. Probleme grele · în stilul Subiectului III",
+    "difficulty": "grea",
+    "description": "Subprogramul urmator are un singur parametru, n, prin care primește un număr natural din intervalul [1, 10¹⁸). Subprogramul returnează cel mai mic număr natural strict mai mare decât n, care are exact aceleași cifre ca n, fiecare de același număr de ori, sau -1 dacă nu există un astfel de număr.\n\nScrie definiția completă a subprogramului:\nlong long urmator(long long n)\n\nFuncția `main`, care citește datele de intrare, apelează subprogramul și afișează rezultatul, este scrisă deja: tu scrii doar subprogramul.",
+    "input": "Numărul natural n.",
+    "output": "Valoarea returnată de urmator(n).",
+    "hint": "Privește cifrele de la dreapta. Găsește prima cifră (de la dreapta) mai mică decât vecina ei din dreapta: în 534976 e 4. Din cifrele aflate la dreapta ei, alege cea mai mică cifră mai mare decât ea (6) și interschimbă-le: 536974. Apoi cifrele de după poziție se pun în ordine crescătoare: 536479. Dacă nu există o astfel de cifră, răspunsul e -1.",
+    "constraints": [
+      "1 ≤ n < 10¹⁸"
+    ],
+    "examples": {
+      "input": "534976",
+      "output": "536479"
+    },
+    "official_solution": {
+      "language": "C++",
+      "code": "#include <iostream>\nusing namespace std;\nlong long urmator(long long n) {\n    int c[20] = {0}, k = 0;\n    while (n > 0) {\n        c[k++] = n % 10; // c[0] este ultima cifră\n        n = n / 10;\n    }\n    int i = 1;\n    while (i < k && c[i] >= c[i - 1]) i++;\n    if (i == k) return -1;\n    int j = 0;\n    while (c[j] <= c[i]) j++;\n    int t = c[i];\n    c[i] = c[j];\n    c[j] = t;\n    for (int a = 0, b = i - 1; a < b; a++, b--) {\n        t = c[a];\n        c[a] = c[b];\n        c[b] = t;\n    }\n    long long r = 0;\n    for (int p = k - 1; p >= 0; p--) r = r * 10 + c[p];\n    return r;\n}\nint main() {\n    long long n;\n    cin >> n;\n    cout << urmator(n);\n    return 0;\n}"
+    },
+    "tests": [
+      {
+        "input": "534976",
+        "output": "536479"
+      },
+      {
+        "input": "4321",
+        "output": "-1"
+      },
+      {
+        "input": "7",
+        "output": "-1"
+      },
+      {
+        "input": "12",
+        "output": "21"
+      },
+      {
+        "input": "1020",
+        "output": "1200"
+      },
+      {
+        "input": "115",
+        "output": "151"
+      },
+      {
+        "input": "1000",
+        "output": "-1"
+      },
+      {
+        "input": "987654321987654321",
+        "output": "987654322113456789"
+      },
+      {
+        "input": "999999999999999998",
+        "output": "-1"
+      },
+      {
+        "input": "123456789123456789",
+        "output": "123456789123456798"
+      },
+      {
+        "input": "199999999999999999",
+        "output": "919999999999999999"
+      },
+      {
+        "input": "210",
+        "output": "-1"
+      },
+      {
+        "input": "1342",
+        "output": "1423"
+      },
+      {
+        "input": "111111111111111111",
+        "output": "-1"
+      },
+      {
+        "input": "597443210",
+        "output": "701234459"
+      }
+    ],
+    "dificultate_motiv": "Este algoritmul „permutarea următoare” aplicat pe cifrele unui număr de până la 18 cifre: trebuie găsit pivotul, înlocuitorul lui și inversată coada, nu încercate numerele pe rând.",
+    "sursa": "Exercițiu de antrenament (nu e dintr-o variantă BAC)",
+    "cerinta": "Subprogramul urmator are un singur parametru, n, prin care primește un număr natural din intervalul [1, 10¹⁸). Subprogramul returnează cel mai mic număr natural strict mai mare decât n, care are exact aceleași cifre ca n, fiecare de același număr de ori, sau -1 dacă nu există un astfel de număr.\n\nScrie definiția completă a subprogramului:\nlong long urmator(long long n)\n\nFuncția `main`, care citește datele de intrare, apelează subprogramul și afișează rezultatul, este scrisă deja: tu scrii doar subprogramul.",
+    "explicatie": "Pentru n = 534976 subprogramul returnează 536479. Pentru n = 4321 returnează -1, cifrele fiind deja în ordinea cea mai mare.",
+    "antet": "long long urmator(long long n)",
+    "main_verificare": "#include <iostream>\nusing namespace std;\n\nint main() {\n    long long n;\n    cin >> n;\n    cout << urmator(n);\n    return 0;\n}"
+  },
+  "3054": {
+    "title": "Descompunerea în termeni Fibonacci neconsecutivi",
+    "category": "6. Probleme grele · în stilul Subiectului III",
+    "difficulty": "grea",
+    "description": "Se consideră șirul lui Fibonacci 1, 2, 3, 5, 8, 13, …, în care fiecare termen, începând cu al treilea, este suma celor doi termeni dinaintea lui. Orice număr natural nenul se poate scrie, într-un singur mod, ca sumă de termeni distincți ai acestui șir, printre care nu există doi termeni aflați pe poziții consecutive în șir.\n\nSubprogramul zeckendorf are un singur parametru, n, prin care primește un număr natural din intervalul [1, 10¹⁸]. Subprogramul afișează pe ecran termenii acestei sume, în ordine strict descrescătoare, separați prin câte un spațiu.\n\nScrie definiția completă a subprogramului:\nvoid zeckendorf(long long n)\n\nFuncția `main`, care citește datele de intrare, apelează subprogramul și afișează rezultatul, este scrisă deja: tu scrii doar subprogramul.",
+    "input": "Numărul natural n.",
+    "output": "Termenii sumei, descrescător.",
+    "hint": "Generează termenii șirului până la n, apoi parcurge-i de la cel mai mare: dacă un termen e cel mult cât a rămas din n, afișează-l și scade-l. Alegerea lacomă nu ia niciodată doi termeni vecini. Atenție la depășire: calculează termenul următor doar dacă f[k−1] ≤ n − f[k−2].",
+    "constraints": [
+      "1 ≤ n ≤ 10¹⁸"
+    ],
+    "examples": {
+      "input": "100",
+      "output": "89 8 3"
+    },
+    "official_solution": {
+      "language": "C++",
+      "code": "#include <iostream>\nusing namespace std;\nvoid zeckendorf(long long n) {\n    long long f[100];\n    int k = 2;\n    f[0] = 1;\n    f[1] = 2;\n    while (f[k - 1] <= n - f[k - 2]) {\n        f[k] = f[k - 1] + f[k - 2];\n        k++;\n    }\n    for (int i = k - 1; i >= 0 && n > 0; i--)\n        if (f[i] <= n) {\n            cout << f[i] << \" \";\n            n = n - f[i];\n        }\n}\nint main() {\n    long long n;\n    cin >> n;\n    zeckendorf(n);\n    return 0;\n}"
+    },
+    "tests": [
+      {
+        "input": "100",
+        "output": "89 8 3"
+      },
+      {
+        "input": "1",
+        "output": "1"
+      },
+      {
+        "input": "2",
+        "output": "2"
+      },
+      {
+        "input": "4",
+        "output": "3 1"
+      },
+      {
+        "input": "12",
+        "output": "8 3 1"
+      },
+      {
+        "input": "33",
+        "output": "21 8 3 1"
+      },
+      {
+        "input": "1000",
+        "output": "987 13"
+      },
+      {
+        "input": "999999",
+        "output": "832040 121393 46368 144 34 13 5 2"
+      },
+      {
+        "input": "1000000000000000000",
+        "output": "679891637638612258 259695496911122585 37889062373143906 14472334024676221 5527939700884757 2111485077978050 308061521170129 72723460248141 27777890035288 2504730781961 956722026041 12586269025 4807526976 1836311903 701408733 14930352 2178309 514229 121393 46368 10946 1597 610 144 55 21 2"
+      },
+      {
+        "input": "679891637638612258",
+        "output": "679891637638612258"
+      },
+      {
+        "input": "420196140727489673",
+        "output": "420196140727489673"
+      },
+      {
+        "input": "123456789012345678",
+        "output": "99194853094755497 23416728348467685 806515533049393 27777890035288 10610209857723 225851433717 53316291173 20365011074 2971215073 1134903170 267914296 24157817 3524578 1346269 317811 46368 17711 987 34 13 1"
+      },
+      {
+        "input": "64",
+        "output": "55 8 1"
+      },
+      {
+        "input": "88",
+        "output": "55 21 8 3 1"
+      }
+    ],
+    "dificultate_motiv": "Cere demonstrarea (sau măcar intuirea) faptului că alegerea lacomă produce exact descompunerea fără termeni vecini, plus atenție la depășirea lui long long aproape de 10¹⁸.",
+    "sursa": "Exercițiu de antrenament (nu e dintr-o variantă BAC)",
+    "cerinta": "Se consideră șirul lui Fibonacci 1, 2, 3, 5, 8, 13, …, în care fiecare termen, începând cu al treilea, este suma celor doi termeni dinaintea lui. Orice număr natural nenul se poate scrie, într-un singur mod, ca sumă de termeni distincți ai acestui șir, printre care nu există doi termeni aflați pe poziții consecutive în șir.\n\nSubprogramul zeckendorf are un singur parametru, n, prin care primește un număr natural din intervalul [1, 10¹⁸]. Subprogramul afișează pe ecran termenii acestei sume, în ordine strict descrescătoare, separați prin câte un spațiu.\n\nScrie definiția completă a subprogramului:\nvoid zeckendorf(long long n)\n\nFuncția `main`, care citește datele de intrare, apelează subprogramul și afișează rezultatul, este scrisă deja: tu scrii doar subprogramul.",
+    "explicatie": "Pentru n = 100 se afișează 89 8 3 (100 = 89 + 8 + 3; 89, 8 și 3 nu sunt vecini în șir).",
+    "antet": "void zeckendorf(long long n)",
+    "main_verificare": "#include <iostream>\nusing namespace std;\n\nint main() {\n    long long n;\n    cin >> n;\n    zeckendorf(n);\n    return 0;\n}"
+  },
+  "3055": {
+    "title": "Fracția zecimală periodică",
+    "category": "6. Probleme grele · în stilul Subiectului III",
+    "difficulty": "grea",
+    "description": "Subprogramul fractie are doi parametri, a și b, prin care primește câte un număr natural, a din intervalul [0, 10⁹] și b din intervalul [1, 10⁵]. Subprogramul afișează pe ecran valoarea fracției a / b scrisă ca număr zecimal: partea întreagă, apoi, dacă fracția nu este un număr natural, simbolul punct (.) urmat de zecimale. Dacă fracția este periodică, perioada se scrie o singură dată, între paranteze rotunde, imediat după partea neperiodică, ca în exemplu.\n\nScrie definiția completă a subprogramului:\nvoid fractie(int a, int b)\n\nFuncția `main`, care citește datele de intrare, apelează subprogramul și afișează rezultatul, este scrisă deja: tu scrii doar subprogramul.",
+    "input": "Numerele a și b.",
+    "output": "Fracția a / b în scriere zecimală.",
+    "hint": "Fă împărțirea „de mână”: restul r devine r · 10, cifra este r · 10 / b, noul rest r · 10 % b. Resturile sunt mai mici decât b, deci la un moment dat un rest se repetă (sau devine 0). Ține pentru fiecare rest poziția zecimalei la care a apărut prima dată: când reapare, perioada începe la acea poziție.",
+    "constraints": [
+      "0 ≤ a ≤ 10⁹",
+      "1 ≤ b ≤ 10⁵"
+    ],
+    "examples": {
+      "input": "1 6",
+      "output": "0.1(6)"
+    },
+    "official_solution": {
+      "language": "C++",
+      "code": "#include <iostream>\nusing namespace std;\nvoid fractie(int a, int b) {\n    static int poz[100000];\n    static char cif[100001];\n    cout << a / b;\n    int r = a % b;\n    if (r == 0) return;\n    cout << \".\";\n    for (int i = 0; i < b; i++) poz[i] = -1;\n    int k = 0;\n    while (r != 0 && poz[r] == -1) {\n        poz[r] = k;\n        r = r * 10;\n        cif[k++] = '0' + r / b;\n        r = r % b;\n    }\n    if (r == 0) {\n        for (int i = 0; i < k; i++) cout << cif[i];\n    } else {\n        for (int i = 0; i < poz[r]; i++) cout << cif[i];\n        cout << \"(\";\n        for (int i = poz[r]; i < k; i++) cout << cif[i];\n        cout << \")\";\n    }\n}\nint main() {\n    int a, b;\n    cin >> a >> b;\n    fractie(a, b);\n    return 0;\n}"
+    },
+    "tests": [
+      {
+        "input": "1 6",
+        "output": "0.1(6)"
+      },
+      {
+        "input": "22 7",
+        "output": "3.(142857)"
+      },
+      {
+        "input": "1 4",
+        "output": "0.25"
+      },
+      {
+        "input": "0 5",
+        "output": "0"
+      },
+      {
+        "input": "10 5",
+        "output": "2"
+      },
+      {
+        "input": "1 3",
+        "output": "0.(3)"
+      },
+      {
+        "input": "1000000000 3",
+        "output": "333333333.(3)"
+      },
+      {
+        "input": "1 97",
+        "output": "0.(010309278350515463917525773195876288659793814432989690721649484536082474226804123711340206185567)"
+      },
+      {
+        "input": "7 12",
+        "output": "0.58(3)"
+      },
+      {
+        "input": "1 1",
+        "output": "1"
+      },
+      {
+        "input": "5 8",
+        "output": "0.625"
+      },
+      {
+        "input": "123 990",
+        "output": "0.1(24)"
+      },
+      {
+        "input": "1 81",
+        "output": "0.(012345679)"
+      },
+      {
+        "input": "999999999 99999",
+        "output": "10000.(09999)"
+      },
+      {
+        "input": "17 280",
+        "output": "0.060(714285)"
+      }
+    ],
+    "dificultate_motiv": "Cere simularea împărțirii cu memorarea poziției fiecărui rest; detectarea începutului perioadei (și cazul fracțiilor mixte, ca 0.1(6)) e partea grea.",
+    "sursa": "Exercițiu de antrenament (nu e dintr-o variantă BAC)",
+    "cerinta": "Subprogramul fractie are doi parametri, a și b, prin care primește câte un număr natural, a din intervalul [0, 10⁹] și b din intervalul [1, 10⁵]. Subprogramul afișează pe ecran valoarea fracției a / b scrisă ca număr zecimal: partea întreagă, apoi, dacă fracția nu este un număr natural, simbolul punct (.) urmat de zecimale. Dacă fracția este periodică, perioada se scrie o singură dată, între paranteze rotunde, imediat după partea neperiodică, ca în exemplu.\n\nScrie definiția completă a subprogramului:\nvoid fractie(int a, int b)\n\nFuncția `main`, care citește datele de intrare, apelează subprogramul și afișează rezultatul, este scrisă deja: tu scrii doar subprogramul.",
+    "explicatie": "Pentru a = 1 și b = 6 se afișează 0.1(6); pentru a = 22 și b = 7 se afișează 3.(142857); pentru a = 1 și b = 4 se afișează 0.25.",
+    "antet": "void fractie(int a, int b)",
+    "main_verificare": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int a, b;\n    cin >> a >> b;\n    fractie(a, b);\n    return 0;\n}"
+  },
+  "3056": {
+    "title": "Câte palindroame are un interval",
+    "category": "6. Probleme grele · în stilul Subiectului III",
+    "difficulty": "grea",
+    "description": "Un număr natural este palindrom dacă se citește la fel de la stânga la dreapta și de la dreapta la stânga (de exemplu 7, 44, 121, 9339).\n\nSubprogramul nrPalindroame are doi parametri, a și b, prin care primește câte un număr natural din intervalul [1, 10⁹], a ≤ b. Subprogramul returnează numărul de palindroame din intervalul [a, b].\n\nSe va utiliza un algoritm eficient: intervalul poate avea un miliard de numere, prea multe ca să fie verificate pe rând.\n\nScrie definiția completă a subprogramului:\nint nrPalindroame(int a, int b)\n\nFuncția `main`, care citește datele de intrare, apelează subprogramul și afișează rezultatul, este scrisă deja: tu scrii doar subprogramul.",
+    "input": "Numerele a și b.",
+    "output": "Valoarea returnată de nrPalindroame(a, b).",
+    "hint": "Numără palindroamele din [1, x] și scade: f(b) − f(a − 1). Un palindrom de L cifre este dat de primele (L + 1) / 2 cifre, deci de L cifre sunt 9 · 10^((L+1)/2 − 1). Pentru numărul de cifre al lui x: fie h primele (L + 1) / 2 cifre ale lui x; palindroamele cu jumătatea mai mică decât h sunt h − 10^((L+1)/2 − 1), plus încă unul dacă oglindirea lui h nu trece de x.",
+    "constraints": [
+      "1 ≤ a ≤ b ≤ 10⁹"
+    ],
+    "examples": {
+      "input": "10 200",
+      "output": "19"
+    },
+    "official_solution": {
+      "language": "C++",
+      "code": "#include <iostream>\nusing namespace std;\nint nrPalindroame(int a, int b) {\n    long long rez = 0;\n    for (int t = 0; t < 2; t++) {\n        long long x = b, cnt = 0; // palindroamele din [1, x]\n        if (t == 1) x = a - 1;\n        int L = 0;\n        for (long long y = x; y > 0; y = y / 10) L++;\n        long long p = 1; // 10 la puterea (l + 1) / 2 - 1\n        for (int l = 1; l < L; l++) {\n            cnt = cnt + 9 * p;\n            if (l % 2 == 0) p = p * 10;\n        }\n        if (L > 0) {\n            int h = (L + 1) / 2;\n            long long jum = x;\n            for (int i = 0; i < L - h; i++) jum = jum / 10;\n            cnt = cnt + jum - p;\n            long long pal = jum, y = jum;\n            if (L % 2 == 1) y = y / 10;\n            while (y > 0) {\n                pal = pal * 10 + y % 10;\n                y = y / 10;\n            }\n            if (pal <= x) cnt++;\n        }\n        if (t == 0) rez = rez + cnt;\n        else rez = rez - cnt;\n    }\n    return rez;\n}\nint main() {\n    int a, b;\n    cin >> a >> b;\n    cout << nrPalindroame(a, b);\n    return 0;\n}"
+    },
+    "tests": [
+      {
+        "input": "10 200",
+        "output": "19"
+      },
+      {
+        "input": "1 9",
+        "output": "9"
+      },
+      {
+        "input": "1 1",
+        "output": "1"
+      },
+      {
+        "input": "12 21",
+        "output": "0"
+      },
+      {
+        "input": "100 999",
+        "output": "90"
+      },
+      {
+        "input": "1 1000000000",
+        "output": "109998"
+      },
+      {
+        "input": "123456 654321",
+        "output": "530"
+      },
+      {
+        "input": "999999999 1000000000",
+        "output": "1"
+      },
+      {
+        "input": "1000 1000",
+        "output": "0"
+      },
+      {
+        "input": "12321 12321",
+        "output": "1"
+      },
+      {
+        "input": "87654321 987654321",
+        "output": "90000"
+      },
+      {
+        "input": "500000000 500000000",
+        "output": "0"
+      },
+      {
+        "input": "1 10",
+        "output": "9"
+      },
+      {
+        "input": "45 54",
+        "output": "0"
+      },
+      {
+        "input": "123456789 987654321",
+        "output": "86419"
+      }
+    ],
+    "dificultate_motiv": "Parcurgerea intervalului e prea lentă: trebuie număruți palindromii după jumătatea lor stângă, cu atenție la lungimile pare și impare și la ultimul palindrom, cel construit din cifrele lui x.",
+    "sursa": "Exercițiu de antrenament (nu e dintr-o variantă BAC)",
+    "cerinta": "Un număr natural este palindrom dacă se citește la fel de la stânga la dreapta și de la dreapta la stânga (de exemplu 7, 44, 121, 9339).\n\nSubprogramul nrPalindroame are doi parametri, a și b, prin care primește câte un număr natural din intervalul [1, 10⁹], a ≤ b. Subprogramul returnează numărul de palindroame din intervalul [a, b].\n\nSe va utiliza un algoritm eficient: intervalul poate avea un miliard de numere, prea multe ca să fie verificate pe rând.\n\nScrie definiția completă a subprogramului:\nint nrPalindroame(int a, int b)\n\nFuncția `main`, care citește datele de intrare, apelează subprogramul și afișează rezultatul, este scrisă deja: tu scrii doar subprogramul.",
+    "explicatie": "Pentru a = 10 și b = 200 subprogramul returnează 19: 11, 22, …, 99 (9 numere) și 101, 111, …, 191 (10 numere).",
+    "antet": "int nrPalindroame(int a, int b)",
+    "main_verificare": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int a, b;\n    cin >> a >> b;\n    cout << nrPalindroame(a, b);\n    return 0;\n}"
+  },
+  "3057": {
+    "title": "A k-a cifră a șirului 123456789101112…",
+    "category": "6. Probleme grele · în stilul Subiectului III",
+    "difficulty": "grea",
+    "description": "Se scriu unul după altul, fără spații, toate numerele naturale nenule, în ordine crescătoare: 1234567891011121314… Subprogramul cifra are un singur parametru, k, prin care primește un număr natural din intervalul [1, 10¹⁵]. Subprogramul returnează cifra aflată pe poziția k în acest șir (pozițiile se numerotează de la 1).\n\nScrie definiția completă a subprogramului:\nint cifra(long long k)\n\nFuncția `main`, care citește datele de intrare, apelează subprogramul și afișează rezultatul, este scrisă deja: tu scrii doar subprogramul.",
+    "input": "Numărul natural k.",
+    "output": "Valoarea returnată de cifra(k).",
+    "hint": "Sunt 9 numere de o cifră (9 cifre), 90 de două cifre (180 de cifre), 900 de trei cifre (2700 de cifre) etc. Scade din k blocurile întregi până afli câte cifre are numărul în care cade poziția. Apoi numărul este primul de acea lungime plus (k − 1) / lungime, iar cifra este a ((k − 1) % lungime)-a din el.",
+    "constraints": [
+      "1 ≤ k ≤ 10¹⁵"
+    ],
+    "examples": {
+      "input": "15",
+      "output": "2"
+    },
+    "official_solution": {
+      "language": "C++",
+      "code": "#include <iostream>\nusing namespace std;\nint cifra(long long k) {\n    long long cate = 9, start = 1;\n    int lung = 1;\n    while (k > cate * lung) {\n        k = k - cate * lung;\n        cate = cate * 10;\n        start = start * 10;\n        lung++;\n    }\n    long long nr = start + (k - 1) / lung;\n    int poz = (k - 1) % lung; // 0 este prima cifră a lui nr\n    for (int i = 0; i < lung - 1 - poz; i++) nr = nr / 10;\n    return nr % 10;\n}\nint main() {\n    long long k;\n    cin >> k;\n    cout << cifra(k);\n    return 0;\n}"
+    },
+    "tests": [
+      {
+        "input": "15",
+        "output": "2"
+      },
+      {
+        "input": "1",
+        "output": "1"
+      },
+      {
+        "input": "9",
+        "output": "9"
+      },
+      {
+        "input": "10",
+        "output": "1"
+      },
+      {
+        "input": "11",
+        "output": "0"
+      },
+      {
+        "input": "189",
+        "output": "9"
+      },
+      {
+        "input": "190",
+        "output": "1"
+      },
+      {
+        "input": "2889",
+        "output": "9"
+      },
+      {
+        "input": "2890",
+        "output": "1"
+      },
+      {
+        "input": "1000000",
+        "output": "1"
+      },
+      {
+        "input": "1000000000",
+        "output": "1"
+      },
+      {
+        "input": "1000000000000000",
+        "output": "2"
+      },
+      {
+        "input": "999999999999999",
+        "output": "2"
+      },
+      {
+        "input": "123456789012345",
+        "output": "3"
+      },
+      {
+        "input": "38890",
+        "output": "1"
+      }
+    ],
+    "dificultate_motiv": "Șirul nu poate fi construit (10¹⁵ cifre): trebuie sărit pe grupe de numere cu aceeași lungime și calculat direct numărul și cifra.",
+    "sursa": "Exercițiu de antrenament (nu e dintr-o variantă BAC)",
+    "cerinta": "Se scriu unul după altul, fără spații, toate numerele naturale nenule, în ordine crescătoare: 1234567891011121314… Subprogramul cifra are un singur parametru, k, prin care primește un număr natural din intervalul [1, 10¹⁵]. Subprogramul returnează cifra aflată pe poziția k în acest șir (pozițiile se numerotează de la 1).\n\nScrie definiția completă a subprogramului:\nint cifra(long long k)\n\nFuncția `main`, care citește datele de intrare, apelează subprogramul și afișează rezultatul, este scrisă deja: tu scrii doar subprogramul.",
+    "explicatie": "Pentru k = 15 subprogramul returnează 2: șirul începe cu 123456789 10 11 12, iar a 15-a cifră este prima cifră a lui 12.",
+    "antet": "int cifra(long long k)",
+    "main_verificare": "#include <iostream>\nusing namespace std;\n\nint main() {\n    long long k;\n    cin >> k;\n    cout << cifra(k);\n    return 0;\n}"
+  },
+  "3058": {
+    "title": "Suma cmmdc-urilor cu n",
+    "category": "6. Probleme grele · în stilul Subiectului III",
+    "difficulty": "grea",
+    "description": "Subprogramul sumaCmmdc are un singur parametru, n, prin care primește un număr natural din intervalul [1, 10⁹]. Subprogramul returnează suma cmmdc(1, n) + cmmdc(2, n) + … + cmmdc(n, n), unde cmmdc(x, y) este cel mai mare divizor comun al numerelor x și y.\n\nSe va utiliza un algoritm eficient din punctul de vedere al timpului de executare.\n\nScrie definiția completă a subprogramului:\nlong long sumaCmmdc(int n)\n\nFuncția `main`, care citește datele de intrare, apelează subprogramul și afișează rezultatul, este scrisă deja: tu scrii doar subprogramul.",
+    "input": "Numărul natural n.",
+    "output": "Valoarea returnată de sumaCmmdc(n).",
+    "hint": "cmmdc(i, n) este mereu un divizor d al lui n, iar numerele i ≤ n cu cmmdc(i, n) = d sunt exact φ(n / d) (φ = indicatorul lui Euler). Deci suma este Σ d · φ(n / d) peste divizorii d ai lui n. Funcția e multiplicativă: dacă n = p₁^e₁ · p₂^e₂ · …, suma este produsul valorilor (e + 1) · pᵉ − e · pᵉ⁻¹, calculate pentru fiecare prim.",
+    "constraints": [
+      "1 ≤ n ≤ 10⁹"
+    ],
+    "examples": {
+      "input": "6",
+      "output": "15"
+    },
+    "official_solution": {
+      "language": "C++",
+      "code": "#include <iostream>\nusing namespace std;\nlong long sumaCmmdc(int n) {\n    long long rez = 1;\n    for (int p = 2; p * p <= n; p++)\n        if (n % p == 0) {\n            int e = 0;\n            long long pe = 1;\n            while (n % p == 0) {\n                n = n / p;\n                e++;\n                pe = pe * p;\n            }\n            rez = rez * ((e + 1) * pe - e * (pe / p));\n        }\n    if (n > 1) rez = rez * (2LL * n - 1);\n    return rez;\n}\nint main() {\n    int n;\n    cin >> n;\n    cout << sumaCmmdc(n);\n    return 0;\n}"
+    },
+    "tests": [
+      {
+        "input": "6",
+        "output": "15"
+      },
+      {
+        "input": "1",
+        "output": "1"
+      },
+      {
+        "input": "2",
+        "output": "3"
+      },
+      {
+        "input": "12",
+        "output": "40"
+      },
+      {
+        "input": "97",
+        "output": "193"
+      },
+      {
+        "input": "100",
+        "output": "520"
+      },
+      {
+        "input": "1024",
+        "output": "6144"
+      },
+      {
+        "input": "720720",
+        "output": "61916400"
+      },
+      {
+        "input": "999999937",
+        "output": "1999999873"
+      },
+      {
+        "input": "1000000000",
+        "output": "45100000000"
+      },
+      {
+        "input": "735134400",
+        "output": "303567264000"
+      },
+      {
+        "input": "536870912",
+        "output": "8321499136"
+      },
+      {
+        "input": "999999",
+        "output": "40356225"
+      },
+      {
+        "input": "223092870",
+        "output": "50624949375"
+      },
+      {
+        "input": "29",
+        "output": "57"
+      }
+    ],
+    "dificultate_motiv": "Un miliard de cmmdc-uri sunt prea multe: trebuie grupate numerele după cmmdc-ul lor cu n, ceea ce cere indicatorul lui Euler și descompunerea în factori primi.",
+    "sursa": "Exercițiu de antrenament (nu e dintr-o variantă BAC)",
+    "cerinta": "Subprogramul sumaCmmdc are un singur parametru, n, prin care primește un număr natural din intervalul [1, 10⁹]. Subprogramul returnează suma cmmdc(1, n) + cmmdc(2, n) + … + cmmdc(n, n), unde cmmdc(x, y) este cel mai mare divizor comun al numerelor x și y.\n\nSe va utiliza un algoritm eficient din punctul de vedere al timpului de executare.\n\nScrie definiția completă a subprogramului:\nlong long sumaCmmdc(int n)\n\nFuncția `main`, care citește datele de intrare, apelează subprogramul și afișează rezultatul, este scrisă deja: tu scrii doar subprogramul.",
+    "explicatie": "Pentru n = 6 subprogramul returnează 15: cmmdc-urile lui 1, 2, 3, 4, 5, 6 cu 6 sunt 1, 2, 3, 2, 1, 6.",
+    "antet": "long long sumaCmmdc(int n)",
+    "main_verificare": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n    cout << sumaCmmdc(n);\n    return 0;\n}"
+  },
+  "3059": {
+    "title": "Ultima cifră nenulă a lui n!",
+    "category": "6. Probleme grele · în stilul Subiectului III",
+    "difficulty": "grea",
+    "description": "Subprogramul ultimaCifra are un singur parametru, n, prin care primește un număr natural din intervalul [1, 10⁵]. Subprogramul returnează ultima cifră nenulă a numărului n! = 1 · 2 · … · n.\n\nScrie definiția completă a subprogramului:\nint ultimaCifra(int n)\n\nFuncția `main`, care citește datele de intrare, apelează subprogramul și afișează rezultatul, este scrisă deja: tu scrii doar subprogramul.",
+    "input": "Numărul natural n.",
+    "output": "Valoarea returnată de ultimaCifra(n).",
+    "hint": "Nu poți păstra doar ultima cifră a produsului: zerourile din final apar din perechi 2 · 5 și „mănâncă” informația. Scoate din fiecare factor toți factorii 2 și 5, numără câți 2 sunt în plus față de 5, înmulțește modulo 10 ce rămâne, iar la final înmulțește cu 2 de atâtea ori câți 2 au rămas fără pereche.",
+    "constraints": [
+      "1 ≤ n ≤ 10⁵"
+    ],
+    "examples": {
+      "input": "10",
+      "output": "8"
+    },
+    "official_solution": {
+      "language": "C++",
+      "code": "#include <iostream>\nusing namespace std;\nint ultimaCifra(int n) {\n    int doi = 0, c = 1; // doi = câți factori 2 sunt în plus față de 5\n    for (int i = 2; i <= n; i++) {\n        int x = i;\n        while (x % 2 == 0) {\n            x = x / 2;\n            doi++;\n        }\n        while (x % 5 == 0) {\n            x = x / 5;\n            doi--;\n        }\n        c = c * (x % 10) % 10;\n    }\n    for (int i = 0; i < doi; i++) c = c * 2 % 10;\n    return c;\n}\nint main() {\n    int n;\n    cin >> n;\n    cout << ultimaCifra(n);\n    return 0;\n}"
+    },
+    "tests": [
+      {
+        "input": "10",
+        "output": "8"
+      },
+      {
+        "input": "1",
+        "output": "1"
+      },
+      {
+        "input": "2",
+        "output": "2"
+      },
+      {
+        "input": "4",
+        "output": "4"
+      },
+      {
+        "input": "5",
+        "output": "2"
+      },
+      {
+        "input": "15",
+        "output": "8"
+      },
+      {
+        "input": "25",
+        "output": "4"
+      },
+      {
+        "input": "100",
+        "output": "4"
+      },
+      {
+        "input": "1000",
+        "output": "2"
+      },
+      {
+        "input": "9999",
+        "output": "8"
+      },
+      {
+        "input": "12345",
+        "output": "4"
+      },
+      {
+        "input": "50000",
+        "output": "8"
+      },
+      {
+        "input": "99999",
+        "output": "6"
+      },
+      {
+        "input": "100000",
+        "output": "6"
+      },
+      {
+        "input": "26",
+        "output": "4"
+      }
+    ],
+    "dificultate_motiv": "Capcana clasică: produsul modulo 10 dă 0, iar produsul modulo 10 cu zerourile tăiate pe parcurs dă rezultate greșite. Trebuie separați factorii 2 și 5.",
+    "sursa": "Exercițiu de antrenament (nu e dintr-o variantă BAC)",
+    "cerinta": "Subprogramul ultimaCifra are un singur parametru, n, prin care primește un număr natural din intervalul [1, 10⁵]. Subprogramul returnează ultima cifră nenulă a numărului n! = 1 · 2 · … · n.\n\nScrie definiția completă a subprogramului:\nint ultimaCifra(int n)\n\nFuncția `main`, care citește datele de intrare, apelează subprogramul și afișează rezultatul, este scrisă deja: tu scrii doar subprogramul.",
+    "explicatie": "Pentru n = 10 subprogramul returnează 8: 10! = 3628800.",
+    "antet": "int ultimaCifra(int n)",
+    "main_verificare": "#include <iostream>\nusing namespace std;\n\nint main() {\n    int n;\n    cin >> n;\n    cout << ultimaCifra(n);\n    return 0;\n}"
+  },
+  "3060": {
+    "title": "Rotirea chenarelor unei matrice",
+    "category": "6. Probleme grele · în stilul Subiectului III",
+    "difficulty": "grea",
+    "description": "Elementele unui tablou bidimensional cu n linii și m coloane sunt grupate în chenare concentrice: primul chenar este format din elementele de pe prima și ultima linie și de pe prima și ultima coloană, al doilea chenar din elementele de pe marginea tabloului rămas după îndepărtarea primului chenar, și așa mai departe.\n\nScrie un program care citește de la tastatură numerele naturale n și m (n, m ∈ [2, 20]) și elementele tabloului, numere naturale din intervalul [0, 10⁴]. Programul rotește fiecare chenar cu o poziție în sensul acelor de ceasornic: fiecare element al chenarului trece pe poziția următoare a chenarului, parcurs în sensul acelor de ceasornic. Un chenar format dintr-o singură linie sau dintr-o singură coloană rămâne neschimbat. Programul afișează pe ecran tabloul obținut, fiecare linie pe câte o linie a ecranului, cu elementele separate prin câte un spațiu.",
+    "input": "n și m, apoi cele n linii ale tabloului.",
+    "output": "Tabloul după rotire.",
+    "hint": "Pentru chenarul k (de la 0): liniile sus = k, jos = n − 1 − k, coloanele st = k, dr = m − 1 − k; există ca chenar adevărat doar dacă sus < jos și st < dr. Copiază elementele lui într-un vector, în sensul acelor de ceasornic (linia de sus spre dreapta, coloana din dreapta în jos, linia de jos spre stânga, coloana din stânga în sus), apoi scrie-le înapoi pornind de la poziția a doua: ultimul element ajunge în colțul din stânga sus.",
+    "constraints": [
+      "2 ≤ n, m ≤ 20",
+      "elementele sunt din [0, 10⁴]"
+    ],
+    "examples": {
+      "input": "3 4\n1 2 3 4\n5 6 7 8\n9 10 11 12",
+      "output": "5 1 2 3\n9 6 7 4\n10 11 12 8"
+    },
+    "official_solution": {
+      "language": "C++",
+      "code": "#include <iostream>\nusing namespace std;\nint a[20][20], v[80];\nint main() {\n    int n, m;\n    cin >> n >> m;\n    for (int i = 0; i < n; i++)\n        for (int j = 0; j < m; j++) cin >> a[i][j];\n    for (int k = 0; 2 * k < n && 2 * k < m; k++) {\n        int sus = k, jos = n - 1 - k, st = k, dr = m - 1 - k;\n        if (sus == jos || st == dr) continue;\n        int t = 0;\n        for (int j = st; j < dr; j++) v[t++] = a[sus][j];\n        for (int i = sus; i < jos; i++) v[t++] = a[i][dr];\n        for (int j = dr; j > st; j--) v[t++] = a[jos][j];\n        for (int i = jos; i > sus; i--) v[t++] = a[i][st];\n        // elementul x trece pe poziția x + 1; ultimul ajunge pe poziția 0\n        int p = t - 1;\n        for (int j = st; j < dr; j++) {\n            a[sus][j] = v[p];\n            p = (p + 1) % t;\n        }\n        for (int i = sus; i < jos; i++) {\n            a[i][dr] = v[p];\n            p = (p + 1) % t;\n        }\n        for (int j = dr; j > st; j--) {\n            a[jos][j] = v[p];\n            p = (p + 1) % t;\n        }\n        for (int i = jos; i > sus; i--) {\n            a[i][st] = v[p];\n            p = (p + 1) % t;\n        }\n    }\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < m; j++) cout << a[i][j] << \" \";\n        cout << \"\\n\";\n    }\n    return 0;\n}"
+    },
+    "tests_file": "tests/informatica_12_3060.json",
+    "dificultate_motiv": "Cere parcurgerea corectă a fiecărui chenar, fără a număra colțurile de două ori, și tratarea chenarelor degenerate când n ≠ m.",
+    "sursa": "Exercițiu de antrenament (nu e dintr-o variantă BAC)",
+    "cerinta": "Elementele unui tablou bidimensional cu n linii și m coloane sunt grupate în chenare concentrice: primul chenar este format din elementele de pe prima și ultima linie și de pe prima și ultima coloană, al doilea chenar din elementele de pe marginea tabloului rămas după îndepărtarea primului chenar, și așa mai departe.\n\nScrie un program care citește de la tastatură numerele naturale n și m (n, m ∈ [2, 20]) și elementele tabloului, numere naturale din intervalul [0, 10⁴]. Programul rotește fiecare chenar cu o poziție în sensul acelor de ceasornic: fiecare element al chenarului trece pe poziția următoare a chenarului, parcurs în sensul acelor de ceasornic. Un chenar format dintr-o singură linie sau dintr-o singură coloană rămâne neschimbat. Programul afișează pe ecran tabloul obținut, fiecare linie pe câte o linie a ecranului, cu elementele separate prin câte un spațiu.",
+    "explicatie": "În exemplu, chenarul exterior 1 2 3 4 8 12 11 10 9 5 (parcurs în sensul acelor de ceasornic) devine 5 1 2 3 4 8 12 11 10 9, iar chenarul interior, 6 7, este o singură linie și rămâne neschimbat."
+  },
+  "3061": {
+    "title": "Cel mai mare pătrat plin cu 1",
+    "category": "6. Probleme grele · în stilul Subiectului III",
+    "difficulty": "grea",
+    "description": "Scrie un program care citește de la tastatură numerele naturale n și m (n, m ∈ [1, 100]) și elementele unui tablou bidimensional cu n linii și m coloane, fiecare egal cu 0 sau cu 1. Programul afișează pe ecran latura L a celei mai mari zone pătratice din tablou (L linii consecutive și L coloane consecutive) care conține numai valori 1, urmată de linia și coloana colțului ei din stânga sus (liniile și coloanele se numerotează de la 1), separate prin câte un spațiu. Dacă există mai multe astfel de zone, se alege cea cu colțul pe linia cea mai mică, iar la aceeași linie, pe coloana cea mai mică. Dacă tabloul nu conține nicio valoare 1, se afișează doar 0.\n\nSe va utiliza un algoritm eficient din punctul de vedere al timpului de executare.",
+    "input": "n și m, apoi cele n linii ale tabloului.",
+    "output": "L, linia și coloana colțului din stânga sus, sau 0.",
+    "hint": "Fie d[i][j] latura celui mai mare pătrat plin cu 1 al cărui colț din dreapta jos este (i, j). Dacă a[i][j] = 0, d[i][j] = 0; altfel d[i][j] = 1 + min(d[i−1][j], d[i][j−1], d[i−1][j−1]). Latura maximă e cel mai mare d. Colțul din stânga sus al pătratului terminat în (i, j) este (i − L + 1, j − L + 1): dintre toate celulele cu d[i][j] ≥ L alege colțul cel mai sus, apoi cel mai la stânga.",
+    "constraints": [
+      "1 ≤ n, m ≤ 100",
+      "elementele sunt 0 sau 1"
+    ],
+    "examples": {
+      "input": "5 6\n1 0 1 1 0 0\n0 1 1 1 1 0\n1 1 1 1 1 1\n0 1 1 1 0 1\n1 1 0 1 1 1",
+      "output": "3 2 2"
+    },
+    "official_solution": {
+      "language": "C++",
+      "code": "#include <iostream>\nusing namespace std;\nint a[101][101], d[101][101];\nint main() {\n    int n, m;\n    cin >> n >> m;\n    for (int i = 1; i <= n; i++)\n        for (int j = 1; j <= m; j++) cin >> a[i][j];\n    int L = 0;\n    for (int i = 1; i <= n; i++)\n        for (int j = 1; j <= m; j++)\n            if (a[i][j] == 1) {\n                int x = d[i - 1][j];\n                if (d[i][j - 1] < x) x = d[i][j - 1];\n                if (d[i - 1][j - 1] < x) x = d[i - 1][j - 1];\n                d[i][j] = x + 1;\n                if (d[i][j] > L) L = d[i][j];\n            }\n    if (L == 0) {\n        cout << 0;\n        return 0;\n    }\n    int li = n + 1, co = m + 1;\n    for (int i = 1; i <= n; i++)\n        for (int j = 1; j <= m; j++)\n            if (d[i][j] >= L) {\n                int x = i - L + 1, y = j - L + 1;\n                if (x < li || (x == li && y < co)) {\n                    li = x;\n                    co = y;\n                }\n            }\n    cout << L << \" \" << li << \" \" << co;\n    return 0;\n}"
+    },
+    "tests_file": "tests/informatica_12_3061.json",
+    "dificultate_motiv": "Verificarea fiecărui pătrat posibil e lentă; relația d[i][j] = 1 + min(sus, stânga, diagonală) este un raționament de programare dinamică, peste nivelul obișnuit al subiectului III.2. Și regula de alegere a pătratului cere atenție.",
+    "sursa": "Exercițiu de antrenament (nu e dintr-o variantă BAC)",
+    "cerinta": "Scrie un program care citește de la tastatură numerele naturale n și m (n, m ∈ [1, 100]) și elementele unui tablou bidimensional cu n linii și m coloane, fiecare egal cu 0 sau cu 1. Programul afișează pe ecran latura L a celei mai mari zone pătratice din tablou (L linii consecutive și L coloane consecutive) care conține numai valori 1, urmată de linia și coloana colțului ei din stânga sus (liniile și coloanele se numerotează de la 1), separate prin câte un spațiu. Dacă există mai multe astfel de zone, se alege cea cu colțul pe linia cea mai mică, iar la aceeași linie, pe coloana cea mai mică. Dacă tabloul nu conține nicio valoare 1, se afișează doar 0.\n\nSe va utiliza un algoritm eficient din punctul de vedere al timpului de executare.",
+    "explicatie": "În exemplu cel mai mare pătrat plin cu 1 are latura 3 și colțul din stânga sus pe linia 2, coloana 2."
+  },
+  "3062": {
+    "title": "Diagonalele sortate",
+    "category": "6. Probleme grele · în stilul Subiectului III",
+    "difficulty": "grea",
+    "description": "Scrie un program care citește de la tastatură numerele naturale n și m (n, m ∈ [1, 50]) și elementele unui tablou bidimensional cu n linii și m coloane, numere întregi din intervalul [-10⁴, 10⁴]. Programul ordonează crescător, independent unul de altul, elementele de pe fiecare „diagonală” a tabloului paralelă cu diagonala principală (elementele a[i][j] cu aceeași diferență i − j), astfel încât pe fiecare astfel de diagonală elementele să fie în ordine crescătoare de la stânga sus spre dreapta jos. Programul afișează pe ecran tabloul obținut, fiecare linie pe câte o linie a ecranului, cu elementele separate prin câte un spațiu.",
+    "input": "n și m, apoi cele n linii ale tabloului.",
+    "output": "Tabloul cu diagonalele ordonate.",
+    "hint": "O diagonală începe fie pe prima linie (în (0, j)), fie pe prima coloană (în (i, 0)). Pornind de la începutul ei, mergi pe (i + 1, j + 1) cât timp ești în tablou: copiază elementele într-un vector, ordonează-l, apoi scrie-l înapoi pe același drum.",
+    "constraints": [
+      "1 ≤ n, m ≤ 50",
+      "elementele sunt din [-10⁴, 10⁴]"
+    ],
+    "examples": {
+      "input": "3 4\n9 8 7 6\n4 5 3 2\n0 1 1 -3",
+      "output": "1 -3 2 6\n1 5 3 7\n0 4 9 8"
+    },
+    "official_solution": {
+      "language": "C++",
+      "code": "#include <iostream>\nusing namespace std;\nint a[50][50], v[50];\nint main() {\n    int n, m;\n    cin >> n >> m;\n    for (int i = 0; i < n; i++)\n        for (int j = 0; j < m; j++) cin >> a[i][j];\n    for (int s = 0; s < n + m - 1; s++) {\n        int i0 = 0, j0 = 0; // începutul diagonalei\n        if (s < n) i0 = n - 1 - s;\n        else j0 = s - n + 1;\n        int k = 0;\n        for (int i = i0, j = j0; i < n && j < m; i++, j++) v[k++] = a[i][j];\n        for (int x = 1; x < k; x++) { // sortare prin inserție\n            int y = v[x], p = x - 1;\n            while (p >= 0 && v[p] > y) {\n                v[p + 1] = v[p];\n                p--;\n            }\n            v[p + 1] = y;\n        }\n        k = 0;\n        for (int i = i0, j = j0; i < n && j < m; i++, j++) a[i][j] = v[k++];\n    }\n    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < m; j++) cout << a[i][j] << \" \";\n        cout << \"\\n\";\n    }\n    return 0;\n}"
+    },
+    "tests_file": "tests/informatica_12_3062.json",
+    "dificultate_motiv": "Pe lângă sortare, cere enumerarea corectă a tuturor celor n + m − 1 diagonale ale unui tablou dreptunghiular și parcurgerea fiecăreia, de lungimi diferite.",
+    "sursa": "Exercițiu de antrenament (nu e dintr-o variantă BAC)",
+    "cerinta": "Scrie un program care citește de la tastatură numerele naturale n și m (n, m ∈ [1, 50]) și elementele unui tablou bidimensional cu n linii și m coloane, numere întregi din intervalul [-10⁴, 10⁴]. Programul ordonează crescător, independent unul de altul, elementele de pe fiecare „diagonală” a tabloului paralelă cu diagonala principală (elementele a[i][j] cu aceeași diferență i − j), astfel încât pe fiecare astfel de diagonală elementele să fie în ordine crescătoare de la stânga sus spre dreapta jos. Programul afișează pe ecran tabloul obținut, fiecare linie pe câte o linie a ecranului, cu elementele separate prin câte un spațiu.",
+    "explicatie": "În exemplu, diagonala care pornește din colțul din stânga sus are elementele 9, 5, 1, iar după ordonare are 1, 5, 9; la fel se ordonează fiecare altă diagonală."
+  },
+  "3063": {
+    "title": "Completarea în zigzag pe diagonale",
+    "category": "6. Probleme grele · în stilul Subiectului III",
+    "difficulty": "grea",
+    "description": "Scrie un program care citește de la tastatură două numere naturale, n și m (n, m ∈ [1, 20]), și construiește în memorie un tablou bidimensional cu n linii și m coloane, completat cu numerele 1, 2, 3, …, n · m, în această ordine, parcurgând tabloul în zigzag pe diagonalele paralele cu diagonala secundară: se pornește din colțul din stânga sus, iar diagonalele se parcurg una după alta, alternativ de jos în sus și de sus în jos. Mai exact, liniile și coloanele fiind numerotate de la 1, elementele cu i + j par se parcurg de jos în sus (spre dreapta sus), iar cele cu i + j impar de sus în jos (spre stânga jos), ca în exemplu.\n\nProgramul afișează pe ecran tabloul obținut, fiecare linie pe câte o linie a ecranului, cu elementele separate prin câte un spațiu.",
+    "input": "Numerele n și m.",
+    "output": "Tabloul completat în zigzag.",
+    "hint": "Parcurge sumele s = i + j de la 2 la n + m. Pe o diagonală, linia i ia valorile de la max(1, s − m) la min(n, s − 1): crescător pentru s impar, descrescător pentru s par, iar coloana este j = s − i.",
+    "constraints": [
+      "1 ≤ n, m ≤ 20"
+    ],
+    "examples": {
+      "input": "3 4",
+      "output": "1 2 6 7\n3 5 8 11\n4 9 10 12"
+    },
+    "official_solution": {
+      "language": "C++",
+      "code": "#include <iostream>\nusing namespace std;\nint a[21][21];\nint main() {\n    int n, m, k = 0;\n    cin >> n >> m;\n    for (int s = 2; s <= n + m; s++) {\n        int lo = 1, hi = n;\n        if (s - m > lo) lo = s - m;\n        if (s - 1 < hi) hi = s - 1;\n        if (s % 2 == 1)\n            for (int i = lo; i <= hi; i++) a[i][s - i] = ++k;\n        else\n            for (int i = hi; i >= lo; i--) a[i][s - i] = ++k;\n    }\n    for (int i = 1; i <= n; i++) {\n        for (int j = 1; j <= m; j++) cout << a[i][j] << \" \";\n        cout << \"\\n\";\n    }\n    return 0;\n}"
+    },
+    "tests": [
+      {
+        "input": "3 4",
+        "output": "1 2 6 7\n3 5 8 11\n4 9 10 12"
+      },
+      {
+        "input": "1 1",
+        "output": "1"
+      },
+      {
+        "input": "1 5",
+        "output": "1 2 3 4 5"
+      },
+      {
+        "input": "5 1",
+        "output": "1\n2\n3\n4\n5"
+      },
+      {
+        "input": "2 2",
+        "output": "1 2\n3 4"
+      },
+      {
+        "input": "4 4",
+        "output": "1 2 6 7\n3 5 8 13\n4 9 12 14\n10 11 15 16"
+      },
+      {
+        "input": "5 3",
+        "output": "1 2 6\n3 5 7\n4 8 12\n9 11 13\n10 14 15"
+      },
+      {
+        "input": "6 9",
+        "output": "1 2 6 7 15 16 27 28 39\n3 5 8 14 17 26 29 38 40\n4 9 13 18 25 30 37 41 48\n10 12 19 24 31 36 42 47 49\n11 20 23 32 35 43 46 50 53\n21 22 33 34 44 45 51 52 54"
+      },
+      {
+        "input": "20 20",
+        "output": "1 2 6 7 15 16 28 29 45 46 66 67 91 92 120 121 153 154 190 191\n3 5 8 14 17 27 30 44 47 65 68 90 93 119 122 152 155 189 192 229\n4 9 13 18 26 31 43 48 64 69 89 94 118 123 151 156 188 193 228 230\n10 12 19 25 32 42 49 63 70 88 95 117 124 150 157 187 194 227 231 264\n11 20 24 33 41 50 62 71 87 96 116 125 149 158 186 195 226 232 263 265\n21 23 34 40 51 61 72 86 97 115 126 148 159 185 196 225 233 262 266 295\n22 35 39 52 60 73 85 98 114 127 147 160 184 197 224 234 261 267 294 296\n36 38 53 59 74 84 99 113 128 146 161 183 198 223 235 260 268 293 297 322\n37 54 58 75 83 100 112 129 145 162 182 199 222 236 259 269 292 298 321 323\n55 57 76 82 101 111 130 144 163 181 200 221 237 258 270 291 299 320 324 345\n56 77 81 102 110 131 143 164 180 201 220 238 257 271 290 300 319 325 344 346\n78 80 103 109 132 142 165 179 202 219 239 256 272 289 301 318 326 343 347 364\n79 104 108 133 141 166 178 203 218 240 255 273 288 302 317 327 342 348 363 365\n105 107 134 140 167 177 204 217 241 254 274 287 303 316 328 341 349 362 366 379\n106 135 139 168 176 205 216 242 253 275 286 304 315 329 340 350 361 367 378 380\n136 138 169 175 206 215 243 252 276 285 305 314 330 339 351 360 368 377 381 390\n137 170 174 207 214 244 251 277 284 306 313 331 338 352 359 369 376 382 389 391\n171 173 208 213 245 250 278 283 307 312 332 337 353 358 370 375 383 388 392 397\n172 209 212 246 249 279 282 308 311 333 336 354 357 371 374 384 387 393 396 398\n210 211 247 248 280 281 309 310 334 335 355 356 372 373 385 386 394 395 399 400"
+      },
+      {
+        "input": "20 1",
+        "output": "1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20"
+      },
+      {
+        "input": "13 20",
+        "output": "1 2 6 7 15 16 28 29 45 46 66 67 91 92 117 118 143 144 169 170\n3 5 8 14 17 27 30 44 47 65 68 90 93 116 119 142 145 168 171 194\n4 9 13 18 26 31 43 48 64 69 89 94 115 120 141 146 167 172 193 195\n10 12 19 25 32 42 49 63 70 88 95 114 121 140 147 166 173 192 196 215\n11 20 24 33 41 50 62 71 87 96 113 122 139 148 165 174 191 197 214 216\n21 23 34 40 51 61 72 86 97 112 123 138 149 164 175 190 198 213 217 232\n22 35 39 52 60 73 85 98 111 124 137 150 163 176 189 199 212 218 231 233\n36 38 53 59 74 84 99 110 125 136 151 162 177 188 200 211 219 230 234 245\n37 54 58 75 83 100 109 126 135 152 161 178 187 201 210 220 229 235 244 246\n55 57 76 82 101 108 127 134 153 160 179 186 202 209 221 228 236 243 247 254\n56 77 81 102 107 128 133 154 159 180 185 203 208 222 227 237 242 248 253 255\n78 80 103 106 129 132 155 158 181 184 204 207 223 226 238 241 249 252 256 259\n79 104 105 130 131 156 157 182 183 205 206 224 225 239 240 250 251 257 258 260"
+      },
+      {
+        "input": "2 17",
+        "output": "1 2 5 6 9 10 13 14 17 18 21 22 25 26 29 30 33\n3 4 7 8 11 12 15 16 19 20 23 24 27 28 31 32 34"
+      }
+    ],
+    "dificultate_motiv": "Trebuie găsite capetele fiecărei diagonale într-un tablou dreptunghiular (nu pătratic) și schimbat sensul de la o diagonală la alta; e parcurgerea folosită de formatul JPEG.",
+    "sursa": "Exercițiu de antrenament (nu e dintr-o variantă BAC)",
+    "cerinta": "Scrie un program care citește de la tastatură două numere naturale, n și m (n, m ∈ [1, 20]), și construiește în memorie un tablou bidimensional cu n linii și m coloane, completat cu numerele 1, 2, 3, …, n · m, în această ordine, parcurgând tabloul în zigzag pe diagonalele paralele cu diagonala secundară: se pornește din colțul din stânga sus, iar diagonalele se parcurg una după alta, alternativ de jos în sus și de sus în jos. Mai exact, liniile și coloanele fiind numerotate de la 1, elementele cu i + j par se parcurg de jos în sus (spre dreapta sus), iar cele cu i + j impar de sus în jos (spre stânga jos), ca în exemplu.\n\nProgramul afișează pe ecran tabloul obținut, fiecare linie pe câte o linie a ecranului, cu elementele separate prin câte un spațiu.",
+    "explicatie": "Pentru n = 3 și m = 4: 1 în (1, 1); 2, 3 pe diagonala i + j = 3, de sus în jos; 4, 5, 6 pe diagonala i + j = 4, de jos în sus; 7, 8, 9 de sus în jos; 10, 11 de jos în sus; 12 în (3, 4)."
+  },
+  "3064": {
+    "title": "Zona dreptunghiulară de sumă maximă",
+    "category": "6. Probleme grele · în stilul Subiectului III",
+    "difficulty": "grea",
+    "description": "Scrie un program care citește de la tastatură numerele naturale n și m (n, m ∈ [1, 50]) și elementele unui tablou bidimensional cu n linii și m coloane, numere întregi din intervalul [-100, 100]. Programul afișează pe ecran cea mai mare sumă a elementelor unei zone dreptunghiulare nevide a tabloului, formată din elementele aflate pe câteva linii consecutive și, totodată, pe câteva coloane consecutive.\n\nSe va utiliza un algoritm eficient din punctul de vedere al timpului de executare.",
+    "input": "n și m, apoi cele n linii ale tabloului.",
+    "output": "Suma maximă.",
+    "hint": "Fixează linia de sus i1 și linia de jos i2. Suma pe coloane între cele două linii dă un vector de m numere (îl actualizezi adăugând linia i2 când i2 crește). Cea mai bună zonă între i1 și i2 este secvența de sumă maximă a acestui vector, aflată cu algoritmul lui Kadane. Total: n · n · m operații.",
+    "constraints": [
+      "1 ≤ n, m ≤ 50",
+      "elementele sunt din [-100, 100]"
+    ],
+    "examples": {
+      "input": "4 4\n0 -2 -7 0\n9 2 -6 2\n-4 1 -4 1\n-1 8 0 -2",
+      "output": "15"
+    },
+    "official_solution": {
+      "language": "C++",
+      "code": "#include <iostream>\nusing namespace std;\nint a[50][50], col[50];\nint main() {\n    int n, m;\n    cin >> n >> m;\n    for (int i = 0; i < n; i++)\n        for (int j = 0; j < m; j++) cin >> a[i][j];\n    int best = a[0][0];\n    for (int i1 = 0; i1 < n; i1++) {\n        for (int j = 0; j < m; j++) col[j] = 0;\n        for (int i2 = i1; i2 < n; i2++) {\n            for (int j = 0; j < m; j++) col[j] += a[i2][j];\n            int s = 0; // Kadane pe col\n            for (int j = 0; j < m; j++) {\n                if (s < 0) s = col[j];\n                else s = s + col[j];\n                if (s > best) best = s;\n            }\n        }\n    }\n    cout << best;\n    return 0;\n}"
+    },
+    "tests_file": "tests/informatica_12_3064.json",
+    "dificultate_motiv": "Încercarea tuturor celor aproximativ (n · m)² / 4 zone, fiecare însumată, este mult prea lentă; trebuie redusă problema la secvența de sumă maximă (Kadane) pe sume de coloane.",
+    "sursa": "Exercițiu de antrenament (nu e dintr-o variantă BAC)",
+    "cerinta": "Scrie un program care citește de la tastatură numerele naturale n și m (n, m ∈ [1, 50]) și elementele unui tablou bidimensional cu n linii și m coloane, numere întregi din intervalul [-100, 100]. Programul afișează pe ecran cea mai mare sumă a elementelor unei zone dreptunghiulare nevide a tabloului, formată din elementele aflate pe câteva linii consecutive și, totodată, pe câteva coloane consecutive.\n\nSe va utiliza un algoritm eficient din punctul de vedere al timpului de executare.",
+    "explicatie": "În exemplu zona de sumă maximă este formată din liniile 2–4 și coloanele 1–2: 9 + 2 − 4 + 1 − 1 + 8 = 15."
+  },
+  "3065": {
+    "title": "Cuvintele care au anagrame în text",
+    "category": "6. Probleme grele · în stilul Subiectului III",
+    "difficulty": "grea",
+    "description": "Două cuvinte diferite sunt anagrame dacă unul se obține din celălalt prin rearanjarea literelor (de exemplu rac și car). Un text are cel mult 255 de caractere, iar cuvintele lui sunt formate din litere mici ale alfabetului englez și sunt separate prin câte un spațiu.\n\nScrie un program care citește de la tastatură un text de tipul precizat și afișează pe ecran, separate prin câte un spațiu, în ordinea în care apar în text, cuvintele care sunt anagrame cu cel puțin un alt cuvânt al textului. Un cuvânt care apare de mai multe ori și îndeplinește condiția se afișează de fiecare dată. Dacă nu există niciun astfel de cuvânt, se afișează pe ecran mesajul nu exista.",
+    "input": "Textul, pe o linie.",
+    "output": "Cuvintele care au anagrame în text, sau nu exista.",
+    "hint": "Separă textul în cuvinte (de exemplu cu strtok) și păstrează-le într-un tablou de șiruri. Două cuvinte sunt anagrame dacă au aceeași lungime, sunt diferite (strcmp ≠ 0) și au aceleași frecvențe ale literelor: un vector de 26 de contoare, în care adaugi literele primului și le scazi pe ale celui de-al doilea, trebuie să rămână zero.",
+    "constraints": [
+      "textul are cel mult 255 de caractere",
+      "litere mici și câte un spațiu între cuvinte"
+    ],
+    "examples": {
+      "input": "ana rac mare car lac rame arc car",
+      "output": "rac mare car rame arc car"
+    },
+    "official_solution": {
+      "language": "C++",
+      "code": "#include <iostream>\n#include <cstring>\nusing namespace std;\nchar s[256], w[128][256];\nbool anagrame(char a[], char b[]) {\n    if (strlen(a) != strlen(b) || strcmp(a, b) == 0) return false;\n    int f[26] = {0};\n    for (int i = 0; a[i]; i++) f[a[i] - 'a']++;\n    for (int i = 0; b[i]; i++) f[b[i] - 'a']--;\n    for (int i = 0; i < 26; i++)\n        if (f[i] != 0) return false;\n    return true;\n}\nint main() {\n    cin.getline(s, 256);\n    int k = 0;\n    for (char *p = strtok(s, \" \"); p; p = strtok(NULL, \" \")) strcpy(w[k++], p);\n    bool gasit = false;\n    for (int i = 0; i < k; i++) {\n        bool are = false;\n        for (int j = 0; j < k && !are; j++)\n            if (j != i && anagrame(w[i], w[j])) are = true;\n        if (are) {\n            cout << w[i] << \" \";\n            gasit = true;\n        }\n    }\n    if (!gasit) cout << \"nu exista\";\n    return 0;\n}"
+    },
+    "tests": [
+      {
+        "input": "ana rac mare car lac rame arc car",
+        "output": "rac mare car rame arc car"
+      },
+      {
+        "input": "ana are mere",
+        "output": "nu exista"
+      },
+      {
+        "input": "abc",
+        "output": "nu exista"
+      },
+      {
+        "input": "ab ba ab ba",
+        "output": "ab ba ab ba"
+      },
+      {
+        "input": "aa aa aa",
+        "output": "nu exista"
+      },
+      {
+        "input": "sare rase ser res sera mare",
+        "output": "sare rase ser res sera"
+      },
+      {
+        "input": "abc acb bac bca cab cba abcd",
+        "output": "abc acb bac bca cab cba"
+      },
+      {
+        "input": "ion rac ion cal sare mar pom naa ana ion car car ram pom naa mere ram pom ana mar mere ram rac ram rac rac car sare pom sare mere ram ana rac cal sare mar ion cal cal",
+        "output": "rac mar naa ana car car ram naa ram ana mar ram rac ram rac rac car ram ana rac mar"
+      },
+      {
+        "input": "ab xy cab y xy abc ba aba aab y ab xy ab ba cab abc aab aba abc aba xy aba ba xy ab xy ab ba aba ab xy ab cab y ab aba ba aab cab y abc abc y x abc xy cab x x xy",
+        "output": "ab cab abc ba aba aab ab ab ba cab abc aab aba abc aba aba ba ab ab ba aba ab ab cab ab aba ba aab cab abc abc abc cab"
+      },
+      {
+        "input": "caret trace caret xyz zzz carte xzy xzy trace zzz xyz trace xyz xzy creta carte xzy zzz trace zzz creta xzy creta zzz trace xyz caret react xyz creta",
+        "output": "caret trace caret xyz carte xzy xzy trace xyz trace xyz xzy creta carte xzy trace creta xzy creta trace xyz caret react xyz creta"
+      },
+      {
+        "input": "trei trei patru doi unu doi doi patru doi doi patru cinci cinci unu patru trei patru doi trei trei patru doi patru unu trei",
+        "output": "nu exista"
+      },
+      {
+        "input": "a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a",
+        "output": "nu exista"
+      }
+    ],
+    "dificultate_motiv": "Combină despărțirea textului în cuvinte, păstrarea lor ca tablou de șiruri, comparări pe perechi și verificarea anagramei prin frecvențe, plus excepția cuvintelor identice.",
+    "sursa": "Exercițiu de antrenament (nu e dintr-o variantă BAC)",
+    "cerinta": "Două cuvinte diferite sunt anagrame dacă unul se obține din celălalt prin rearanjarea literelor (de exemplu rac și car). Un text are cel mult 255 de caractere, iar cuvintele lui sunt formate din litere mici ale alfabetului englez și sunt separate prin câte un spațiu.\n\nScrie un program care citește de la tastatură un text de tipul precizat și afișează pe ecran, separate prin câte un spațiu, în ordinea în care apar în text, cuvintele care sunt anagrame cu cel puțin un alt cuvânt al textului. Un cuvânt care apare de mai multe ori și îndeplinește condiția se afișează de fiecare dată. Dacă nu există niciun astfel de cuvânt, se afișează pe ecran mesajul nu exista.",
+    "explicatie": "În exemplu rac, car și arc sunt anagrame între ele (car apare de două ori și se afișează de două ori), la fel mare și rame; ana și lac nu au anagrame în text."
+  },
+  "3066": {
+    "title": "Valoarea unei expresii cu +, − și *",
+    "category": "6. Probleme grele · în stilul Subiectului III",
+    "difficulty": "grea",
+    "description": "O expresie are cel mult 255 de caractere și este formată din numere naturale din intervalul [0, 1000] (scrise fără zerouri nesemnificative) și din operatorii +, - și *, fără spații și fără paranteze; expresia începe și se termină cu un număr, iar între oricare două numere se află exact un operator. Ca în matematică, înmulțirile se efectuează înaintea adunărilor și scăderilor, iar operațiile de același fel se efectuează de la stânga la dreapta.\n\nScrie un program care citește de la tastatură o expresie de tipul precizat și afișează pe ecran valoarea ei. Se garantează că valoarea expresiei și valoarea oricărui produs din ea sunt, în valoare absolută, cel mult 10¹⁸.",
+    "input": "Expresia, pe o linie.",
+    "output": "Valoarea expresiei.",
+    "hint": "Expresia este o sumă de termeni cu semn, iar fiecare termen este un produs. Parcurge șirul: citește un număr (cifră cu cifră), apoi, cât timp urmează *, citește încă un număr și înmulțește. Când termenul s-a încheiat, adună-l la total cu semnul lui (semnul operatorului dinaintea lui: + sau −). Folosește long long.",
+    "constraints": [
+      "expresia are cel mult 255 de caractere",
+      "numerele sunt din [0, 1000]"
+    ],
+    "examples": {
+      "input": "12+3*4-5*2*3+7",
+      "output": "1"
+    },
+    "official_solution": {
+      "language": "C++",
+      "code": "#include <iostream>\nusing namespace std;\nchar s[256];\nint main() {\n    cin >> s;\n    long long total = 0;\n    int i = 0, semn = 1;\n    while (s[i]) {\n        long long termen = 0;\n        while (s[i] >= '0' && s[i] <= '9') termen = termen * 10 + (s[i++] - '0');\n        while (s[i] == '*') {\n            i++;\n            long long x = 0;\n            while (s[i] >= '0' && s[i] <= '9') x = x * 10 + (s[i++] - '0');\n            termen = termen * x;\n        }\n        total = total + semn * termen;\n        if (s[i] == '+') semn = 1;\n        else if (s[i] == '-') semn = -1;\n        if (s[i]) i++;\n    }\n    cout << total;\n    return 0;\n}"
+    },
+    "tests": [
+      {
+        "input": "12+3*4-5*2*3+7",
+        "output": "1"
+      },
+      {
+        "input": "5",
+        "output": "5"
+      },
+      {
+        "input": "0",
+        "output": "0"
+      },
+      {
+        "input": "1000*1000*1000*1000*1000*1000",
+        "output": "1000000000000000000"
+      },
+      {
+        "input": "1-2-3-4",
+        "output": "-8"
+      },
+      {
+        "input": "2*3+4*5",
+        "output": "26"
+      },
+      {
+        "input": "7-1000*1000+3",
+        "output": "-999990"
+      },
+      {
+        "input": "100*0*5+1",
+        "output": "1"
+      },
+      {
+        "input": "1000-1000*1000*1000*1000*1000*1000",
+        "output": "-999999999999999000"
+      },
+      {
+        "input": "0+0-3+8*1+5*7*8*0-0+8+6*4-1*2*0-0*2+1*2+1-3+8-4-7-8*5+6-1*4-8+2-9*6*6+1*1-7*8-5*1",
+        "output": "-394"
+      },
+      {
+        "input": "733+415-722-34+854+796+817+822+407+489+424+500+284-324+44-827+233-987-824-962-59+391+890+955-466-846-249+879+484+479+57+858+136+818-582+582+56+770-284+735+87+50+90+813+492+408",
+        "output": "9682"
+      },
+      {
+        "input": "20+23*27-1*3-9-7*16-29*19+6*4*24+19*20+28+3*6+11*4*3-25*21*12*20*26-10-26-27+18-5-1-2-9+21-5*15-19*6+29+22*3+2+12-22+27-2-23*13+16-22*12-14+0-11-23*15*2*27-15*7+17+10-10-22-13+30*22+30-28-20",
+        "output": "-3293701"
+      },
+      {
+        "input": "999*999*999+1-1-1*1000*1000*1000",
+        "output": "-2997001"
+      }
+    ],
+    "dificultate_motiv": "Cere respectarea priorității operatorilor fără paranteze și fără stive: termenul curent se încheie doar la + sau −, iar semnul lui trebuie ținut minte separat.",
+    "sursa": "Exercițiu de antrenament (nu e dintr-o variantă BAC)",
+    "cerinta": "O expresie are cel mult 255 de caractere și este formată din numere naturale din intervalul [0, 1000] (scrise fără zerouri nesemnificative) și din operatorii +, - și *, fără spații și fără paranteze; expresia începe și se termină cu un număr, iar între oricare două numere se află exact un operator. Ca în matematică, înmulțirile se efectuează înaintea adunărilor și scăderilor, iar operațiile de același fel se efectuează de la stânga la dreapta.\n\nScrie un program care citește de la tastatură o expresie de tipul precizat și afișează pe ecran valoarea ei. Se garantează că valoarea expresiei și valoarea oricărui produs din ea sunt, în valoare absolută, cel mult 10¹⁸.",
+    "explicatie": "12+3*4-5*2*3+7 = 12 + 12 − 30 + 7 = 1."
+  },
+  "3067": {
+    "title": "Cea mai lungă secvență palindrom dintr-un cuvânt",
+    "category": "6. Probleme grele · în stilul Subiectului III",
+    "difficulty": "grea",
+    "description": "Un șir de caractere este palindrom dacă se citește la fel de la stânga la dreapta și de la dreapta la stânga. Scrie un program care citește de la tastatură un cuvânt format din cel mult 255 de litere mici ale alfabetului englez și afișează pe ecran cea mai lungă secvență a lui (caractere aflate pe poziții consecutive) care este palindrom. Dacă există mai multe astfel de secvențe de lungime maximă, se afișează cea care începe cel mai la stânga.",
+    "input": "Cuvântul.",
+    "output": "Cea mai lungă secvență palindrom.",
+    "hint": "Orice palindrom are un centru: o literă (lungime impară) sau spațiul dintre două litere (lungime pară). Pentru fiecare dintre cele 2 · n − 1 centre extinde-te spre stânga și spre dreapta cât timp literele sunt egale și ține minte cea mai lungă secvență găsită; o înlocuiești doar la lungime strict mai mare, ca să rămână cea mai din stânga.",
+    "constraints": [
+      "cuvântul are între 1 și 255 de litere mici"
+    ],
+    "examples": {
+      "input": "abacabaxy",
+      "output": "abacaba"
+    },
+    "official_solution": {
+      "language": "C++",
+      "code": "#include <iostream>\n#include <cstring>\nusing namespace std;\nchar s[256];\nint main() {\n    cin >> s;\n    int n = strlen(s), start = 0, lung = 1;\n    for (int c = 0; c < 2 * n - 1; c++) {\n        int st = c / 2, dr = st + c % 2; // centru pe o literă sau între două litere\n        while (st >= 0 && dr < n && s[st] == s[dr]) {\n            st--;\n            dr++;\n        }\n        int l = dr - st - 1; // palindromul este s[st + 1 .. dr - 1]\n        if (l > lung || (l == lung && st + 1 < start)) {\n            lung = l;\n            start = st + 1;\n        }\n    }\n    for (int i = start; i < start + lung; i++) cout << s[i];\n    return 0;\n}"
+    },
+    "tests": [
+      {
+        "input": "abacabaxy",
+        "output": "abacaba"
+      },
+      {
+        "input": "a",
+        "output": "a"
+      },
+      {
+        "input": "ab",
+        "output": "a"
+      },
+      {
+        "input": "aa",
+        "output": "aa"
+      },
+      {
+        "input": "abcd",
+        "output": "a"
+      },
+      {
+        "input": "abba",
+        "output": "abba"
+      },
+      {
+        "input": "xyzzyxabcba",
+        "output": "xyzzyx"
+      },
+      {
+        "input": "abcbaxabba",
+        "output": "abcba"
+      },
+      {
+        "input": "banana",
+        "output": "anana"
+      },
+      {
+        "input": "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz",
+        "output": "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz"
+      },
+      {
+        "input": "bababbabbabbbaaabbbbaabbbababababbbbbbaabbabbabaaabbbaaabaaabbabaabbbabbabbabaaababbbabbbbabbbabaaabaaaabaabbaaaaaabbbbaaababaababbbbabbaaaaabbabaabbabbbbababbabbbabbaaabbabaabaabbaaabbbaabbababbaaaaaaabbbabbbabababbaaaababbaabaaabbabababbbaaabbababababbb",
+        "output": "abaaababbbabbbbabbbabaaaba"
+      },
+      {
+        "input": "abaccaabbccbacabccabaaaaccaacbaaabbbcacccbacaacaacabacccaaacacaaaaaaaaabbabacaccbaccbbaabbaccbacaaccbbbccaccabbaccabccabccbcbcabaaaccbbcabccbaaaaabaccbaccabcaabbaaaaccbcaaacabcacbabacabbcbbaaaacaccacc",
+        "output": "bacaacaacab"
+      },
+      {
+        "input": "egifbghgcdbjaagfjdfjcidejcefjcifbjdhaebdajadaceihchdjgegfiifbahcccjghfaacbjgbfchccfaccegbafjjddgiehcadeceejadbhfahfgeedhcbcjcifbhgfgdgidhgfcifddfaadbggbfhhfihbdfjbiggdafedeejdheaehdjceigcjebecagdjafighchdaafjaijjchjghfifeigihhfjhgcfehjidbihfjgbeehbfjcbdfb",
+        "output": "jdheaehdj"
+      },
+      {
+        "input": "ababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababcbabababababababababababababababababababababababababababababababababababababababababababababababababababababababababababaq",
+        "output": "ababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababcbabababababababababababababababababababababababababababababababababababababababababababababababababababababababababababa"
+      }
+    ],
+    "dificultate_motiv": "Verificarea fiecărei secvențe costă n³; extinderea din centru (cu ambele tipuri de centre, impar și par) e o idee de algoritmică peste nivelul obișnuit al subiectului.",
+    "sursa": "Exercițiu de antrenament (nu e dintr-o variantă BAC)",
+    "cerinta": "Un șir de caractere este palindrom dacă se citește la fel de la stânga la dreapta și de la dreapta la stânga. Scrie un program care citește de la tastatură un cuvânt format din cel mult 255 de litere mici ale alfabetului englez și afișează pe ecran cea mai lungă secvență a lui (caractere aflate pe poziții consecutive) care este palindrom. Dacă există mai multe astfel de secvențe de lungime maximă, se afișează cea care începe cel mai la stânga.",
+    "explicatie": "În cuvântul abacabaxy, secvențele palindrom cele mai lungi au 7 litere: abacaba."
+  },
+  "3068": {
+    "title": "Cea mai mică rotire a fiecărui cuvânt",
+    "category": "6. Probleme grele · în stilul Subiectului III",
+    "difficulty": "grea",
+    "description": "Prin rotirea unui cuvânt se înțelege mutarea primei lui litere la sfârșit, de câte ori se dorește; de exemplu, rotirile cuvântului bca sunt bca, cab și abc. Un text are cel mult 255 de caractere, iar cuvintele lui sunt formate din litere mici ale alfabetului englez și sunt separate prin câte un spațiu.\n\nScrie un program care citește de la tastatură un text de tipul precizat și îl transformă în memorie, înlocuind fiecare cuvânt cu acea rotire a lui care este cea mai mică în ordine lexicografică (alfabetică). Programul afișează pe ecran textul obținut.",
+    "input": "Textul, pe o linie.",
+    "output": "Textul transformat.",
+    "hint": "Pentru un cuvânt de lungime L, rotirea care începe la poziția k este w[k], w[k+1], …, w[L−1], w[0], …, w[k−1]; litera i a ei este w[(k + i) % L]. Compară rotirile între ele literă cu literă, fără să le construiești, și păstrează poziția de start a celei mai mici; apoi scrie cuvântul rotit în locul celui vechi.",
+    "constraints": [
+      "textul are cel mult 255 de caractere",
+      "litere mici și câte un spațiu între cuvinte"
+    ],
+    "examples": {
+      "input": "bca banana ana",
+      "output": "abc abanan aan"
+    },
+    "official_solution": {
+      "language": "C++",
+      "code": "#include <iostream>\n#include <cstring>\nusing namespace std;\nchar s[256], aux[256];\nint main() {\n    cin.getline(s, 256);\n    int n = strlen(s), i = 0;\n    while (i < n) {\n        int L = 0;\n        while (s[i + L] >= 'a' && s[i + L] <= 'z') L++;\n        char *w = s + i;\n        int best = 0;\n        for (int k = 1; k < L; k++) {\n            int t = 0;\n            while (t < L && w[(k + t) % L] == w[(best + t) % L]) t++;\n            if (t < L && w[(k + t) % L] < w[(best + t) % L]) best = k;\n        }\n        for (int t = 0; t < L; t++) aux[t] = w[(best + t) % L];\n        for (int t = 0; t < L; t++) w[t] = aux[t];\n        i = i + L + 1;\n    }\n    cout << s;\n    return 0;\n}"
+    },
+    "tests": [
+      {
+        "input": "bca banana ana",
+        "output": "abc abanan aan"
+      },
+      {
+        "input": "a",
+        "output": "a"
+      },
+      {
+        "input": "z y x",
+        "output": "z y x"
+      },
+      {
+        "input": "abc",
+        "output": "abc"
+      },
+      {
+        "input": "cba",
+        "output": "acb"
+      },
+      {
+        "input": "baba abab",
+        "output": "abab abab"
+      },
+      {
+        "input": "aaab aaba abaa baaa",
+        "output": "aaab aaab aaab aaab"
+      },
+      {
+        "input": "mississippi",
+        "output": "imississipp"
+      },
+      {
+        "input": "zzzzzzzza azzzzzzzz",
+        "output": "azzzzzzzz azzzzzzzz"
+      },
+      {
+        "input": "ccbababc ccbccbabc ab bcbccbabcac cbaccbacca a ccbbccc bbcbacabbcba cbbcbaab ccbb bababcaaccaa ccbabbbbb bbbc aabacabcaa baccc accbcbcbcbba bcaabc ccbb",
+        "output": "ababcccb abcccbccb ab abcacbcbccb acbaccbacc a bbccccc abbcbabbcbac aabcbbcb bbcc aabababcaacc abbbbbccb bbbc aaaabacabc acccb aaccbcbcbcbb aabcbc bbcc"
+      },
+      {
+        "input": "bbbaabab aa ba bbbaaa aba bbba bbbaabaa abaaab aaabbbbb baaabbaa aabbbaba aabaa babab baa aaaa baaaab abba abbba bb bbbababb babbabba a b a bbaab bb bbbabbab bbbab",
+        "output": "aababbbb aa ab aaabbb aab abbb aabaabbb aaabab aaabbbbb aaabbaab aaabbbab aaaab ababb aab aaaa aaaabb aabb aabbb bb ababbbbb ababbabb a b a aabbb bb abbabbbb abbbb"
+      },
+      {
+        "input": "xxzyyxyyzxyxyzzzyxxxzzxzzzzxzzxxyxxyzyzxxyxxzzyzyzzxzzxxxxzzxyzzxzzzxzxyyxxyyxzzzxxyyyzyzzxxzzzzxxzxzyyyyzyyxyxyzxzyyxyxyxxzyzxxxxxyyzxyzyzyxzyzzxyyxyxzxzzyzxyzxzyxxzzxxzzyzyzzzxyzxzzxzxzyyxzzxyzxxyxzxzzyzzzxzzzzxyyzxyyyxzxzzxxzxzxxzzxyzyyyyzxzxyyzzyxyxzz",
+        "output": "xxxxxyyzxyzyzyxzyzzxyyxyxzxzzyzxyzxzyxxzzxxzzyzyzzzxyzxzzxzxzyyxzzxyzxxyxzxzzyzzzxzzzzxyyzxyyyxzxzzxxzxzxxzzxyzyyyyzxzxyyzzyxyxzzxxzyyxyyzxyxyzzzyxxxzzxzzzzxzzxxyxxyzyzxxyxxzzyzyzzxzzxxxxzzxyzzxzzzxzxyyxxyyxzzzxxyyyzyzzxxzzzzxxzxzyyyyzyyxyxyzxzyyxyxyxxzyz"
+      },
+      {
+        "input": "sxrjssnzhvait sckubrzv prycagbhoeaaijnx bdvrcchyqdjg bhivrhtcbdhesjoie izuludqhyotrbin tiozmymfrtya weycpyfaszujt eqdsguzcmxtuh klczfazjos ntlexvemzzwzas gaczhvp",
+        "output": "aitsxrjssnzhv brzvscku aaijnxprycagbhoe bdvrcchyqdjg bdhesjoiebhivrhtc binizuludqhyotr atiozmymfrty aszujtweycpyf cmxtuheqdsguz azjosklczf asntlexvemzzwz aczhvpg"
+      }
+    ],
+    "dificultate_motiv": "Cere lucrul cu indici modulo lungimea cuvântului și compararea lexicografică a rotirilor, apoi modificarea textului pe loc, cuvânt cu cuvânt.",
+    "sursa": "Exercițiu de antrenament (nu e dintr-o variantă BAC)",
+    "cerinta": "Prin rotirea unui cuvânt se înțelege mutarea primei lui litere la sfârșit, de câte ori se dorește; de exemplu, rotirile cuvântului bca sunt bca, cab și abc. Un text are cel mult 255 de caractere, iar cuvintele lui sunt formate din litere mici ale alfabetului englez și sunt separate prin câte un spațiu.\n\nScrie un program care citește de la tastatură un text de tipul precizat și îl transformă în memorie, înlocuind fiecare cuvânt cu acea rotire a lui care este cea mai mică în ordine lexicografică (alfabetică). Programul afișează pe ecran textul obținut.",
+    "explicatie": "bca devine abc; banana are rotirile banana, ananab, nanaba, anaban, nabana, abanan, iar cea mai mică este abanan; ana devine aan."
+  },
+  "3069": {
+    "title": "Pătratele magice dintr-o matrice",
+    "category": "6. Probleme grele · în stilul Subiectului III",
+    "difficulty": "grea",
+    "description": "O zonă pătratică a unui tablou bidimensional (k linii consecutive și k coloane consecutive, k ≥ 2) este magică dacă sumele elementelor de pe fiecare dintre cele k linii, de pe fiecare dintre cele k coloane și de pe cele două diagonale ale zonei sunt toate egale.\n\nScrie un program care citește de la tastatură numerele naturale n și m (n, m ∈ [2, 30]) și elementele unui tablou bidimensional cu n linii și m coloane, numere naturale din intervalul [0, 100], și afișează pe ecran numărul zonelor pătratice magice ale tabloului, de orice latură k ≥ 2.",
+    "input": "n și m, apoi cele n linii ale tabloului.",
+    "output": "Numărul zonelor pătratice magice.",
+    "hint": "Pentru fiecare latură k de la 2 la min(n, m) și fiecare colț (i, j), calculează suma primei linii a zonei, apoi compară cu ea suma fiecărei linii, a fiecărei coloane și a celor două diagonale; te oprești la prima diferență. Ajută sumele parțiale pe linii și pe coloane: suma unei bucăți de linie se află atunci dintr-o scădere.",
+    "constraints": [
+      "2 ≤ n, m ≤ 30",
+      "elementele sunt din [0, 100]"
+    ],
+    "examples": {
+      "input": "4 5\n2 7 6 0 1\n9 5 1 5 5\n4 3 8 5 5\n0 1 2 3 4",
+      "output": "2"
+    },
+    "official_solution": {
+      "language": "C++",
+      "code": "#include <iostream>\nusing namespace std;\nint a[31][31], sl[31][31], sc[31][31]; // sume parțiale pe linii și pe coloane\nint main() {\n    int n, m;\n    cin >> n >> m;\n    for (int i = 1; i <= n; i++)\n        for (int j = 1; j <= m; j++) {\n            cin >> a[i][j];\n            sl[i][j] = sl[i][j - 1] + a[i][j];\n            sc[i][j] = sc[i - 1][j] + a[i][j];\n        }\n    int nr = 0;\n    for (int k = 2; k <= n && k <= m; k++)\n        for (int i = 1; i + k - 1 <= n; i++)\n            for (int j = 1; j + k - 1 <= m; j++) {\n                int s = sl[i][j + k - 1] - sl[i][j - 1];\n                bool ok = true;\n                for (int x = 0; x < k && ok; x++) {\n                    if (sl[i + x][j + k - 1] - sl[i + x][j - 1] != s) ok = false;\n                    if (sc[i + k - 1][j + x] - sc[i - 1][j + x] != s) ok = false;\n                }\n                int d1 = 0, d2 = 0;\n                for (int x = 0; x < k; x++) {\n                    d1 += a[i + x][j + x];\n                    d2 += a[i + x][j + k - 1 - x];\n                }\n                if (ok && d1 == s && d2 == s) nr++;\n            }\n    cout << nr;\n    return 0;\n}"
+    },
+    "tests_file": "tests/informatica_12_3069.json",
+    "dificultate_motiv": "Trebuie enumerate zonele de toate laturile, iar pentru fiecare verificate 2 · k + 2 sume, cu indicii diagonalei secundare a zonei (j + k − 1 − x) corecți; sumele parțiale fac programul mult mai rapid.",
+    "sursa": "Exercițiu de antrenament (nu e dintr-o variantă BAC)",
+    "cerinta": "O zonă pătratică a unui tablou bidimensional (k linii consecutive și k coloane consecutive, k ≥ 2) este magică dacă sumele elementelor de pe fiecare dintre cele k linii, de pe fiecare dintre cele k coloane și de pe cele două diagonale ale zonei sunt toate egale.\n\nScrie un program care citește de la tastatură numerele naturale n și m (n, m ∈ [2, 30]) și elementele unui tablou bidimensional cu n linii și m coloane, numere naturale din intervalul [0, 100], și afișează pe ecran numărul zonelor pătratice magice ale tabloului, de orice latură k ≥ 2.",
+    "explicatie": "În exemplu există o zonă magică de latură 3 (pătratul 2 7 6 / 9 5 1 / 4 3 8, cu toate sumele 15) și o zonă de latură 2 cu toate elementele 5 (sumele 10)."
+  },
+  "3070": {
+    "title": "Cea mai lungă secvență cu cel mult două valori",
+    "category": "6. Probleme grele · în stilul Subiectului III",
+    "difficulty": "grea",
+    "description": "Se citește un șir de cel mult 10⁶ numere naturale din intervalul [0, 10⁹], separate prin câte un spațiu, până la sfârșitul datelor. Se cere să se afișeze pe ecran lungimea maximă a unei secvențe a șirului (termeni aflați pe poziții consecutive) în care apar cel mult două valori distincte.\n\nProiectează un algoritm eficient din punctul de vedere al timpului de executare și al memoriei utilizate: șirul nu se păstrează în memorie.\n\nLa examen datele sunt în fișierul bac.txt; aici le citești de la tastatură.",
+    "input": "Termenii șirului, până la sfârșitul datelor.",
+    "output": "Lungimea maximă.",
+    "hint": "Ține minte ultima valoare citită, câți termeni egali cu ea sunt la rând la finalul șirului citit (run), cealaltă valoare a secvenței curente și lungimea ei. Când vine x: dacă e egal cu ultima valoare, run și lungimea cresc; dacă e cealaltă valoare, lungimea crește și run devine 1; altfel noua secvență este formată doar din ultimul bloc de valori egale plus x: lungimea devine run + 1.",
+    "constraints": [
+      "1 ≤ numărul de termeni ≤ 10⁶",
+      "termenii sunt din [0, 10⁹]"
+    ],
+    "examples": {
+      "input": "1 2 1 3 3 1 3 4 4",
+      "output": "5"
+    },
+    "official_solution": {
+      "language": "C++",
+      "code": "#include <iostream>\nusing namespace std;\nint main() {\n    long long x, ultima = -1, alta = -1;\n    int run = 0, lung = 0, maxim = 0;\n    while (cin >> x) {\n        if (x == ultima) {\n            run++;\n            lung++;\n        } else {\n            if (x == alta || alta == -1) lung++;\n            else lung = run + 1;\n            alta = ultima;\n            ultima = x;\n            run = 1;\n        }\n        if (lung > maxim) maxim = lung;\n    }\n    cout << maxim;\n    return 0;\n}"
+    },
+    "tests_file": "tests/informatica_12_3070.json",
+    "dificultate_motiv": "Fără a păstra șirul, trebuie observat că, la apariția unei a treia valori, secvența nouă păstrează doar ultimul bloc de valori egale; e nevoie de patru variabile de stare actualizate corect.",
+    "sursa": "Exercițiu de antrenament (nu e dintr-o variantă BAC)",
+    "cerinta": "Se citește un șir de cel mult 10⁶ numere naturale din intervalul [0, 10⁹], separate prin câte un spațiu, până la sfârșitul datelor. Se cere să se afișeze pe ecran lungimea maximă a unei secvențe a șirului (termeni aflați pe poziții consecutive) în care apar cel mult două valori distincte.\n\nProiectează un algoritm eficient din punctul de vedere al timpului de executare și al memoriei utilizate: șirul nu se păstrează în memorie.",
+    "explicatie": "Pentru șirul 1 2 1 3 3 1 3 4 4 se afișează 5 (secvența 1 3 3 1 3, cu valorile 1 și 3).",
+    "nota_examen": "La examen datele sunt în fișierul bac.txt; aici le citești de la tastatură."
+  },
+  "3071": {
+    "title": "Secvențele cu suma divizibilă cu k",
+    "category": "6. Probleme grele · în stilul Subiectului III",
+    "difficulty": "grea",
+    "description": "Se citește un număr natural k din intervalul [1, 10⁵], apoi un șir de cel mult 10⁶ numere naturale din intervalul [0, 10⁹], separate prin câte un spațiu, până la sfârșitul datelor. Se cere să se afișeze pe ecran numărul de secvențe ale șirului (termeni aflați pe poziții consecutive, cel puțin un termen) a căror sumă este divizibilă cu k.\n\nProiectează un algoritm eficient din punctul de vedere al timpului de executare.\n\nLa examen datele sunt în fișierul bac.txt; aici le citești de la tastatură.",
+    "input": "k, apoi termenii șirului.",
+    "output": "Numărul de secvențe.",
+    "hint": "Fie S_j suma primilor j termeni (S₀ = 0). Secvența dintre pozițiile i + 1 și j are suma S_j − S_i, divizibilă cu k exact când S_j și S_i dau același rest la k. Ține un vector cate[r] = câte sume parțiale de până acum au restul r; la fiecare termen nou adună cate[S_j % k], apoi crește-l. Rezultatul poate ajunge la 5 · 10¹¹: long long.",
+    "constraints": [
+      "1 ≤ k ≤ 10⁵",
+      "1 ≤ numărul de termeni ≤ 10⁶",
+      "termenii sunt din [0, 10⁹]"
+    ],
+    "examples": {
+      "input": "3 1 2 3 4 5",
+      "output": "7"
+    },
+    "official_solution": {
+      "language": "C++",
+      "code": "#include <iostream>\nusing namespace std;\nlong long cate[100000];\nint main() {\n    int k;\n    long long x, rest = 0, nr = 0;\n    cin >> k;\n    cate[0] = 1; // suma vidă\n    while (cin >> x) {\n        rest = (rest + x) % k;\n        nr = nr + cate[rest];\n        cate[rest]++;\n    }\n    cout << nr;\n    return 0;\n}"
+    },
+    "tests_file": "tests/informatica_12_3071.json",
+    "dificultate_motiv": "Cele aproximativ n² / 2 secvențe nu pot fi verificate; trebuie trecut la sume parțiale și numărate perechile de resturi egale, iar rezultatul cere long long.",
+    "sursa": "Exercițiu de antrenament (nu e dintr-o variantă BAC)",
+    "cerinta": "Se citește un număr natural k din intervalul [1, 10⁵], apoi un șir de cel mult 10⁶ numere naturale din intervalul [0, 10⁹], separate prin câte un spațiu, până la sfârșitul datelor. Se cere să se afișeze pe ecran numărul de secvențe ale șirului (termeni aflați pe poziții consecutive, cel puțin un termen) a căror sumă este divizibilă cu k.\n\nProiectează un algoritm eficient din punctul de vedere al timpului de executare.",
+    "explicatie": "Pentru k = 3 și șirul 1 2 3 4 5 se afișează 7: 1 2, 3, 1 2 3, 4 5, 3 4 5, 2 3 4, 1 2 3 4 5.",
+    "nota_examen": "La examen datele sunt în fișierul bac.txt; aici le citești de la tastatură."
+  },
+  "3072": {
+    "title": "Cea mai lungă secvență echilibrată",
+    "category": "6. Probleme grele · în stilul Subiectului III",
+    "difficulty": "grea",
+    "description": "O secvență (termeni aflați pe poziții consecutive) a unui șir este echilibrată dacă are tot atâția termeni pari câți termeni impari. Se citește un șir de cel mult 10⁶ numere naturale din intervalul [0, 10⁹], separate prin câte un spațiu, până la sfârșitul datelor. Se cere să se afișeze pe ecran lungimea maximă a unei secvențe echilibrate a șirului, sau 0 dacă nu există nicio astfel de secvență.\n\nProiectează un algoritm eficient din punctul de vedere al timpului de executare.\n\nLa examen datele sunt în fișierul bac.txt; aici le citești de la tastatură.",
+    "input": "Termenii șirului, până la sfârșitul datelor.",
+    "output": "Lungimea maximă a unei secvențe echilibrate, sau 0.",
+    "hint": "Înlocuiește fiecare termen par cu +1 și fiecare impar cu −1; o secvență e echilibrată când suma ei este 0, adică două sume parțiale sunt egale. Suma parțială d este între −n și n: ține într-un vector prima poziție la care a apărut fiecare valoare (deplasată cu n ca să fie indice valid). La poziția j, dacă d a mai apărut la poziția p, secvența p + 1 … j are lungimea j − p.",
+    "constraints": [
+      "1 ≤ numărul de termeni ≤ 10⁶",
+      "termenii sunt din [0, 10⁹]"
+    ],
+    "examples": {
+      "input": "3 5 2 7 1 4 6 9",
+      "output": "6"
+    },
+    "official_solution": {
+      "language": "C++",
+      "code": "#include <iostream>\nusing namespace std;\nconst int N = 1000000;\nint prima[2 * N + 1]; // prima[d + N] = prima poziție cu suma parțială d, sau -1\nint main() {\n    for (int i = 0; i <= 2 * N; i++) prima[i] = -1;\n    long long x;\n    int d = 0, j = 0, maxim = 0;\n    prima[N] = 0;\n    while (cin >> x) {\n        j++;\n        if (x % 2 == 0) d++;\n        else d--;\n        if (prima[d + N] == -1) prima[d + N] = j;\n        else if (j - prima[d + N] > maxim) maxim = j - prima[d + N];\n    }\n    cout << maxim;\n    return 0;\n}"
+    },
+    "tests_file": "tests/informatica_12_3072.json",
+    "dificultate_motiv": "Cere transformarea în ±1, observarea că o secvență echilibrată înseamnă două sume parțiale egale, și păstrarea primei apariții a fiecărei sume, cu indici deplasați pentru valorile negative.",
+    "sursa": "Exercițiu de antrenament (nu e dintr-o variantă BAC)",
+    "cerinta": "O secvență (termeni aflați pe poziții consecutive) a unui șir este echilibrată dacă are tot atâția termeni pari câți termeni impari. Se citește un șir de cel mult 10⁶ numere naturale din intervalul [0, 10⁹], separate prin câte un spațiu, până la sfârșitul datelor. Se cere să se afișeze pe ecran lungimea maximă a unei secvențe echilibrate a șirului, sau 0 dacă nu există nicio astfel de secvență.\n\nProiectează un algoritm eficient din punctul de vedere al timpului de executare.",
+    "explicatie": "Pentru șirul 3 5 2 7 1 4 6 9 se afișează 6 (secvența 2 7 1 4 6 9).",
+    "nota_examen": "La examen datele sunt în fișierul bac.txt; aici le citești de la tastatură."
+  },
+  "3073": {
+    "title": "Perechile în ordine inversă",
+    "category": "6. Probleme grele · în stilul Subiectului III",
+    "difficulty": "grea",
+    "description": "Se citește un șir de cel mult 10⁶ numere naturale din intervalul [0, 100], separate prin câte un spațiu, până la sfârșitul datelor. Se cere să se afișeze pe ecran numărul de perechi de termeni ai șirului în care termenul aflat mai la stânga este strict mai mare decât cel aflat mai la dreapta (oricât de depărtați ar fi).\n\nProiectează un algoritm eficient din punctul de vedere al timpului de executare și al memoriei utilizate.\n\nLa examen datele sunt în fișierul bac.txt; aici le citești de la tastatură.",
+    "input": "Termenii șirului, până la sfârșitul datelor.",
+    "output": "Numărul de perechi.",
+    "hint": "Valorile sunt puține (101). Ține frecv[v] = câți termeni egali cu v au fost citiți. Când citești x, fiecare termen citit anterior și mai mare decât x formează o pereche: adună frecv[x + 1] + … + frecv[100], apoi frecv[x]++. Sunt cel mult 100 de pași pe termen, iar rezultatul (până la 5 · 10¹¹) cere long long.",
+    "constraints": [
+      "1 ≤ numărul de termeni ≤ 10⁶",
+      "termenii sunt din [0, 100]"
+    ],
+    "examples": {
+      "input": "3 1 2 3 0",
+      "output": "6"
+    },
+    "official_solution": {
+      "language": "C++",
+      "code": "#include <iostream>\nusing namespace std;\nint main() {\n    long long frecv[101] = {0}, nr = 0;\n    int x;\n    while (cin >> x) {\n        for (int v = x + 1; v <= 100; v++) nr = nr + frecv[v];\n        frecv[x]++;\n    }\n    cout << nr;\n    return 0;\n}"
+    },
+    "tests_file": "tests/informatica_12_3073.json",
+    "dificultate_motiv": "Numărul de inversiuni în n² este prea lent pentru 10⁶ termeni; observația că valorile sunt mici transformă problema într-o numărare cu vector de frecvență.",
+    "sursa": "Exercițiu de antrenament (nu e dintr-o variantă BAC)",
+    "cerinta": "Se citește un șir de cel mult 10⁶ numere naturale din intervalul [0, 100], separate prin câte un spațiu, până la sfârșitul datelor. Se cere să se afișeze pe ecran numărul de perechi de termeni ai șirului în care termenul aflat mai la stânga este strict mai mare decât cel aflat mai la dreapta (oricât de depărtați ar fi).\n\nProiectează un algoritm eficient din punctul de vedere al timpului de executare și al memoriei utilizate.",
+    "explicatie": "Pentru șirul 3 1 2 3 0 se afișează 6: (3, 1), (3, 2), (3, 0), (1, 0), (2, 0) și (3, 0) cu al doilea 3.",
+    "nota_examen": "La examen datele sunt în fișierul bac.txt; aici le citești de la tastatură."
+  },
+  "3074": {
+    "title": "Secvența de sumă maximă cu cel puțin k termeni",
+    "category": "6. Probleme grele · în stilul Subiectului III",
+    "difficulty": "grea",
+    "description": "Se citește un număr natural k din intervalul [1, 10⁶], apoi un șir de cel puțin k și cel mult 10⁶ numere întregi din intervalul [-10⁴, 10⁴], separate prin câte un spațiu, până la sfârșitul datelor. Se cere să se afișeze pe ecran cea mai mare sumă a unei secvențe a șirului (termeni aflați pe poziții consecutive) care are cel puțin k termeni.\n\nProiectează un algoritm eficient din punctul de vedere al timpului de executare.\n\nLa examen datele sunt în fișierul bac.txt; aici le citești de la tastatură.",
+    "input": "k, apoi termenii șirului.",
+    "output": "Suma maximă.",
+    "hint": "Cu sumele parțiale S, o secvență i + 1 … j are suma S_j − S_i și cel puțin k termeni dacă i ≤ j − k. Pentru fiecare j ≥ k vrei cel mai mic S_i cu i ≤ j − k: ține minimul acestor sume pe măsură ce j crește (la fiecare pas intră S_(j−k)). Ai nevoie de S_(j−k), deci păstrează sumele parțiale într-un vector.",
+    "constraints": [
+      "1 ≤ k ≤ numărul de termeni ≤ 10⁶",
+      "termenii sunt din [-10⁴, 10⁴]"
+    ],
+    "examples": {
+      "input": "3 5 -9 4 -1 3 -8 6",
+      "output": "6"
+    },
+    "official_solution": {
+      "language": "C++",
+      "code": "#include <iostream>\nusing namespace std;\nlong long S[1000001];\nint main() {\n    int k, n = 0;\n    long long x;\n    cin >> k;\n    while (cin >> x) {\n        n++;\n        S[n] = S[n - 1] + x;\n    }\n    long long minim = S[0], maxim = S[k] - S[0];\n    for (int j = k; j <= n; j++) {\n        if (S[j - k] < minim) minim = S[j - k];\n        if (S[j] - minim > maxim) maxim = S[j] - minim;\n    }\n    cout << maxim;\n    return 0;\n}"
+    },
+    "tests_file": "tests/informatica_12_3074.json",
+    "dificultate_motiv": "Kadane nu se aplică direct din cauza lungimii minime; trebuie formulat cu sume parțiale și un minim „întârziat” cu k poziții.",
+    "sursa": "Exercițiu de antrenament (nu e dintr-o variantă BAC)",
+    "cerinta": "Se citește un număr natural k din intervalul [1, 10⁶], apoi un șir de cel puțin k și cel mult 10⁶ numere întregi din intervalul [-10⁴, 10⁴], separate prin câte un spațiu, până la sfârșitul datelor. Se cere să se afișeze pe ecran cea mai mare sumă a unei secvențe a șirului (termeni aflați pe poziții consecutive) care are cel puțin k termeni.\n\nProiectează un algoritm eficient din punctul de vedere al timpului de executare.",
+    "explicatie": "Pentru k = 3 și șirul 5 -9 4 -1 3 -8 6 se afișează 6 (secvența 4 -1 3). Termenul 6 singur are și el suma 6, iar 5 are suma 5, dar au mai puțin de 3 termeni.",
+    "nota_examen": "La examen datele sunt în fișierul bac.txt; aici le citești de la tastatură."
+  },
+  "3075": {
+    "title": "Cei mai apropiați doi termeni",
+    "category": "6. Probleme grele · în stilul Subiectului III",
+    "difficulty": "grea",
+    "description": "Se citește un șir de cel puțin două și cel mult 10⁶ numere naturale din intervalul [0, 10⁶], separate prin câte un spațiu, până la sfârșitul datelor. Se cere să se afișeze pe ecran cea mai mică diferență, în valoare absolută, dintre doi termeni ai șirului aflați pe poziții diferite.\n\nProiectează un algoritm eficient din punctul de vedere al timpului de executare.\n\nLa examen datele sunt în fișierul bac.txt; aici le citești de la tastatură.",
+    "input": "Termenii șirului, până la sfârșitul datelor.",
+    "output": "Diferența minimă.",
+    "hint": "Cei mai apropiați doi termeni sunt vecini în șirul ordonat. Nu e nevoie de o sortare propriu-zisă: valorile sunt cel mult 10⁶, deci marchează într-un vector valorile care apar. Dacă o valoare apare de două ori, răspunsul e 0. Altfel parcurge valorile de la 0 la 10⁶ și ia cea mai mică diferență dintre două valori marcate consecutive.",
+    "constraints": [
+      "2 ≤ numărul de termeni ≤ 10⁶",
+      "termenii sunt din [0, 10⁶]"
+    ],
+    "examples": {
+      "input": "40 17 92 31 55 20",
+      "output": "3"
+    },
+    "official_solution": {
+      "language": "C++",
+      "code": "#include <iostream>\nusing namespace std;\nconst int V = 1000000;\nint frecv[V + 1];\nint main() {\n    int x;\n    while (cin >> x) frecv[x]++;\n    int minim = V + 1, ant = -1;\n    for (int v = 0; v <= V; v++)\n        if (frecv[v] > 0) {\n            if (frecv[v] > 1) minim = 0;\n            if (ant != -1 && v - ant < minim) minim = v - ant;\n            ant = v;\n        }\n    cout << minim;\n    return 0;\n}"
+    },
+    "tests_file": "tests/informatica_12_3075.json",
+    "dificultate_motiv": "Compararea tuturor perechilor e prea lentă; trebuie observat că minimul e între vecini în ordinea crescătoare și obținută această ordine cu un vector de apariții, în timp liniar.",
+    "sursa": "Exercițiu de antrenament (nu e dintr-o variantă BAC)",
+    "cerinta": "Se citește un șir de cel puțin două și cel mult 10⁶ numere naturale din intervalul [0, 10⁶], separate prin câte un spațiu, până la sfârșitul datelor. Se cere să se afișeze pe ecran cea mai mică diferență, în valoare absolută, dintre doi termeni ai șirului aflați pe poziții diferite.\n\nProiectează un algoritm eficient din punctul de vedere al timpului de executare.",
+    "explicatie": "Pentru șirul 40 17 92 31 55 20 se afișează 3 (20 − 17).",
+    "nota_examen": "La examen datele sunt în fișierul bac.txt; aici le citești de la tastatură."
+  },
+  "3076": {
+    "title": "Tripletele crescătoare",
+    "category": "6. Probleme grele · în stilul Subiectului III",
+    "difficulty": "grea",
+    "description": "Se citește un șir de cel mult 10⁶ numere naturale din intervalul [1, 100], separate prin câte un spațiu, până la sfârșitul datelor. Se cere să se afișeze pe ecran numărul de triplete de termeni ai șirului, aflați pe poziții p < q < r (nu neapărat consecutive), pentru care termenul de pe poziția p este strict mai mic decât cel de pe poziția q, iar acesta este strict mai mic decât cel de pe poziția r.\n\nProiectează un algoritm eficient din punctul de vedere al timpului de executare și al memoriei utilizate.\n\nLa examen datele sunt în fișierul bac.txt; aici le citești de la tastatură.",
+    "input": "Termenii șirului, până la sfârșitul datelor.",
+    "output": "Numărul de triplete.",
+    "hint": "Ține două tablouri de 101 elemente: unu[v] = câți termeni egali cu v au fost citiți, doi[v] = câte perechi crescătoare (p < q) au fost citite care se termină cu valoarea v. Când citești x: tripletele noi sunt doi[1] + … + doi[x − 1]; perechile noi care se termină în x sunt unu[1] + … + unu[x − 1], adunate la doi[x]; apoi unu[x]++. Rezultatul ajunge la 10¹⁷: long long.",
+    "constraints": [
+      "1 ≤ numărul de termeni ≤ 10⁶",
+      "termenii sunt din [1, 100]"
+    ],
+    "examples": {
+      "input": "2 1 3 2 4",
+      "output": "3"
+    },
+    "official_solution": {
+      "language": "C++",
+      "code": "#include <iostream>\nusing namespace std;\nint main() {\n    long long unu[101] = {0}, doi[101] = {0}, nr = 0;\n    int x;\n    while (cin >> x) {\n        long long s1 = 0, s2 = 0;\n        for (int v = 1; v < x; v++) {\n            s1 = s1 + unu[v];\n            s2 = s2 + doi[v];\n        }\n        nr = nr + s2;\n        doi[x] = doi[x] + s1;\n        unu[x]++;\n    }\n    cout << nr;\n    return 0;\n}"
+    },
+    "tests_file": "tests/informatica_12_3076.json",
+    "dificultate_motiv": "Trebuie gândit în trepte: numărarea perechilor crescătoare care se termină în fiecare valoare, apoi a tripletelor din ele, cu ordinea corectă a actualizărilor pentru termenul curent.",
+    "sursa": "Exercițiu de antrenament (nu e dintr-o variantă BAC)",
+    "cerinta": "Se citește un șir de cel mult 10⁶ numere naturale din intervalul [1, 100], separate prin câte un spațiu, până la sfârșitul datelor. Se cere să se afișeze pe ecran numărul de triplete de termeni ai șirului, aflați pe poziții p < q < r (nu neapărat consecutive), pentru care termenul de pe poziția p este strict mai mic decât cel de pe poziția q, iar acesta este strict mai mic decât cel de pe poziția r.\n\nProiectează un algoritm eficient din punctul de vedere al timpului de executare și al memoriei utilizate.",
+    "explicatie": "Pentru șirul 2 1 3 2 4 se afișează 3: pozițiile (1, 3, 5) cu valorile 2 3 4, (2, 3, 5) cu 1 3 4 și (2, 4, 5) cu 1 2 4. Pozițiile (1, 4, 5) nu sunt bune: 2 < 2 e fals.",
+    "nota_examen": "La examen datele sunt în fișierul bac.txt; aici le citești de la tastatură."
+  },
+  "3077": {
+    "title": "Cea mai mică sumă care nu se poate forma",
+    "category": "6. Probleme grele · în stilul Subiectului III",
+    "difficulty": "grea",
+    "description": "Se citește un șir de cel mult 10⁶ numere naturale din intervalul [1, 10⁶], separate prin câte un spațiu, până la sfârșitul datelor; ele reprezintă valorile unor monede (pot exista mai multe monede cu aceeași valoare). Se cere să se afișeze pe ecran cea mai mică sumă, număr natural nenul, care nu poate fi plătită exact folosind o parte dintre aceste monede, fiecare monedă cel mult o dată.\n\nProiectează un algoritm eficient din punctul de vedere al timpului de executare.\n\nLa examen datele sunt în fișierul bac.txt; aici le citești de la tastatură.",
+    "input": "Valorile monedelor, până la sfârșitul datelor.",
+    "output": "Cea mai mică sumă imposibil de plătit.",
+    "hint": "Ia monedele în ordine crescătoare și ține r: toate sumele 1 … r − 1 se pot plăti cu monedele de până acum (la început r = 1). Dacă următoarea monedă are valoarea v ≤ r, sumele posibile devin 1 … r + v − 1, deci r = r + v. Dacă v > r, suma r nu se mai poate plăti niciodată (monedele rămase sunt toate prea mari): ăsta e răspunsul. Ordinea crescătoare se obține cu un vector de frecvență, fără sortare.",
+    "constraints": [
+      "1 ≤ numărul de monede ≤ 10⁶",
+      "valorile sunt din [1, 10⁶]"
+    ],
+    "examples": {
+      "input": "1 2 2 14 5",
+      "output": "11"
+    },
+    "official_solution": {
+      "language": "C++",
+      "code": "#include <iostream>\nusing namespace std;\nconst int V = 1000000;\nint frecv[V + 1];\nint main() {\n    int x;\n    while (cin >> x) frecv[x]++;\n    long long r = 1; // toate sumele 1 .. r - 1 se pot plăti\n    for (int v = 1; v <= V && v <= r; v++) r = r + (long long)v * frecv[v];\n    cout << r;\n    return 0;\n}"
+    },
+    "tests_file": "tests/informatica_12_3077.json",
+    "dificultate_motiv": "Este o idee greedy deloc evidentă (invariantul „toate sumele mai mici decât r se pot plăti”), plus ordonarea prin vector de frecvență și long long pentru r.",
+    "sursa": "Exercițiu de antrenament (nu e dintr-o variantă BAC)",
+    "cerinta": "Se citește un șir de cel mult 10⁶ numere naturale din intervalul [1, 10⁶], separate prin câte un spațiu, până la sfârșitul datelor; ele reprezintă valorile unor monede (pot exista mai multe monede cu aceeași valoare). Se cere să se afișeze pe ecran cea mai mică sumă, număr natural nenul, care nu poate fi plătită exact folosind o parte dintre aceste monede, fiecare monedă cel mult o dată.\n\nProiectează un algoritm eficient din punctul de vedere al timpului de executare.",
+    "explicatie": "Pentru monedele 1 2 2 14 5 se afișează 11: cu 1, 2, 2 și 5 se pot plăti toate sumele de la 1 la 10, dar nu și 11, pentru că monedele mici fac împreună doar 10, iar moneda de 14 e prea mare.",
+    "nota_examen": "La examen datele sunt în fișierul bac.txt; aici le citești de la tastatură."
+  },
+  "3078": {
+    "title": "Secvențele cu exact k termeni pari",
+    "category": "6. Probleme grele · în stilul Subiectului III",
+    "difficulty": "grea",
+    "description": "Se citește un număr natural k din intervalul [0, 10⁶], apoi un șir de cel mult 10⁶ numere naturale din intervalul [0, 10⁹], separate prin câte un spațiu, până la sfârșitul datelor. Se cere să se afișeze pe ecran numărul de secvențe ale șirului (termeni aflați pe poziții consecutive, cel puțin un termen) care conțin exact k termeni pari.\n\nProiectează un algoritm eficient din punctul de vedere al timpului de executare.\n\nLa examen datele sunt în fișierul bac.txt; aici le citești de la tastatură.",
+    "input": "k, apoi termenii șirului.",
+    "output": "Numărul de secvențe.",
+    "hint": "Fie P_j numărul de termeni pari dintre primii j termeni (P₀ = 0). Secvența i + 1 … j are P_j − P_i termeni pari, deci pentru fiecare j trebuie numărate pozițiile i < j cu P_i = P_j − k. Ține cate[v] = câte sume parțiale anterioare sunt egale cu v; P_j crește cu cel mult 1 la fiecare pas, deci cate are cel mult 10⁶ + 1 elemente. Pentru k = 0 se numără secvențele formate numai din termeni impari.",
+    "constraints": [
+      "0 ≤ k ≤ 10⁶",
+      "1 ≤ numărul de termeni ≤ 10⁶",
+      "termenii sunt din [0, 10⁹]"
+    ],
+    "examples": {
+      "input": "2 1 2 3 4 5 6",
+      "output": "6"
+    },
+    "official_solution": {
+      "language": "C++",
+      "code": "#include <iostream>\nusing namespace std;\nint cate[1000001]; // cate[v] = câte sume parțiale de până acum sunt egale cu v\nint main() {\n    int k, p = 0;\n    long long x, nr = 0;\n    cin >> k;\n    cate[0] = 1;\n    while (cin >> x) {\n        if (x % 2 == 0) p++;\n        if (p >= k) nr = nr + cate[p - k];\n        cate[p]++;\n    }\n    cout << nr;\n    return 0;\n}"
+    },
+    "tests_file": "tests/informatica_12_3078.json",
+    "dificultate_motiv": "Cere sume parțiale pe paritate și numărarea perechilor P_i = P_j − k cu un vector de frecvență, inclusiv cazul k = 0 și rezultate de ordinul 5 · 10¹¹.",
+    "sursa": "Exercițiu de antrenament (nu e dintr-o variantă BAC)",
+    "cerinta": "Se citește un număr natural k din intervalul [0, 10⁶], apoi un șir de cel mult 10⁶ numere naturale din intervalul [0, 10⁹], separate prin câte un spațiu, până la sfârșitul datelor. Se cere să se afișeze pe ecran numărul de secvențe ale șirului (termeni aflați pe poziții consecutive, cel puțin un termen) care conțin exact k termeni pari.\n\nProiectează un algoritm eficient din punctul de vedere al timpului de executare.",
+    "explicatie": "Pentru k = 2 și șirul 1 2 3 4 5 6 se afișează 6: 2 3 4, 1 2 3 4, 2 3 4 5, 1 2 3 4 5, 4 5 6 și 3 4 5 6.",
+    "nota_examen": "La examen datele sunt în fișierul bac.txt; aici le citești de la tastatură."
+  },
+  "3079": {
+    "title": "Cel mai lung subșir de valori consecutive",
+    "category": "6. Probleme grele · în stilul Subiectului III",
+    "difficulty": "grea",
+    "description": "Se citește un șir de cel mult 10⁶ numere naturale din intervalul [1, 10⁶], separate prin câte un spațiu, până la sfârșitul datelor. Se cere să se determine cea mai mare lungime L a unui subșir al șirului (termeni aflați în ordinea din șir, nu neapărat pe poziții consecutive) de forma x, x + 1, x + 2, …, x + L − 1. Se afișează pe ecran L și cea mai mică valoare x cu care poate începe un astfel de subșir de lungime L, separate printr-un spațiu.\n\nProiectează un algoritm eficient din punctul de vedere al timpului de executare.\n\nLa examen datele sunt în fișierul bac.txt; aici le citești de la tastatură.",
+    "input": "Termenii șirului, până la sfârșitul datelor.",
+    "output": "L și x.",
+    "hint": "Fie lung[v] = lungimea celui mai lung subșir de forma …, v − 1, v format din termenii citiți până acum. Când citești v, îl poți pune după cel mai bun subșir care se termină în v − 1: lung[v] = max(lung[v], lung[v − 1] + 1). La final, L este maximul lui lung, iar x = v − L + 1 pentru cea mai mică valoare v cu lung[v] = L.",
+    "constraints": [
+      "1 ≤ numărul de termeni ≤ 10⁶",
+      "termenii sunt din [1, 10⁶]"
+    ],
+    "examples": {
+      "input": "3 10 4 11 1 5 12 2 13 6",
+      "output": "4 3"
+    },
+    "official_solution": {
+      "language": "C++",
+      "code": "#include <iostream>\nusing namespace std;\nconst int V = 1000000;\nint lung[V + 1];\nint main() {\n    int v;\n    while (cin >> v)\n        if (lung[v - 1] + 1 > lung[v]) lung[v] = lung[v - 1] + 1;\n    int L = 0, x = 0;\n    for (int w = 1; w <= V; w++)\n        if (lung[w] > L) {\n            L = lung[w];\n            x = w - L + 1;\n        }\n    cout << L << \" \" << x;\n    return 0;\n}"
+    },
+    "tests_file": "tests/informatica_12_3079.json",
+    "dificultate_motiv": "Este o programare dinamică pe valori, nu pe poziții, care cere observația că ultimul termen al subșirului e singurul care contează; ordinea din șir face problema mult mai grea decât varianta „valori consecutive oriunde”.",
+    "sursa": "Exercițiu de antrenament (nu e dintr-o variantă BAC)",
+    "cerinta": "Se citește un șir de cel mult 10⁶ numere naturale din intervalul [1, 10⁶], separate prin câte un spațiu, până la sfârșitul datelor. Se cere să se determine cea mai mare lungime L a unui subșir al șirului (termeni aflați în ordinea din șir, nu neapărat pe poziții consecutive) de forma x, x + 1, x + 2, …, x + L − 1. Se afișează pe ecran L și cea mai mică valoare x cu care poate începe un astfel de subșir de lungime L, separate printr-un spațiu.\n\nProiectează un algoritm eficient din punctul de vedere al timpului de executare.",
+    "explicatie": "Pentru șirul 3 10 4 11 1 5 12 2 13 6 se afișează 4 3: subșirurile 3 4 5 6 și 10 11 12 13 au lungimea 4, iar 3 < 10.",
+    "nota_examen": "La examen datele sunt în fișierul bac.txt; aici le citești de la tastatură."
   }
 }

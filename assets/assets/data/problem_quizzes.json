@@ -22336,6 +22336,726 @@
      "a": 0,
      "e": "Indicativele se dau în ordinea înscrierii, deci indicativul mai mic înseamnă înscriere mai devreme."
     }
+   ],
+   "3050": [
+    {
+     "q": "5184 = 2⁶ · 3⁴. Care este cel mai mare k pentru care 5184 e o putere k?",
+     "o": [
+      "2",
+      "4",
+      "6",
+      "10"
+     ],
+     "a": 0,
+     "e": "k trebuie să dividă și 6, și 4, deci k = cmmdc(6, 4) = 2."
+    },
+    {
+     "q": "Ce returnează baza(2¹⁰ · 3⁵) = baza(248832)?",
+     "o": [
+      "12",
+      "6",
+      "2",
+      "248832"
+     ],
+     "a": 0,
+     "e": "cmmdc(10, 5) = 5, deci baza este 2² · 3¹ = 12, iar 12⁵ = 248832."
+    }
+   ],
+   "3051": [
+    {
+     "q": "Câte zerouri are la final 100! în baza 10?",
+     "o": [
+      "24",
+      "20",
+      "10",
+      "25"
+     ],
+     "a": 0,
+     "e": "Exponentul lui 5 în 100! este 100/5 + 100/25 = 20 + 4 = 24; al lui 2 e mult mai mare, deci 24."
+    },
+    {
+     "q": "Pentru baza 16 = 2⁴, de ce împarți exponentul lui 2 din n! la 4?",
+     "o": [
+      "Fiecare zero în baza 16 consumă patru factori 2",
+      "Pentru că 16 are 4 divizori",
+      "Ca să nu depășească int",
+      "Nu se împarte"
+     ],
+     "a": 0,
+     "e": "O împărțire la 16 scoate 2⁴ din n!, deci zerourile sunt (exponentul lui 2) / 4, rotunjit în jos."
+    }
+   ],
+   "3052": [
+    {
+     "q": "Care este cel mai mic număr de 3 cifre cu suma cifrelor 20?",
+     "o": [
+      "299",
+      "389",
+      "992",
+      "1199"
+     ],
+     "a": 0,
+     "e": "Prima cifră trebuie să fie cel puțin 20 − 18 = 2, ca restul de 18 să încapă în două cifre de 9: 299."
+    },
+    {
+     "q": "Când nu există niciun număr de k cifre cu suma cifrelor s (s ≥ 1)?",
+     "o": [
+      "Când s > 9 · k",
+      "Când s > k",
+      "Când s este impar",
+      "Există mereu"
+     ],
+     "a": 0,
+     "e": "Cea mai mare sumă posibilă a k cifre este 9 · k."
+    }
+   ],
+   "3053": [
+    {
+     "q": "Care este următorul număr cu aceleași cifre ca 1342?",
+     "o": [
+      "1423",
+      "1432",
+      "2134",
+      "1324"
+     ],
+     "a": 0,
+     "e": "Pivotul este 3 (3 < 4). Cea mai mică cifră mai mare decât 3 din dreapta lui este 4: 1432, apoi coada „32” în ordine crescătoare: 1423."
+    },
+    {
+     "q": "De ce după interschimbare cifrele din dreapta pivotului se pun în ordine crescătoare?",
+     "o": [
+      "Ca numărul obținut să fie cel mai mic dintre cele mai mari decât n",
+      "Ca suma cifrelor să rămână aceeași",
+      "Ca să nu apară zerouri în față",
+      "Nu e nevoie"
+     ],
+     "a": 0,
+     "e": "Prefixul e deja cel mai mic posibil mai mare; coada trebuie să fie cea mai mică, adică crescătoare."
+    }
+   ],
+   "3054": [
+    {
+     "q": "Care este descompunerea lui 12?",
+     "o": [
+      "8 3 1",
+      "8 4",
+      "5 5 2",
+      "8 2 2"
+     ],
+     "a": 0,
+     "e": "Cel mai mare termen ≤ 12 este 8, rămâne 4; cel mai mare ≤ 4 este 3, rămâne 1."
+    },
+    {
+     "q": "De ce condiția de oprire e f[k−1] ≤ n − f[k−2] și nu f[k−1] + f[k−2] ≤ n?",
+     "o": [
+      "Ca adunarea să nu depășească long long",
+      "Sunt echivalente și ca rezultat, și ca risc",
+      "Pentru viteză",
+      "Ca șirul să înceapă cu 1, 2"
+     ],
+     "a": 0,
+     "e": "Pentru n aproape de 10¹⁸, suma a doi termeni ar putea trece peste limita lui long long; scăderea nu poate."
+    }
+   ],
+   "3055": [
+    {
+     "q": "Cum se scrie 7 / 12?",
+     "o": [
+      "0.58(3)",
+      "0.(583)",
+      "0.583",
+      "0.5(83)"
+     ],
+     "a": 0,
+     "e": "7 / 12 = 0,58333…: zecimalele 5 și 8 nu se repetă, apoi 3 se repetă la nesfârșit."
+    },
+    {
+     "q": "Câte zecimale diferite pot apărea cel mult înainte ca un rest să se repete?",
+     "o": [
+      "b",
+      "10",
+      "a",
+      "9"
+     ],
+     "a": 0,
+     "e": "Resturile nenule sunt între 1 și b − 1, deci după cel mult b pași unul se repetă sau restul devine 0."
+    }
+   ],
+   "3056": [
+    {
+     "q": "Câte palindroame de 4 cifre există?",
+     "o": [
+      "90",
+      "900",
+      "9",
+      "100"
+     ],
+     "a": 0,
+     "e": "Un palindrom de 4 cifre e dat de primele două cifre: 10 … 99, deci 90."
+    },
+    {
+     "q": "De ce se calculează f(b) − f(a − 1), cu f(x) = palindroamele din [1, x]?",
+     "o": [
+      "E mai simplu de numărat până la o valoare decât într-un interval",
+      "Ca să nu depășească int",
+      "Pentru că a e mereu palindrom",
+      "Nu e corect"
+     ],
+     "a": 0,
+     "e": "Palindroamele din [a, b] sunt cele din [1, b] minus cele din [1, a − 1]."
+    }
+   ],
+   "3057": [
+    {
+     "q": "Câte cifre au în total numerele de la 1 la 99?",
+     "o": [
+      "189",
+      "180",
+      "99",
+      "198"
+     ],
+     "a": 0,
+     "e": "9 cifre pentru 1 … 9 și 90 · 2 = 180 pentru 10 … 99: 189."
+    },
+    {
+     "q": "Pe ce poziție începe numărul 100 în șir?",
+     "o": [
+      "190",
+      "189",
+      "200",
+      "100"
+     ],
+     "a": 0,
+     "e": "Primele 189 de cifre sunt ale numerelor 1 … 99, deci 100 începe pe poziția 190."
+    }
+   ],
+   "3058": [
+    {
+     "q": "Câte numere i din [1, 12] au cmmdc(i, 12) = 3?",
+     "o": [
+      "2 (3 și 9)",
+      "4",
+      "1",
+      "3"
+     ],
+     "a": 0,
+     "e": "i = 3 · j cu j ≤ 4 și cmmdc(j, 4) = 1: j = 1 sau 3, deci φ(4) = 2 numere."
+    },
+    {
+     "q": "Cât returnează sumaCmmdc(p) pentru p prim?",
+     "o": [
+      "2p − 1",
+      "p",
+      "p + 1",
+      "2p"
+     ],
+     "a": 0,
+     "e": "Primele p − 1 numere au cmmdc 1 cu p, iar ultimul are cmmdc p: (p − 1) + p = 2p − 1."
+    }
+   ],
+   "3059": [
+    {
+     "q": "De ce nu merge să înmulțești modulo 10 și să tai zerourile pe parcurs?",
+     "o": [
+      "Cifrele de dinaintea zerourilor se pierd la fiecare mod 10",
+      "Pentru că produsul depășește int",
+      "Merge mereu",
+      "Pentru că 10! are două zerouri"
+     ],
+     "a": 0,
+     "e": "De exemplu 14! = 87178291200 are ultima cifră nenulă 2, dar 13! = 6227020800 păstrat ca „8” (ultima cifră nenulă) dă 8 · 14 = 112 → 2 doar din noroc; la 15!, 2 · 15 = 30 → 3, iar adevărata cifră e 8. Separând factorii 2 și 5 nu se pierde nimic."
+    },
+    {
+     "q": "Care este ultima cifră nenulă a lui 5! = 120?",
+     "o": [
+      "2",
+      "1",
+      "0",
+      "5"
+     ],
+     "a": 0,
+     "e": "120 se termină în 20, deci ultima cifră nenulă este 2."
+    }
+   ],
+   "3060": [
+    {
+     "q": "Câte elemente are chenarul exterior al unui tablou cu n linii și m coloane (n, m ≥ 2)?",
+     "o": [
+      "2 · (n + m) − 4",
+      "2 · (n + m)",
+      "n · m",
+      "4 · n"
+     ],
+     "a": 0,
+     "e": "Două linii de câte m și două coloane de câte n, dar cele 4 colțuri sunt numărate de două ori."
+    },
+    {
+     "q": "Câte chenare adevărate (nu o singură linie sau coloană) are un tablou 3 × 4?",
+     "o": [
+      "1",
+      "2",
+      "0",
+      "3"
+     ],
+     "a": 0,
+     "e": "Al doilea chenar ar fi linia 2, coloanele 2–3: o singură linie, care rămâne neschimbată."
+    }
+   ],
+   "3061": [
+    {
+     "q": "Dacă a[i][j] = 1, iar d de sus, din stânga și de pe diagonală sunt 3, 2 și 4, cât e d[i][j]?",
+     "o": [
+      "3",
+      "5",
+      "4",
+      "2"
+     ],
+     "a": 0,
+     "e": "1 + min(3, 2, 4) = 3: pătratul e limitat de cel mai mic dintre vecini."
+    },
+    {
+     "q": "Dacă pătratul de latură L are colțul din dreapta jos în (i, j), unde e colțul din stânga sus?",
+     "o": [
+      "(i − L + 1, j − L + 1)",
+      "(i − L, j − L)",
+      "(i + L − 1, j + L − 1)",
+      "(L, L)"
+     ],
+     "a": 0,
+     "e": "Pătratul ocupă liniile i − L + 1 … i și coloanele j − L + 1 … j."
+    }
+   ],
+   "3062": [
+    {
+     "q": "Câte diagonale paralele cu diagonala principală are un tablou cu n linii și m coloane?",
+     "o": [
+      "n + m − 1",
+      "n + m",
+      "n · m",
+      "max(n, m)"
+     ],
+     "a": 0,
+     "e": "Fiecare valoare a lui i − j de la −(m − 1) la n − 1 dă o diagonală: n + m − 1 valori."
+    },
+    {
+     "q": "Ce au în comun elementele unei astfel de diagonale?",
+     "o": [
+      "Aceeași diferență i − j",
+      "Aceeași sumă i + j",
+      "Aceeași linie",
+      "Aceeași valoare"
+     ],
+     "a": 0,
+     "e": "Mergând cu o poziție în jos și una la dreapta, i și j cresc amândouă cu 1, deci i − j rămâne la fel."
+    }
+   ],
+   "3063": [
+    {
+     "q": "Pe diagonala cu i + j = s (numerotare de la 1), între ce valori poate fi linia i?",
+     "o": [
+      "max(1, s − m) … min(n, s − 1)",
+      "1 … s",
+      "1 … n",
+      "s − n … s − 1"
+     ],
+     "a": 0,
+     "e": "Trebuie 1 ≤ i ≤ n și 1 ≤ j = s − i ≤ m, adică s − m ≤ i ≤ s − 1."
+    },
+    {
+     "q": "Câte diagonale are un tablou cu n linii și m coloane?",
+     "o": [
+      "n + m − 1",
+      "n + m",
+      "n · m",
+      "n"
+     ],
+     "a": 0,
+     "e": "Suma i + j ia toate valorile de la 2 la n + m."
+    }
+   ],
+   "3064": [
+    {
+     "q": "Câte zone dreptunghiulare are un tablou cu n linii și m coloane?",
+     "o": [
+      "n(n + 1)/2 · m(m + 1)/2",
+      "n · m",
+      "n² · m²",
+      "2ⁿ⁺ᵐ"
+     ],
+     "a": 0,
+     "e": "O zonă e dată de o pereche de linii (cu repetare) și de o pereche de coloane: n(n + 1)/2 · m(m + 1)/2, adică peste 1,6 milioane pentru 50 × 50."
+    },
+    {
+     "q": "Ce afișezi dacă toate elementele sunt negative?",
+     "o": [
+      "Cel mai mare element",
+      "0",
+      "Suma lor",
+      "Cel mai mic element"
+     ],
+     "a": 0,
+     "e": "Zona trebuie să fie nevidă, iar orice zonă cu mai multe elemente are suma mai mică decât cel mai mare element singur."
+    }
+   ],
+   "3065": [
+    {
+     "q": "Pentru textul „ab ab”, ce se afișează?",
+     "o": [
+      "nu exista",
+      "ab ab",
+      "ab",
+      "ba"
+     ],
+     "a": 0,
+     "e": "Cele două cuvinte sunt identice, iar anagramele trebuie să fie cuvinte diferite."
+    },
+    {
+     "q": "Cum verifici repede că două cuvinte au aceleași litere?",
+     "o": [
+      "Cu un vector de 26 de frecvențe",
+      "Cu strcmp",
+      "Comparând prima și ultima literă",
+      "Comparând lungimile"
+     ],
+     "a": 0,
+     "e": "Numeri literele primului cuvânt, le scazi pe ale celui de-al doilea: dacă totul e 0, au aceleași litere de același număr de ori."
+    }
+   ],
+   "3066": [
+    {
+     "q": "Cât valorează 2-3*4+5?",
+     "o": [
+      "-5",
+      "1",
+      "9",
+      "-9"
+     ],
+     "a": 0,
+     "e": "Întâi înmulțirea: 2 − 12 + 5 = −5."
+    },
+    {
+     "q": "Când se încheie un termen al sumei?",
+     "o": [
+      "La un + sau − (ori la sfârșitul expresiei)",
+      "La fiecare operator",
+      "La fiecare cifră",
+      "La un *"
+     ],
+     "a": 0,
+     "e": "Un termen e un produs; * îl continuă, iar + și − încep un termen nou."
+    }
+   ],
+   "3067": [
+    {
+     "q": "Câte centre posibile are un cuvânt de n litere?",
+     "o": [
+      "2 · n − 1",
+      "n",
+      "n / 2",
+      "n²"
+     ],
+     "a": 0,
+     "e": "n centre pe litere (palindroame impare) și n − 1 între litere vecine (palindroame pare)."
+    },
+    {
+     "q": "Care e cea mai lungă secvență palindrom din banana?",
+     "o": [
+      "anana",
+      "ana",
+      "nan",
+      "banab"
+     ],
+     "a": 0,
+     "e": "anana (pozițiile 2–6) are 5 litere; banana întreg nu e palindrom."
+    }
+   ],
+   "3068": [
+    {
+     "q": "Care este litera i a rotirii care începe la poziția k, într-un cuvânt de lungime L?",
+     "o": [
+      "w[(k + i) % L]",
+      "w[k + i]",
+      "w[(k − i) % L]",
+      "w[i % k]"
+     ],
+     "a": 0,
+     "e": "După ultima literă se revine la începutul cuvântului, de unde restul împărțirii la L."
+    },
+    {
+     "q": "În ce se transformă cuvântul cba?",
+     "o": [
+      "acb",
+      "abc",
+      "bac",
+      "cba"
+     ],
+     "a": 0,
+     "e": "Rotirile sunt cba, bac și acb; cea mai mică este acb (abc nu e o rotire a lui cba)."
+    }
+   ],
+   "3069": [
+    {
+     "q": "Câte sume trebuie să fie egale într-o zonă pătratică de latură k?",
+     "o": [
+      "2 · k + 2",
+      "k + 2",
+      "2 · k",
+      "k²"
+     ],
+     "a": 0,
+     "e": "k linii, k coloane și 2 diagonale."
+    },
+    {
+     "q": "În zona cu colțul (i, j) și latura k, ce element al diagonalei secundare e pe linia i + x?",
+     "o": [
+      "a[i + x][j + k − 1 − x]",
+      "a[i + x][j + x]",
+      "a[i + x][k − x]",
+      "a[i + k − x][j + x]"
+     ],
+     "a": 0,
+     "e": "Diagonala secundară pornește din colțul din dreapta sus, (i, j + k − 1), și coboară spre stânga."
+    }
+   ],
+   "3070": [
+    {
+     "q": "În șirul 1 2 2 1 2 3, care e lungimea secvenței curente după citirea lui 3?",
+     "o": [
+      "2 (2 3)",
+      "1",
+      "6",
+      "3 (2 2 3)"
+     ],
+     "a": 0,
+     "e": "3 e o valoare nouă, deci rămâne doar ultimul bloc de valori egale (un singur 2) plus 3."
+    },
+    {
+     "q": "Ce reține run?",
+     "o": [
+      "Câți termeni egali cu ultimul sunt la rând la final",
+      "Numărul de valori distincte",
+      "Lungimea maximă",
+      "Poziția ultimului termen"
+     ],
+     "a": 0,
+     "e": "Este lungimea blocului de la sfârșit; din el pornește secvența nouă când apare o a treia valoare."
+    }
+   ],
+   "3071": [
+    {
+     "q": "Suma termenilor de la poziția i + 1 la j se scrie cu sume parțiale ca:",
+     "o": [
+      "S_j − S_i",
+      "S_j + S_i",
+      "S_j − S_(i+1)",
+      "S_i − S_j"
+     ],
+     "a": 0,
+     "e": "S_j cuprinde primii j termeni, S_i primii i; diferența lor sunt termenii i + 1 … j."
+    },
+    {
+     "q": "De ce cate[0] = 1 la început?",
+     "o": [
+      "Pentru suma vidă S₀ = 0, ca să se numere și secvențele de la începutul șirului",
+      "Ca să nu fie împărțire la 0",
+      "Pentru că 0 e divizibil cu orice",
+      "Nu e nevoie"
+     ],
+     "a": 0,
+     "e": "O secvență care începe pe poziția 1 are suma S_j − S₀; fără S₀ ar fi pierdută."
+    }
+   ],
+   "3072": [
+    {
+     "q": "Între ce valori poate fi suma parțială d, pentru n termeni?",
+     "o": [
+      "−n … n",
+      "0 … n",
+      "−1 … 1",
+      "0 … 2n"
+     ],
+     "a": 0,
+     "e": "Fiecare termen adaugă +1 sau −1, deci după j termeni |d| ≤ j ≤ n. De aceea indicele în vector e d + n."
+    },
+    {
+     "q": "De ce se păstrează prima apariție a fiecărei sume, nu ultima?",
+     "o": [
+      "Ca secvența terminată la j să fie cât mai lungă",
+      "Ca să ocupe mai puțină memorie",
+      "E indiferent",
+      "Ca să nu se depășească int"
+     ],
+     "a": 0,
+     "e": "Lungimea este j − p: cu cât p e mai mic, cu atât secvența e mai lungă."
+    }
+   ],
+   "3073": [
+    {
+     "q": "Când citești x, cu ce termeni anteriori formează el perechi?",
+     "o": [
+      "Cu cei strict mai mari decât x",
+      "Cu cei mai mici decât x",
+      "Cu cei egali cu x",
+      "Cu toți"
+     ],
+     "a": 0,
+     "e": "În pereche termenul din stânga (citit mai devreme) trebuie să fie mai mare decât x."
+    },
+    {
+     "q": "Cât e cel mai mare rezultat posibil pentru 10⁶ termeni?",
+     "o": [
+      "Aproape 5 · 10¹¹",
+      "10⁶",
+      "10¹²",
+      "100 · 10⁶"
+     ],
+     "a": 0,
+     "e": "Cel mult n(n − 1)/2 ≈ 5 · 10¹¹ perechi, peste limita lui int."
+    }
+   ],
+   "3074": [
+    {
+     "q": "Secvența i + 1 … j are cel puțin k termeni dacă:",
+     "o": [
+      "i ≤ j − k",
+      "i ≥ j − k",
+      "j ≤ k",
+      "i + j ≥ k"
+     ],
+     "a": 0,
+     "e": "Are j − i termeni, iar j − i ≥ k înseamnă i ≤ j − k."
+    },
+    {
+     "q": "Pentru k = 1, la ce problemă se reduce aceasta?",
+     "o": [
+      "La secvența de sumă maximă obișnuită",
+      "La suma tuturor termenilor",
+      "La cel mai mare termen",
+      "La nimic cunoscut"
+     ],
+     "a": 0,
+     "e": "Orice secvență nevidă are cel puțin un termen."
+    }
+   ],
+   "3075": [
+    {
+     "q": "Dacă șirul ar fi ordonat crescător, unde s-ar găsi cei mai apropiați doi termeni?",
+     "o": [
+      "Pe poziții vecine",
+      "La capete",
+      "Oriunde",
+      "Primul și al doilea"
+     ],
+     "a": 0,
+     "e": "Dacă a ≤ b ≤ c, atunci c − a ≥ c − b, deci o pereche ne-vecină nu e niciodată mai bună decât una vecină."
+    },
+    {
+     "q": "Ce răspuns dai dacă o valoare apare de două ori?",
+     "o": [
+      "0",
+      "1",
+      "Valoarea",
+      "-1"
+     ],
+     "a": 0,
+     "e": "Cei doi termeni egali, aflați pe poziții diferite, au diferența 0."
+    }
+   ],
+   "3076": [
+    {
+     "q": "Ce reține doi[v]?",
+     "o": [
+      "Câte perechi crescătoare citite se termină cu valoarea v",
+      "Câte valori v s-au citit",
+      "Câte triplete se termină în v",
+      "Dacă v apare de două ori"
+     ],
+     "a": 0,
+     "e": "Un triplet care se termină în x se obține dintr-o pereche care se termină într-o valoare mai mică decât x."
+    },
+    {
+     "q": "Pentru șirul 1 2 3, cât este doi[3] după citirea lui 3?",
+     "o": [
+      "2",
+      "1",
+      "3",
+      "0"
+     ],
+     "a": 0,
+     "e": "Perechile crescătoare care se termină în 3 sunt (1, 3) și (2, 3): doi[3] = unu[1] + unu[2] = 2."
+    }
+   ],
+   "3077": [
+    {
+     "q": "Monedele 1, 2, 4 permit toate sumele de la 1 la 7. Ce se întâmplă dacă se adaugă o monedă de 9?",
+     "o": [
+      "Suma 8 rămâne imposibilă",
+      "Se pot plăti toate sumele până la 16",
+      "Se pot plăti 8 și 9",
+      "Nimic nu se schimbă"
+     ],
+     "a": 0,
+     "e": "9 > 8, deci cu orice combinație nu se poate ajunge exact la 8."
+    },
+    {
+     "q": "Ce răspuns dai dacă nu există nicio monedă de valoare 1?",
+     "o": [
+      "1",
+      "0",
+      "2",
+      "Cea mai mică monedă"
+     ],
+     "a": 0,
+     "e": "Fără moneda de 1, suma 1 nu se poate plăti."
+    }
+   ],
+   "3078": [
+    {
+     "q": "Câte termeni pari are secvența i + 1 … j, cu P = numărul de pari dintre primii termeni?",
+     "o": [
+      "P_j − P_i",
+      "P_j + P_i",
+      "j − i",
+      "P_j"
+     ],
+     "a": 0,
+     "e": "Parii dintre primii j termeni, minus cei dintre primii i."
+    },
+    {
+     "q": "Pentru k = 0 și șirul 1 3 5 (trei termeni impari), câte secvențe se numără?",
+     "o": [
+      "6",
+      "3",
+      "1",
+      "0"
+     ],
+     "a": 0,
+     "e": "Toate secvențele: 3 de un termen, 2 de doi termeni și una de trei, adică 3 · 4 / 2 = 6."
+    }
+   ],
+   "3079": [
+    {
+     "q": "Când citești v, de ce valoare a lui lung ai nevoie?",
+     "o": [
+      "lung[v − 1]",
+      "lung[v + 1]",
+      "lung[v]",
+      "Toate valorile mai mici decât v"
+     ],
+     "a": 0,
+     "e": "v poate continua doar un subșir care se termină în v − 1, iar cel mai bun dintre acestea are lungimea lung[v − 1]."
+    },
+    {
+     "q": "În șirul 2 1, care e cel mai lung subșir de valori consecutive?",
+     "o": [
+      "De lungime 1",
+      "1 2, lungime 2",
+      "2 1, lungime 2",
+      "Nu există"
+     ],
+     "a": 0,
+     "e": "1 apare după 2, deci 1, 2 nu e un subșir în ordinea din șir; răspunsul e 1 1."
+    }
    ]
   },
   "AcadNet": {
